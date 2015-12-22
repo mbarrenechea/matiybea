@@ -1,0 +1,33 @@
+.m-countdown {
+  width: 400px;
+  margin: 20px auto;
+  display: flex;
+  justify-content: space-between;
+
+  .m-countdown-numberbox {
+    width: 25%;
+    display: flex;
+    justify-content: space-between;
+    border: 1px solid $border-color-1;
+
+    .m-countdown-number {
+      width: 50%;
+      height: 20px;
+      position: relative;
+      overflow: hidden;
+
+      > ul {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        transform: translate(0,0%);
+        transition: all .2s $easeInOutCubic;
+        > li {
+          text-align: center;
+          line-height: 20px;
+        }
+      }
+    }
+  }
+}
