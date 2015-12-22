@@ -2,16 +2,17 @@
 <html>
 <head>
   <title>Matiybea</title>
+  <meta name="viewport" content="width=device-width">
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
 <body>
 <div class="wrapper">
   <%= render 'shared/header' %>
-  <%= yield %>  
+  <%= yield %>
   <%= render 'shared/footer' %>
 </div>
 
 </body>
 </html>
+<%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>

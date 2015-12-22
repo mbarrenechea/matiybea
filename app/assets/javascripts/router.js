@@ -7,43 +7,22 @@
   root.app.Router = Backbone.Router.extend({
 
     routes: {
-      '': 'welcome',
-      // 'map': 'map',
-      // 'embed/map': 'map',
-      // 'journeys/:id': 'journeys',
-      // 'embed/journeys': 'journeys',
+      '': 'home',
     },
 
     ParamsModel: Backbone.Model.extend({}),
 
     initialize: function(settings) {
-      console.log('router');
-      // var opts = settings && settings.options ? settings.options : {};
-      // this.options = _.extend({}, this.defaults, opts);
-      // this.params = new this.ParamsModel(); // This object save the URL params
+      var opts = settings && settings.options ? settings.options : {};
+      this.options = _.extend({}, this.defaults, opts);
 
-      // this._checkJourneyMap();
-      // this.setListeners();
-    },
+      this.params = new this.ParamsModel(); // This object save the URL params
 
-    /**
-     * Add class to body if journey map version
-     */
-    _checkJourneyMap: function() {
-      var params = this._unserializeParams();
-
-      if (params.journeyMap) {
-        $('body').addClass('is-journey-map');
-      }
+      this.setListeners();
     },
 
     setListeners: function() {
-      this.on('route:map', this.updateParams, this);
-      this.on('route:journeys', this.updateParams, this);
-
-      if (this.options.update) {
-        this.listenTo(this.params, 'change', this.updateUrl);
-      }
+      // this.on('route:map', this.updateParams, this);
     },
 
 
@@ -58,8 +37,8 @@
         this.params.set(name, value);
       } else if (typeof value === 'object' && !_.isArray(value)) {
         if (keys && _.isArray(keys)) {
-          var params = _.pick(value, 'id', 'opacity', 'order');
-          this.params.set(name, JSON.stringify(params));
+          // var params = _.pick(value, 'id', 'opacity', 'order');
+          // this.params.set(name, JSON.stringify(params));
         } else {
           this.params.set(name, JSON.stringify(value));
         }
@@ -79,15 +58,8 @@
      * Change url with params
      */
     updateUrl: function() {
-      var url = location.pathname.slice(1);
-      if (this.options.decoded) {
-        url = url + '?config=' + this._encodeParams();
-      } else {
-        url = url + '?' + this._serializeParams();
-      }
-      if (!this.params.attributes.journeyMap) {
-        this.navigate(url, { trigger: false });
-      }
+      var url = location.pathname.slice(1) + '?' + this._serializeParams();
+      this.navigate(url, { trigger: false });
     },
 
     /**
@@ -109,24 +81,6 @@
         var p = this._unserializeParams();
         this.params.clear({ silent: true }).set(this._unserializeParams());
       }
-    },
-
-    /**
-     * Tranform base64 string to object
-     * @return {Object}
-     */
-    _decodeParams: function() {
-      var config = decodeURIComponent(location.search.slice(1)).split('config=');
-      return JSON.parse(atob(config[1] || null));
-    },
-
-    /**
-     * Tranform object to base64 string
-     * @param  {String} paramString
-     * @return {Object}
-     */
-    _encodeParams: function() {
-      return btoa(JSON.stringify(this.params.attributes.config));
     },
 
     /**

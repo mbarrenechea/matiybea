@@ -1,3 +1,13 @@
+GIT
+  remote: git://github.com/leshill/handlebars_assets.git
+  revision: a5791642cc8821be7e8bfb917f46c27c2a560d83
+  specs:
+    handlebars_assets (0.22.0)
+      execjs (~> 2.0)
+      multi_json (~> 1.0)
+      sprockets (>= 2.0.0)
+      tilt (>= 1.2)
+
 GEM
   remote: https://rubygems.org/
   remote: https://rails-assets.org/
@@ -66,6 +76,7 @@ GEM
     mime-types (2.99)
     mini_portile2 (2.0.0)
     minitest (5.8.3)
+    multi_json (1.11.2)
     nokogiri (1.6.7.1)
       mini_portile2 (~> 2.0.0.rc2)
     rack (1.6.4)
@@ -137,6 +148,7 @@ PLATFORMS
 DEPENDENCIES
   autoprefixer-rails
   byebug
+  handlebars_assets!
   jquery-rails
   jquery-ui-rails
   rails (= 4.2.3)
