@@ -3,6 +3,7 @@ class CreateConfirms < ActiveRecord::Migration
     create_table :confirms do |t|
       t.string :name
       t.string :companion
+
       t.string :childs, array: true, default: []
       t.text :allergic
       t.text :comment

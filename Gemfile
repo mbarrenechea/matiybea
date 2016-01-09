@@ -37,4 +37,6 @@ source 'https://rails-assets.org' do
   gem 'rails-assets-underscore'
   gem 'rails-assets-backbone'
   gem 'rails-assets-handlebars'
+  gem 'rails-assets-jquery'
+  gem 'rails-assets-jquery-validation'
 end

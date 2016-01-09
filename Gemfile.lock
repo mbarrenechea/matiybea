@@ -96,6 +96,9 @@ GEM
     rails-assets-backbone (1.2.3)
       rails-assets-underscore (>= 1.7.0)
     rails-assets-handlebars (4.0.5)
+    rails-assets-jquery (2.2.0)
+    rails-assets-jquery-validation (1.14.0)
+      rails-assets-jquery (>= 1.7.2)
     rails-assets-normalize-css (3.0.3)
     rails-assets-underscore (1.8.3)
     rails-deprecated_sanitizer (1.0.3)
@@ -154,6 +157,8 @@ DEPENDENCIES
   rails (= 4.2.3)
   rails-assets-backbone!
   rails-assets-handlebars!
+  rails-assets-jquery!
+  rails-assets-jquery-validation!
   rails-assets-normalize-css!
   rails-assets-underscore!
   sass-rails (~> 5.0)
