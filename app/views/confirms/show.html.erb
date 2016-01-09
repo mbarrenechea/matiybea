@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @confirm.name %>
+</p>
+
+<p>
+  <strong>Companion:</strong>
+  <%= @confirm.companion %>
+</p>
+
+<p>
+  <strong>Childs:</strong>
+  <%= @confirm.childs %>
+</p>
+
+<p>
+  <strong>Allergic:</strong>
+  <%= @confirm.allergic %>
+</p>
+
+<p>
+  <strong>Comment:</strong>
+  <%= @confirm.comment %>
+</p>
+
+<%= link_to 'Edit', edit_confirm_path(@confirm) %> |
+<%= link_to 'Back', confirms_path %>

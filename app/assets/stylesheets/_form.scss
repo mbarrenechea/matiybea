@@ -1,0 +1,16 @@
+.field {
+  label {
+    display: block;
+    font-size: 14px;
+    text-transform: uppercase;
+  }
+
+  input[type="text"],
+  input[type="email"],
+  input[type="number"],
+  textarea {
+    background: none;
+    border: 1px solid $border-color-1;
+    color: $font-color-1;
+  }
+}
