@@ -11,16 +11,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160109131218) do
+ActiveRecord::Schema.define(version: 20160110222259) do
 
   create_table "confirms", force: :cascade do |t|
     t.string   "name"
     t.string   "companion"
-    t.string   "childs",     default: "--- []\n"
     t.text     "allergic"
     t.text     "comment"
-    t.datetime "created_at",                      null: false
-    t.datetime "updated_at",                      null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string   "childs"
   end
 
 end
