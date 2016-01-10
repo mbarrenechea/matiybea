@@ -16,19 +16,34 @@
     initialize: function(settings) {
       var opts = settings && settings.options ? settings.options : {};
       this.options = _.extend({}, this.defaults, opts);
+      this.validate();
       this.cache();
     },
 
     cache: function() {
+      this.$fieldGridItem = $('.field-grid-item');
+    },
+
+    validate: function() {
       this.$el.validate({
         submitHandler: function(form) {
           var url = $(form).attr('action');
-          var params = $(form).serialize();
-          console.log(url);
-          console.log(params);
-        }
+          var data = $(form).serialize();
+
+          $.ajax({
+            type: "POST",
+            url: url,
+            data: data,
+            success: this.success.bind(this),
+            dataType: 'json'
+          });
+
+        }.bind(this)
       });
-      this.$fieldGridItem = $('.field-grid-item');
+    },
+
+    success: function(data) {
+      console.log(data);
     },
 
     toggleCheckboxField: function(e) {
