@@ -25,7 +25,11 @@ class ConfirmsController < ApplicationController
 
   # POST /confirms
   def create
+    puts '********************************'
+    puts confirm_params
+    puts '********************************'
     @confirm = Confirm.new(confirm_params)
+    puts @confirm
     if @confirm.save
       set_respond
     else
@@ -63,6 +67,6 @@ class ConfirmsController < ApplicationController
     end
     # Only allow a trusted parameter "white list" through.
     def confirm_params
-      params.require(:confirm).permit(:name, :companion, :childs, :allergic, :comment)
+      params.require(:confirm).permit(:name, :companion, {:childs => []}, :allergic, :comment)
     end
 end

@@ -28,7 +28,8 @@
       this.$el.validate({
         submitHandler: function(form) {
           var url = $(form).attr('action');
-          var data = $(form).serialize();
+          var data = this.setParams(form);
+          console.log(data);
 
           $.ajax({
             type: "POST",
@@ -44,6 +45,29 @@
 
     success: function(data) {
       console.log(data);
+    },
+
+    setParams: function(form) {
+      var params = this.getParams(form);
+
+      // set childs
+      params['confirm[childs]'] = (!!params['children[]'].length) ? params['children[]'] : [];
+
+      return params;
+    },
+
+    getParams: function(form) {
+      var paramObj = {};
+      $.each($(form).serializeArray(), function(_, kv) {
+        if (paramObj.hasOwnProperty(kv.name)) {
+          paramObj[kv.name] = $.makeArray(paramObj[kv.name]);
+          paramObj[kv.name].push(kv.value);
+        }
+        else {
+          paramObj[kv.name] = kv.value;
+        }
+      });
+      return paramObj;
     },
 
     toggleCheckboxField: function(e) {

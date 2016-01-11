@@ -34,7 +34,10 @@
       </div>
       <div class="field -toggle -hidden">
         <%= f.label :childs %>
-        <%= f.text_field :childs %>
+        <%= f.hidden_field :childs %>
+        <input name="children[]" type="text" aria-required="true" aria-invalid="false"/>
+        <input name="children[]" type="text" aria-required="true" aria-invalid="false"/>
+        <input name="children[]" type="text" aria-required="true" aria-invalid="false"/>
       </div>
     </li>
     <li class="field-grid-item">
