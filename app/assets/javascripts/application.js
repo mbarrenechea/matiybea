@@ -47,7 +47,8 @@
 
     setListeners: function() {
       this.listenTo(this.router, 'route:home', this.homePage);
-      this.listenTo(this.router, 'route:confirm', this.confirmPage)
+      this.listenTo(this.router, 'route:new', this.confirmPage);
+      this.listenTo(this.router, 'route:edit', this.editPage);
     },
 
     start: function() {
@@ -59,6 +60,10 @@
     },
 
     confirmPage: function() {
+      this.confirmformView = new app.View.ConfirmformView();
+    },
+
+    editPage: function() {
       this.confirmformView = new app.View.ConfirmformView();
     },
 

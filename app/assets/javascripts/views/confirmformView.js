@@ -7,7 +7,7 @@
 
   root.app.View.ConfirmformView = Backbone.View.extend({
 
-    el: '#new_confirm',
+    el: '.confirm-form',
 
     events: {
       'change .toggle-checkbox' : 'toggleCheckboxField'

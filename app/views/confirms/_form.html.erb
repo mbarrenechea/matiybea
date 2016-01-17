@@ -1,4 +1,4 @@
-<%= form_for(@confirm) do |f| %>
+<%= form_for(@confirm, :html => {:class => 'confirm-form'}) do |f| %>
   <% if @confirm.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@confirm.errors.count, "error") %> prohibited this confirm from being saved:</h2>
