@@ -1,8 +1,10 @@
 Rails.application.routes.draw do
-  resources :confirms
+
+  get 'que-hacer/' => 'quehacer#index'
 
   root 'home#index'
 
+  resources :confirms
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 
