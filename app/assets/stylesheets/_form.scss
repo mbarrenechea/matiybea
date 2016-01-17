@@ -1,0 +1,81 @@
+.field-grid {
+  padding: 20px;
+  max-width: 600px;
+  margin: 0 auto;
+
+  > li {
+    margin: 20px 0 0;
+    padding: 20px 0 0;
+    border-top: 1px solid $border-color-1;
+    &:first-child {
+      margin: 0;
+      padding: 0;
+      border-top: none;
+    }
+  }
+}
+
+.field {
+  display: block;
+  label {
+    display: block;
+    position: relative;
+    padding: 10px 0;
+    font-size: 12px;
+    text-transform: uppercase;
+    &.error {
+      text-transform: none;
+      color: red;
+      font-size: 10px;
+    }
+
+  }
+
+  input[type="text"],
+  input[type="email"],
+  input[type="number"],
+  textarea {
+    font-size: 14px;
+    background: none;
+    border: 1px solid $border-color-1;
+    color: $font-color-1;
+  }
+
+  &.-hidden {
+    display: none;
+  }
+
+  &.-intro {
+    input[type="text"],
+    input[type="email"],
+    input[type="number"],
+    textarea {
+      font-size: 21px;
+    }
+  }
+
+  &.-checkbox {
+    input[type="checkbox"] {
+      display: none;
+    }
+    label {
+      padding-left: 30px;
+      &:before {
+        content: "";
+        position: absolute;
+        top: 50%;
+        left: 0;
+        width: 20px;
+        height: 20px;
+        background: $white;
+        border: 1px solid $border-color-1;
+        transform: translate(0%,-50%);
+      }
+    }
+    input[type="checkbox"]:checked + label {
+      &:before {
+        background: $gray;
+      }
+    }
+  }
+}

@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.3'
-gem 'sqlite3'
+gem 'pg'
 
 gem 'jquery-rails'
 gem 'jquery-ui-rails'
@@ -37,4 +37,6 @@ source 'https://rails-assets.org' do
   gem 'rails-assets-underscore'
   gem 'rails-assets-backbone'
   gem 'rails-assets-handlebars'
+  gem 'rails-assets-jquery'
+  gem 'rails-assets-jquery-validation'
 end

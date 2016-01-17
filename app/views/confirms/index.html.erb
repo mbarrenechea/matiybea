@@ -1,0 +1,31 @@
+<table class="m-table">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Companion</th>
+      <th>Childs</th>
+      <th>Allergic</th>
+      <th>Comment</th>
+      <th colspan="3">Actions</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @confirms.each do |confirm| %>
+      <tr>
+        <td><%= confirm.name %></td>
+        <td><%= confirm.companion %></td>
+        <td><%= confirm.childs %></td>
+        <td><%= confirm.allergic %></td>
+        <td><%= confirm.comment %></td>
+        <td><%= link_to 'Show', confirm %></td>
+        <td><%= link_to 'Edit', edit_confirm_path(confirm) %></td>
+        <td><%= link_to 'Destroy', confirm, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Confirm', new_confirm_path %>

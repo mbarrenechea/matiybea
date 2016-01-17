@@ -8,6 +8,8 @@
 
     routes: {
       '': 'home',
+      'confirms/new' : 'new',
+      'confirms/:id/edit' : 'edit'
     },
 
     ParamsModel: Backbone.Model.extend({}),

@@ -1,5 +1,6 @@
 //= require jquery
 //= require jquery_ujs
+//= require jquery-validation
 //= require underscore
 //= require backbone
 //= require handlebars
@@ -46,6 +47,8 @@
 
     setListeners: function() {
       this.listenTo(this.router, 'route:home', this.homePage);
+      this.listenTo(this.router, 'route:new', this.confirmPage);
+      this.listenTo(this.router, 'route:edit', this.editPage);
     },
 
     start: function() {
@@ -54,6 +57,14 @@
 
     homePage: function() {
       this.countdownView = new root.app.View.CountdownView();
+    },
+
+    confirmPage: function() {
+      this.confirmformView = new app.View.ConfirmformView();
+    },
+
+    editPage: function() {
+      this.confirmformView = new app.View.ConfirmformView();
     },
 
     initGlobalViews: function() {
