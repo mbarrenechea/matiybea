@@ -9,7 +9,8 @@
     routes: {
       '': 'home',
       'confirms/new' : 'new',
-      'confirms/:id/edit' : 'edit'
+      'confirms/:id/edit' : 'edit',
+      'que-hacer' : 'quehacer',
     },
 
     ParamsModel: Backbone.Model.extend({}),

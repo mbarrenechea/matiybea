@@ -3,11 +3,12 @@
 <head>
   <title>Matiybea</title>
   <meta name="viewport" content="width=device-width">
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= stylesheet_link_tag "http://libs.cartocdn.com/cartodb.js/v3/3.14/themes/css/cartodb.css", media: "all" %>
   <%= csrf_meta_tags %>
 </head>
 <body>
-<div class="wrapper">
+<div class="wrapper -fullscreen">
   <%= render 'shared/header' %>
   <section class="m-content">
     <%= yield %>
@@ -18,4 +19,5 @@
 
 </body>
 </html>
+<%= javascript_include_tag "http://libs.cartocdn.com/cartodb.js/v3/3.14/cartodb.js" %>
 <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>

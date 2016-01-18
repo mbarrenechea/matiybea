@@ -47,8 +47,13 @@
 
     setListeners: function() {
       this.listenTo(this.router, 'route:home', this.homePage);
+
+      // Confirm
       this.listenTo(this.router, 'route:new', this.confirmPage);
       this.listenTo(this.router, 'route:edit', this.editPage);
+
+      // Map
+      this.listenTo(this.router, 'route:quehacer', this.mapPage);
     },
 
     start: function() {
@@ -65,6 +70,19 @@
 
     editPage: function() {
       this.confirmformView = new app.View.ConfirmformView();
+    },
+
+    mapPage: function() {
+      var mapView = new root.app.View.Map({
+        el: '#mapView',
+        // layers: layersCollection,
+        model: new (Backbone.Model.extend({
+          defaults: {
+          }
+        }))
+      });
+
+      mapView.createMap();
     },
 
     initGlobalViews: function() {

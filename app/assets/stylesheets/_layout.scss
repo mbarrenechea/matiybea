@@ -1,3 +1,13 @@
+.wrapper {
+  &.-fullscreen {
+    height: 100vh;
+
+    .m-content {
+      height: calc(100% - 55px);
+    }
+  }
+}
+
 .m-content {
   padding: 20px;
 }
