@@ -6,6 +6,7 @@
 //= require handlebars
 
 //= require ./helpers/class
+//= require ./helpers/cartodb_layer
 //= require_tree ./models
 //= require_tree ./collections
 //= require_tree ./templates
@@ -73,9 +74,10 @@
     },
 
     mapPage: function() {
+      var layersCollection = new root.app.Collection.Layers();
       var mapView = new root.app.View.Map({
         el: '#mapView',
-        // layers: layersCollection,
+        layers: layersCollection,
         model: new (Backbone.Model.extend({
           defaults: {
           }
@@ -83,6 +85,7 @@
       });
 
       mapView.createMap();
+      layersCollection.getData();
     },
 
     initGlobalViews: function() {

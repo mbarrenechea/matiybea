@@ -5,21 +5,6 @@
   root.app = root.app || {};
   root.app.View = root.app.View || {};
 
-  //     bounds = ;
-
-  // var map = L.mapbox.map('map', 'mapbox.streets', {
-  //     // set that bounding box as maxBounds to restrict moving the map
-  //     // see full maxBounds documentation:
-  //     // http://leafletjs.com/reference.html#map-maxbounds
-  //     maxBounds: bounds,
-  //     maxZoom: 19,
-  //     minZoom: 10
-  // });
-
-  // // zoom the map to that bounding box
-  // map.fitBounds(bounds);
-
-
   root.app.View.Map = Backbone.View.extend({
 
     defaults: {
@@ -45,13 +30,13 @@
     initialize: function(settings) {
       var opts = settings && settings.options ? settings.options : {};
       this.options = _.extend({}, this.defaults, opts);
-      // this.layers = settings.layers;
+      this.layers = settings.layers;
       this.setListeners();
     },
 
     setListeners: function() {
-      // this.listenTo(this.layers, 'change', this.renderLayers);
-      // this.listenTo(this.layers, 'sort', this.renderLayers);
+      this.listenTo(this.layers, 'change', this.renderLayers);
+      this.listenTo(this.layers, 'sort', this.renderLayers);
     },
 
     setEvents: function() {
@@ -128,7 +113,7 @@
      * Render or remove layers by Layers Collection
      */
     renderLayers: function() {
-      var layersData = this.layers.getPublished();
+      var layersData = this.layers.toJSON();
       _.each(layersData, function(layerData) {
         if (layerData.active) {
           this.addLayer(layerData);
@@ -136,12 +121,6 @@
           this.removeLayer(layerData);
         }
       }, this);
-
-      //Set mask when journey map.
-      if (this.model.get('journeyMap')) {
-        this.setMaskLayer();
-      }
-
     },
 
     /**
@@ -149,6 +128,7 @@
      * @param {Object} layerData
      */
     addLayer: function(layerData) {
+      console.log(layerData);
       if (typeof layerData !== 'object' ||
         !layerData.id || !layerData.type) {
         throw 'Invalid "layerData" format.';
@@ -157,26 +137,16 @@
         throw 'Create a map before add a layer.';
       }
       var layer = this.model.get(layerData.id);
+
       var layerInstance;
       if (!layer) {
         switch(layerData.type) {
           case 'cartodb':
             var data = _.pick(layerData, ['sql', 'cartocss', 'interactivity']);
             var options = { sublayers: [data] };
+            console.log(options);
             layerInstance = new root.app.Helper.CartoDBLayer(this.map, options);
             layerInstance.create(function(layer) {
-              layer.setOpacity(layerData.opacity);
-              layer.setZIndex(1000-layerData.order);
-            });
-          break;
-          case 'raster':
-            var data = _.pick(layerData, ['sql', 'cartocss', 'interactivity']);
-            var options = {
-              sublayers: [ _.extend(data, { raster: true, raster_band: 1 }) ]
-            };
-            layerInstance = new root.app.Helper.CartoDBRaster(this.map, options);
-            //When carto bug solved, only back to create method.
-            layerInstance.createRasterLayer(function(layer) {
               layer.setOpacity(layerData.opacity);
               layer.setZIndex(1000-layerData.order);
             });
