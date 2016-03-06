@@ -2,6 +2,13 @@ html {
   box-sizing: border-box;
 }
 
+body {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 12px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;  
+}
+
 *, *:before, *:after {
   box-sizing: inherit;
 }

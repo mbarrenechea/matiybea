@@ -19,9 +19,11 @@ $base-line-height: 1.2em !default;
 $white: #fff;
 $black: #000;
 $blue: #0089cc;
-$gray: #555;
-$gray-medium: #979797;
-$gray-light: #f9f9f9;
+$gray: #2F2E2F;
+$gray-medium: #6F6F6F;
+$gray-light: #BEBEBE;
+$gray-extra-light: #E5E5E5;
+$red: #EE3A50;
 
 /*
   Theme
@@ -33,8 +35,8 @@ $bg-color-4: $gray-medium;
 $bg-color-5: $black;
 
 $font-color-1: $gray;
-$font-color-2: $blue;
-$font-color-3: $white;
+$font-color-2: $gray-medium;
+$font-color-3: $gray-light;
 
 $border-color-1: $gray-medium;
 

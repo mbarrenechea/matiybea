@@ -42,8 +42,8 @@
 
     initialize: function() {
       this.router = new root.app.Router();
-      this.initGlobalViews();
       this.setListeners();
+      this.initGlobalViews();
     },
 
     setListeners: function() {

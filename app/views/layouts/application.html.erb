@@ -5,10 +5,12 @@
   <meta name="viewport" content="width=device-width">
   <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= stylesheet_link_tag "http://libs.cartocdn.com/cartodb.js/v3/3.14/themes/css/cartodb.css", media: "all" %>
+  <link href='https://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
   <%= csrf_meta_tags %>
 </head>
 <body>
 <div class="wrapper -fullscreen">
+  <%= render 'shared/icons' %>
   <%= render 'shared/header' %>
   <section class="m-content">
     <%= yield %>
