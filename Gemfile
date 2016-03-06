@@ -39,4 +39,5 @@ source 'https://rails-assets.org' do
   gem 'rails-assets-handlebars'
   gem 'rails-assets-jquery'
   gem 'rails-assets-jquery-validation'
+  gem 'rails-assets-jquery-mousewheel'
 end

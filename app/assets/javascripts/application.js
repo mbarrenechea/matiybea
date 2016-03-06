@@ -4,6 +4,8 @@
 //= require underscore
 //= require backbone
 //= require handlebars
+//= require jquery-mousewheel
+
 
 //= require ./helpers/class
 //= require ./helpers/cartodb_layer
@@ -62,6 +64,7 @@
     },
 
     homePage: function() {
+      this.scrollView = new root.app.View.ScrollView();
       this.countdownView = new root.app.View.CountdownView();
     },
 
