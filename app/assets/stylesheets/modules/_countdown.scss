@@ -1,20 +1,43 @@
 .m-countdown {
-  width: 400px;
-  margin: 20px auto;
-  display: flex;
-  justify-content: space-between;
+  width: 100%;
+  padding: 20px 0 25px;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  background: $bg-color-1;
 
-  .m-countdown-numberbox {
-    width: 25%;
+  .m-countdown-box {
+    width: 440px;
+    margin: 0 auto;
     display: flex;
     justify-content: space-between;
-    border: 1px solid $border-color-1;
+  }
+
+  .m-countdown-numberbox {
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+    padding: 0 0 10px;
+
+    p {
+      position: absolute;
+      top: 100%;
+      left: 50%;
+      transform: translate(-50%,0);
+      color: $white;
+    }
 
     .m-countdown-number {
-      width: 50%;
-      height: 20px;
+      width: 36px;
+      height: 60px;
+      margin: 0 0 0 5px;
       position: relative;
       overflow: hidden;
+      background: $black;
+
+      &:first-child {
+        margin: 0;
+      }
 
       > ul {
         position: absolute;
@@ -23,9 +46,12 @@
         width: 100%;
         transform: translate(0,0%);
         transition: all .2s $easeInOutCubic;
+        
         > li {
+          font-size: 36px;
           text-align: center;
-          line-height: 20px;
+          line-height: 60px;
+          color: $white;
         }
       }
     }

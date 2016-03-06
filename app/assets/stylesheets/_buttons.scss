@@ -1,0 +1,33 @@
+.btn-with-icon {
+  display: inline-flex;
+  align-items: center;
+  cursor: pointer;
+  padding: 22px 25px;
+  width: auto;
+  background: $white;
+  color: $font-color-1;
+
+  &.-dark {
+    background: $font-color-1;
+    color: $white;
+
+    svg {
+      fill: $white;
+    }
+  }
+
+  svg {
+    display: block;
+    width: 26px;
+    height: 26px;
+    fill: $font-color-1;
+
+    &:first-child {
+      margin: 0 5px 0 0;  
+    }
+    
+    &:last-child {
+      margin: 0 0 0 5px;  
+    }
+  }    
+}

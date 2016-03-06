@@ -1,0 +1,58 @@
+.m-section-box {
+  position: relative;
+
+  &.-text {
+    
+    .content {
+      color: $font-color-2;
+      position: absolute;
+      top: 50%;   
+      left: 50%;
+      transform: translate(-50%,-50%);
+    }
+
+    header {
+      width: 100%;
+
+      h3 {
+        color: $font-color-3;
+        text-transform: uppercase;
+        padding: 0 0 10px;
+      }
+
+      h2 {
+        color: $font-color-1;
+        font-size: 54px;
+        margin: 0 0 0 -4px;
+      }
+    }
+
+    .info {
+      padding: 40px 0 0;
+      
+      > * {
+        margin-top: 20px;
+
+        &:first-child {
+          margin-top: 0;
+        }
+      }
+    }    
+  }
+
+  &.-text-scroll {
+    
+  }
+
+  &.-home {
+    background: image-url("section/home.jpg");
+    background-size: cover;
+    background-position: bottom right;
+  }
+
+  &.-confirm {
+    background: image-url("section/confirm.jpg");
+    background-size: cover;
+    background-position: center;
+  }
+}

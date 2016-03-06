@@ -4,11 +4,31 @@
   left: 0;
   z-index: 10;
   width: 100%;
-  background: $bg-color-3;
-  border-bottom: 1px solid $border-color-1;
-  padding: 10px 0px;
 
+  // Fixed
+  .m-header-fixed {
+    
+    .-bg-white {
+      background: $white;
+    }
+
+    h1 {
+      font-size: 14px;
+
+      a {
+        color: $font-color-1;
+
+        span {
+          color: $font-color-3;
+          padding: 0 3px;
+        }
+      }
+    }
+  }
+
+  // Navigation
   .m-header-nav {
+    display: none;
     position: fixed;
     width: 100%;
     height: 100%;
@@ -17,20 +37,15 @@
     z-index: 11;
     background: $white;
 
-    .m-header-nav-close {
-      display: flex;
-      align-items: center;
-      position: absolute;
-      top: 25px;
-      left: 25px;
-      cursor: pointer;
+    &.-active {
+      display: block;
+    }
 
-      svg {
-        display: block;
-        width: 26px;
-        height: 26px;
-        margin: 0 5px 0 0;
-      }
+    .m-header-btn-close {
+      position: absolute;
+      top: 0px;
+      left: 0px;
+      cursor: pointer;
     }
 
     > ul {

@@ -4,5 +4,23 @@
   
   .m-grid-col {
     width: 50%;
+
+    // Justify-content
+    &.-end {
+      display: flex;
+      justify-content: flex-end;
+    }
+
+    &.-space-between {
+      display: flex;
+      justify-content: space-between;
+    }
+
+    // Align-items
+    &.-align-center {
+      display: flex;
+      align-items: center;
+    }
+
   }
 }

@@ -89,7 +89,7 @@
     },
 
     initGlobalViews: function() {
-
+      this.menuView = new app.View.MenuView();
     }
 
   });
