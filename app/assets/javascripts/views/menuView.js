@@ -18,6 +18,7 @@
       var opts = settings && settings.options ? settings.options : {};
       this.options = _.extend({}, this.defaults, opts);
       this.cache();
+      this.highlight();
     },
 
     cache: function() {
@@ -34,8 +35,13 @@
     closeMenu: function(e) {
       e && e.preventDefault();
       this.$nav.removeClass('-active');
-    }
+    },
 
+    highlight: function() {
+      var route = (!!this.options.route) ? this.options.route : 'home';
+      this.$nav.find('li').removeClass('-selected');
+      this.$nav.find('li[data-route="'+route+'"]').addClass('-selected');
+    }
 
   });
 

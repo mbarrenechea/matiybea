@@ -45,7 +45,6 @@
     initialize: function() {
       this.router = new root.app.Router();
       this.setListeners();
-      this.initGlobalViews();
     },
 
     setListeners: function() {
@@ -66,14 +65,17 @@
     homePage: function() {
       this.scrollView = new root.app.View.ScrollView();
       this.countdownView = new root.app.View.CountdownView();
+      this.initGlobalViews();
     },
 
     confirmPage: function() {
       this.confirmformView = new app.View.ConfirmformView();
+      this.initGlobalViews();
     },
 
     editPage: function() {
       this.confirmformView = new app.View.ConfirmformView();
+      this.initGlobalViews();
     },
 
     mapPage: function() {
@@ -89,10 +91,19 @@
 
       mapView.createMap();
       layersCollection.getData();
+      this.initGlobalViews();
     },
 
     initGlobalViews: function() {
-      this.menuView = new app.View.MenuView();
+      this.menuView = new app.View.MenuView({
+        options: {
+          route: this.getRoute()
+        }
+      });
+    },
+
+    getRoute: function() {
+      return Backbone.history.getFragment();
     }
 
   });
