@@ -40,4 +40,5 @@ source 'https://rails-assets.org' do
   gem 'rails-assets-jquery'
   gem 'rails-assets-jquery-validation'
   gem 'rails-assets-jquery-mousewheel'
+  gem 'rails-assets-jquery.transit'
 end

@@ -102,6 +102,8 @@ GEM
       rails-assets-jquery (>= 1.2.2)
     rails-assets-jquery-validation (1.14.0)
       rails-assets-jquery (>= 1.7.2)
+    rails-assets-jquery.transit (0.9.12)
+      rails-assets-jquery
     rails-assets-normalize-css (3.0.3)
     rails-assets-underscore (1.8.3)
     rails-deprecated_sanitizer (1.0.3)
@@ -163,6 +165,7 @@ DEPENDENCIES
   rails-assets-jquery!
   rails-assets-jquery-mousewheel!
   rails-assets-jquery-validation!
+  rails-assets-jquery.transit!
   rails-assets-normalize-css!
   rails-assets-underscore!
   sass-rails (~> 5.0)

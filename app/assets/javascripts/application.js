@@ -5,7 +5,7 @@
 //= require backbone
 //= require handlebars
 //= require jquery-mousewheel
-
+//= require jquery.transit
 
 //= require ./helpers/class
 //= require ./helpers/cartodb_layer

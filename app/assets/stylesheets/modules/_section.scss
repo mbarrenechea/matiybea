@@ -1,6 +1,31 @@
 .m-section-box {
   position: relative;
 
+  a {
+    color: $red;
+    position: relative;
+    padding: 0 20px 0 0;
+
+    svg {
+      width: 16px;
+      height: 16px;
+      position: absolute;
+      top: 50%;
+      right: 0;
+      transform: translate(0,-50%);
+      fill: red;
+      margin: 1px 0 0;
+    }
+
+    &:hover {
+      color: lighten($red,5%);
+      
+      svg {
+        fill: lighten($red,5%);
+      }
+    }
+  }
+
   &.-text {
     
     .content {
@@ -55,4 +80,35 @@
     background-size: cover;
     background-position: center;
   }
+
+  &.-confirm-form {
+    background: image-url("section/confirm-form.jpg");
+    background-size: cover;
+    background-position: center;
+  }
+
+  &.-confirm-form-final {
+    background: image-url("section/confirm-form-final.jpg");
+    background-size: cover;
+    background-position: center;
+  }
+
+  &.-plan {
+    background: image-url("section/plan-del-dia.jpg");
+    background-size: cover;
+    background-position: center;    
+  }
+
+  &.-coruna {
+    background: image-url("section/coruna.jpg");
+    background-size: cover;
+    background-position: center;    
+  }
+
+  &.-regalo {
+    background: image-url("section/regalo.jpg");
+    background-size: cover;
+    background-position: center;    
+  }
+
 }
