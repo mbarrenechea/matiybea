@@ -4,7 +4,7 @@
 //= require underscore
 //= require backbone
 //= require handlebars
-//= require jquery-mousewheel
+//= require wheel-indicator
 //= require jquery.transit
 
 //= require ./helpers/class

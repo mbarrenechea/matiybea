@@ -26,14 +26,15 @@
     }
   }
 
-  &.-text {
-    
+  &.-text {  
     .content {
       color: $font-color-2;
+      width: 100%;
       position: absolute;
       top: 50%;   
       left: 50%;
       transform: translate(-50%,-50%);
+      padding: 0 100px;
     }
 
     header {
@@ -66,6 +67,14 @@
   }
 
   &.-text-scroll {
+    overflow: auto;
+    .content {
+      position: relative;
+      top: 0%;   
+      left: 0%;
+      transform: translate(0%,0%);
+      padding: 100px 100px 0;
+    }
     
   }
 

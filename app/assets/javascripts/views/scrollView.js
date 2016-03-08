@@ -35,34 +35,35 @@
     },
 
     setListeners: function() {
-      this.$el.on('mousewheel', this.scrollIndex.bind(this));
+      
+      this.wheel = new WheelIndicator({
+        elem: document.querySelector('#scrollView'),
+        callback: this.scrollIndex.bind(this)
+      });      
+
       this.model.on('change:index', this.scrollTo.bind(this));
       this.model.on('change:index', this.navigateTo.bind(this));
     },
 
     // SECTIONS SCROLL
     scrollIndex: function(e) {
-      this.$el.off('mousewheel');
       var index = this.model.get('index');
-      if (e.deltaY > 0) {
-        (index == 0) ? index = 0 : index--;
-      } else {
-        (index == this.sectionsLength - 1) ? index = this.sectionsLength - 1 : index++;
-      }
+      switch(e.direction) {
+        case 'up':
+          (index == 0) ? index = 0 : index--;
+        break;
 
-      if (index == this.model.get('index')) {
-        this.$el.on('mousewheel', this.scrollIndex.bind(this));
+        case 'down':
+          (index == this.sectionsLength - 1) ? index = this.sectionsLength - 1 : index++;
+        break;
       }
       this.model.set('index', index);
-      console.log(e.deltaX, e.deltaY, e.deltaFactor);
     },
 
     scrollTo: function() {
       this.$el.transition({
         y: -100 * this.model.get('index') + '%'
-      }, 500, function() {
-        this.$el.on('mousewheel', this.scrollIndex.bind(this));
-      }.bind(this));
+      }, 500);
     },
 
 
