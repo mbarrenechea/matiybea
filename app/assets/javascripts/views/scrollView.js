@@ -11,7 +11,8 @@
 
     model: new (Backbone.Model.extend({
       defaults: {
-        index: 0
+        index: 0,
+        is_moving: false
       } 
     })),
 
@@ -47,23 +48,32 @@
 
     // SECTIONS SCROLL
     scrollIndex: function(e) {
-      var index = this.model.get('index');
-      switch(e.direction) {
-        case 'up':
-          (index == 0) ? index = 0 : index--;
-        break;
+      if (!this.model.get('is_moving')) {
+        this.model.set('is_moving', true);
+        var index = this.model.get('index');
+        switch(e.direction) {
+          case 'up':
+            (index == 0) ? index = 0 : index--;
+          break;
 
-        case 'down':
-          (index == this.sectionsLength - 1) ? index = this.sectionsLength - 1 : index++;
-        break;
+          case 'down':
+            (index == this.sectionsLength - 1) ? index = this.sectionsLength - 1 : index++;
+          break;
+        }
+        this.model.set('index', index);
+
+        if (index == this.model.get('index')) {
+          this.model.set('is_moving', false);
+        }
       }
-      this.model.set('index', index);
     },
 
     scrollTo: function() {
       this.$el.transition({
         y: -100 * this.model.get('index') + '%'
-      }, 500);
+      }, 500, function(){
+        this.model.set('is_moving', false);
+      }.bind(this));
     },
 
 

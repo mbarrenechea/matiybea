@@ -25,6 +25,10 @@ $gray-light: #BEBEBE;
 $gray-extra-light: #E5E5E5;
 $red: #EE3A50;
 
+
+$locationCategories: "alojamiento","cafe","compras","cultura","entretenimiento","restaurante","sitios-de-interes","tapas","tomar-algo";
+$locationCategoriesColor: #d0021b,#1F78B4,#bd10e0,#f5a623,#FB9A99,#4a90e2,#f8e71c,#50e3c2,#7ed321;
+
 /*
   Theme
  */
@@ -38,7 +42,7 @@ $font-color-1: $gray;
 $font-color-2: $gray-medium;
 $font-color-3: $gray-light;
 
-$border-color-1: $gray-medium;
+$border-color-1: $gray-extra-light;
 
 /*
   Animations --> provisonal aquí para poder probarlas.

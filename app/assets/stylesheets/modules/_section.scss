@@ -66,17 +66,23 @@
           margin-top: 0;
         }
       }
+
+      h3 {
+        font-size: 16px;
+        color: $font-color-1;
+      }
     }    
   }
 
   &.-text-scroll {
     overflow: auto;
+    border-top: 70px solid transparent;
     .content {
       position: relative;
       top: 0%;   
       left: 0%;
       transform: translate(0%,0%);
-      padding: 150px 100px 0;
+      padding: 80px 100px 0;
     }
     
   }

@@ -5,16 +5,6 @@
   root.app = root.app || {};
   root.app.View = root.app.View || {};
   
-  // TO-DO: move this to another view List Markers
-  root.app.Collection = root.app.Collection || {};
-  root.app.Collection.MapCollection = Backbone.Collection.extend({
-    url: 'https://miguel-barrenechea.cartodb.com/api/v2/sql?q=SELECT * FROM matiybea',
-    parse: function(response) {
-      return response.rows;
-    }
-  });
-  // END //
-
   root.app.View.Map = Backbone.View.extend({
 
     defaults: {
@@ -41,12 +31,6 @@
       this.options = _.extend({}, this.defaults, opts);
       this.layers = settings.layers;
       
-      // TO-DO: move this to another view List Markers //
-      this.collection = new root.app.Collection.MapCollection();
-      this.collection.fetch().done(function() {
-        console.log(this.collection.toJSON());
-      }.bind(this));
-      // END //
       this.setListeners();
     },
 

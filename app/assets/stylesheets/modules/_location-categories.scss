@@ -1,0 +1,35 @@
+.m-location-categories {
+  ul {
+    padding: 20px 0 0;
+    display: flex;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+
+    li {
+      width: 50%;
+      label {
+        position: relative;
+        text-indent: 15px;
+        &:after {
+          content: "";
+          display: block;
+          position: absolute;
+          top: 50%;
+          left: 30px;
+          width: 6px;
+          height: 6px;
+          border-radius: 50%;
+          background: #000;
+          transform: translate(0,-50%);
+        }        
+      }
+      @for $i from 1 through length($locationCategories) {
+        &.#{nth($locationCategories, $i)}{
+          label:after {
+            background: nth($locationCategoriesColor, $i);
+          }
+        }
+      }
+    }
+  }
+}

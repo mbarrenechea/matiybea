@@ -91,6 +91,7 @@
 
       mapView.createMap();
       layersCollection.getData();
+      this.listLocationsView = new root.app.View.ListLocationsView();
       this.initGlobalViews();
     },
 

@@ -14,7 +14,7 @@
         name: 'Coruña',
         type: 'cartodb',
         description: 'Sitios de interés de Coruña',
-        cartocss: '#matiybea { marker-fill-opacity: 0.9;marker-line-color: #FFF;marker-line-width: 1;marker-line-opacity: 1;marker-placement: point;marker-type: ellipse;marker-width: 15;marker-allow-overlap: true;}#matiybea[category="alojamiento"] { marker-fill: #A6CEE3;}#matiybea[category="cafe"] { marker-fill: #1F78B4;}#matiybea[category="compras"] { marker-fill: #B2DF8A;}#matiybea[category="cultura"] { marker-fill: #33A02C;}#matiybea[category="entretenimiento"] { marker-fill: #FB9A99;}#matiybea[category="restaurante"] { marker-fill: #E31A1C;}#matiybea[category="sitios-de-interes"] { marker-fill: #FDBF6F;}#matiybea[category="tapas"] { marker-fill: #FF7F00;}#matiybea[category="tomar-algo"] { marker-fill: #CAB2D6;}',
+        cartocss: '#matiybea { marker-fill-opacity: 1;marker-line-color: #FFF;marker-line-width: 1;marker-line-opacity: 1;marker-placement: point;marker-type: ellipse;marker-width: 15;marker-allow-overlap: true;}#matiybea[category="alojamiento"] { marker-fill: #d0021b;}#matiybea[category="cafe"] { marker-fill: #1F78B4;}#matiybea[category="compras"] { marker-fill: #bd10e0;}#matiybea[category="cultura"] { marker-fill: #f5a623;}#matiybea[category="entretenimiento"] { marker-fill: #FB9A99;}#matiybea[category="restaurante"] { marker-fill: #4a90e2;}#matiybea[category="sitios-de-interes"] { marker-fill: #f8e71c;}#matiybea[category="tapas"] { marker-fill: #50e3c2;}#matiybea[category="tomar-algo"] { marker-fill: #7ed321;}',
         sql: 'SELECT * FROM matiybea',
         color: 'red',
         bounds: true,
