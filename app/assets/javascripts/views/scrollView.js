@@ -53,18 +53,24 @@
         var index = this.model.get('index');
         switch(e.direction) {
           case 'up':
-            (index == 0) ? index = 0 : index--;
+            if (index == 0) {
+              index = 0;
+              this.model.set('is_moving', false);
+            } else {
+              index--
+            }
           break;
 
           case 'down':
-            (index == this.sectionsLength - 1) ? index = this.sectionsLength - 1 : index++;
+            if (index == this.sectionsLength - 1) {
+              index = this.sectionsLength - 1
+              this.model.set('is_moving', false);
+            } else {
+              index++
+            }
           break;
         }
         this.model.set('index', index);
-
-        if (index == this.model.get('index')) {
-          this.model.set('is_moving', false);
-        }
       }
     },
 
