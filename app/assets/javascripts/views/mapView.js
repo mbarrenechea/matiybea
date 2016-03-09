@@ -4,6 +4,16 @@
 
   root.app = root.app || {};
   root.app.View = root.app.View || {};
+  
+  // TO-DO: move this to another view List Markers
+  root.app.Collection = root.app.Collection || {};
+  root.app.Collection.MapCollection = Backbone.Collection.extend({
+    url: 'https://miguel-barrenechea.cartodb.com/api/v2/sql?q=SELECT * FROM matiybea',
+    parse: function(response) {
+      return response.rows;
+    }
+  });
+  // END //
 
   root.app.View.Map = Backbone.View.extend({
 
@@ -11,14 +21,13 @@
       map: {
         zoom: 3,
         center: [0, 15],
-        // center: [10, 30], //Horn of Africa
         zoomControl: false,
         scrollWheelZoom: false,
-        maxBounds: L.latLngBounds(L.latLng(42.59959821305863, -9.70916748046875), L.latLng(44.008620115415354, -6.973571777343749)),
+        maxBounds: L.latLngBounds(L.latLng(43.334043422613284, -8.434581756591797), L.latLng(43.39101549114081, -8.378877639770508)),
 
       },
       basemap: {
-        url: 'http://{s}.api.cartocdn.com/base-light/{z}/{x}/{y}.png'
+        url: 'http://{s}.tile.openstreetmap.se/hydda/full/{z}/{x}/{y}.png'
       },
       zoomControl: {
         position: 'topright'
@@ -31,6 +40,13 @@
       var opts = settings && settings.options ? settings.options : {};
       this.options = _.extend({}, this.defaults, opts);
       this.layers = settings.layers;
+      
+      // TO-DO: move this to another view List Markers //
+      this.collection = new root.app.Collection.MapCollection();
+      this.collection.fetch().done(function() {
+        console.log(this.collection.toJSON());
+      }.bind(this));
+      // END //
       this.setListeners();
     },
 
@@ -128,7 +144,6 @@
      * @param {Object} layerData
      */
     addLayer: function(layerData) {
-      console.log(layerData);
       if (typeof layerData !== 'object' ||
         !layerData.id || !layerData.type) {
         throw 'Invalid "layerData" format.';
@@ -142,14 +157,13 @@
       if (!layer) {
         switch(layerData.type) {
           case 'cartodb':
-            var data = _.pick(layerData, ['sql', 'cartocss', 'interactivity']);
+            var data = _.pick(layerData, ['sql', 'cartocss', 'interactivity', 'bounds']);
             var options = { sublayers: [data] };
-            console.log(options);
             layerInstance = new root.app.Helper.CartoDBLayer(this.map, options);
             layerInstance.create(function(layer) {
               layer.setOpacity(layerData.opacity);
               layer.setZIndex(1000-layerData.order);
-            });
+            }.bind(this));
           break;
           default:
             layerInstance = null;

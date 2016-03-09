@@ -42,17 +42,18 @@
         .addTo(this.map)
         .on('done', function(layer) {
           this.layer = layer;
-          console.log(this.layer);
+          this.suboptions = this.options.sublayers[0];
+          
+          if (!!this.suboptions.bounds) {
+            var sql = new cartodb.SQL({ user: this.options.user_name });
+            sql.getBounds(this.suboptions.sql).done(function(bounds) {
+              this.map.fitBounds(bounds)
+            }.bind(this));            
+          }
+
           if (callback && typeof callback === 'function') {
             callback.apply(this, arguments);
           }
-
-          // var self = this;
-
-          // layer.bind('load', function() {
-          //   self.loader.removeClass('is-loading');
-          // });
-
         }.bind(this))
         .on('error', function(err) {
           throw err;
