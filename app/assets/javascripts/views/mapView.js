@@ -117,8 +117,9 @@
 
 
       var sql = new cartodb.SQL({ user: 'miguel-barrenechea' });
+      
       sql.getBounds('SELECT * FROM matiybea').done(function(bounds) {
-        this.map.fitBounds(bounds)
+        this.map.fitBounds(bounds, {padding: [50,50]})
       }.bind(this));            
 
 
