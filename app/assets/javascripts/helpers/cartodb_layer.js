@@ -44,13 +44,6 @@
           this.layer = layer;
           this.suboptions = this.options.sublayers[0];
           
-          if (!!this.suboptions.bounds) {
-            var sql = new cartodb.SQL({ user: this.options.user_name });
-            sql.getBounds(this.suboptions.sql).done(function(bounds) {
-              this.map.fitBounds(bounds)
-            }.bind(this));            
-          }
-
           if (callback && typeof callback === 'function') {
             callback.apply(this, arguments);
           }

@@ -86,12 +86,14 @@
         model: new (Backbone.Model.extend({
           defaults: {
           }
-        }))
+        }))        
       });
 
       mapView.createMap();
       layersCollection.getData();
-      this.listLocationsView = new root.app.View.ListLocationsView();
+      this.locationsView = new root.app.View.LocationsView({
+        layers: layersCollection
+      });
       this.initGlobalViews();
     },
 

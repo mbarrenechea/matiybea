@@ -36,13 +36,7 @@
 
     setListeners: function() {
       this.listenTo(this.layers, 'change', this.renderLayers);
-      this.listenTo(this.layers, 'sort', this.renderLayers);
-    },
-
-    setEvents: function() {
-      this.map.on('moveend', function() {
-        console.log(this.map.getBounds());
-      }.bind(this));
+      this.listenTo(this.layers, 'sort', this.renderLayers);      
     },
 
     /**
@@ -60,7 +54,6 @@
           this.addControlZoom();
         }
         this.setBasemap();
-        this.setEvents();
       } else {
         console.info('Map already exists.');
       }
@@ -121,6 +114,14 @@
           this.removeLayer(layerData);
         }
       }, this);
+
+
+      var sql = new cartodb.SQL({ user: 'miguel-barrenechea' });
+      sql.getBounds('SELECT * FROM matiybea').done(function(bounds) {
+        this.map.fitBounds(bounds)
+      }.bind(this));            
+
+
     },
 
     /**
