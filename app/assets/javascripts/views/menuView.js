@@ -22,6 +22,8 @@
     },
 
     cache: function() {
+      this.$htmlbody = $('html,body');
+      this.$sections = $('.m-section');
       this.$btnClose = this.$el.find('.m-header-btn-close');
       this.$btnMenu = this.$el.find('.m-header-btn-menu');
       this.$nav = this.$el.find('.m-header-nav');
@@ -41,7 +43,7 @@
       var route = (!!this.options.route) ? this.options.route : 'home';
       this.$nav.find('li').removeClass('-selected');
       this.$nav.find('li[data-route="'+route+'"]').addClass('-selected');
-    }
+    },
 
   });
 

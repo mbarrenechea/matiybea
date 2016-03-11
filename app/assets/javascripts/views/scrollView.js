@@ -23,6 +23,7 @@
       this.options = _.extend({}, this.defaults, opts);
       this.cache();
       this.setListeners();
+      this.initIndex()
       this.initNavigation();
     },
 
@@ -47,6 +48,17 @@
     },
 
     // SECTIONS SCROLL
+    initIndex: function() {
+      var index = this.$sections.index($('#section-'+this.options.route));
+      if (index > 0) {
+        this.model.set('index',index, {silent: true});
+        this.$el.css({
+          y: -100 * this.model.get('index') + '%'
+        });
+
+      }
+    },
+
     scrollIndex: function(e) {
       if (!this.model.get('is_moving')) {
         this.model.set('is_moving', true);

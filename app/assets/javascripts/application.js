@@ -63,7 +63,11 @@
     },
 
     homePage: function() {
-      this.scrollView = new root.app.View.ScrollView();
+      this.scrollView = new root.app.View.ScrollView({
+        options: {
+          route: this.getRoute()
+        }        
+      });
       this.countdownView = new root.app.View.CountdownView();
       this.initGlobalViews();
     },
@@ -106,7 +110,7 @@
     },
 
     getRoute: function() {
-      return Backbone.history.getFragment();
+      return Backbone.history.getFragment().replace('?section=','').replace('/','');
     }
 
   });
