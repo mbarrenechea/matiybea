@@ -12,57 +12,87 @@
 
   <ul class="field-grid">
     <li class="field-grid-item">
-      <div class="field -intro">
-        <%= f.label :name %>
+      <div class="field">
+        <%= f.label :name , 'Nombre' %>
         <%= f.text_field :name, required: true %>
       </div>
     </li>
     <li class="field-grid-item">
-      <div class="field -checkbox">
-        <input id="companion-checkbox" type="checkbox" name="companion-checkbox" class="toggle-checkbox" />
-        <label for="companion-checkbox">¿Tienes acompañante?</label>
+      <div class="field -radio">
+        <div class="label">¿Acompañante?</div>
+        <div class="-radio-content">        
+          <div class="-radio-box">
+            <input id="companion-radio-true" type="radio" name="companion-radio" class="toggle-radio" value="true"/>
+            <label for="companion-radio-true">Sí</label>
+          </div>
+          <div class="-radio-box">
+            <input id="companion-radio-false" type="radio" name="companion-radio" class="toggle-radio" value="false" checked/>
+            <label for="companion-radio-false">No</label>          
+          </div>
+        </div>
       </div>
       <div class="field -toggle -hidden">
-        <%= f.label :companion %>
+        <%= f.label :companion, 'Nombre acompañante' %>
         <%= f.text_field :companion %>
       </div>
     </li>
     <li class="field-grid-item">
-      <div class="field -checkbox">
-        <input id="childs-checkbox" type="checkbox" name="childs-checkbox" class="toggle-checkbox" />
-        <label for="childs-checkbox">¿Tienes hijos?</label>
+      <div class="field -radio">
+        <div class="label">¿Hijos?</div>
+        <div class="-radio-content">        
+          <div class="-radio-box">
+            <input id="childs-radio-true" type="radio" name="childs-radio" class="toggle-radio" value="true"/>
+            <label for="childs-radio-true">Sí</label>
+          </div>
+          <div class="-radio-box">
+            <input id="childs-radio-false" type="radio" name="childs-radio" class="toggle-radio" value="false" checked/>
+            <label for="childs-radio-false">No</label>          
+          </div>
+        </div>
       </div>
       <div class="field -toggle -hidden">
-        <%= f.label :childs %>
         <%= f.hidden_field :childs %>
-        <input name="children[]" type="text" aria-required="true" aria-invalid="false"/>
-        <input name="children[]" type="text" aria-required="true" aria-invalid="false"/>
-        <input name="children[]" type="text" aria-required="true" aria-invalid="false"/>
+        <div class="-array">
+          <div id="field-array-children">
+            <div class="field">
+              <div class="label">Nombre <br>hijo nº 1</div>          
+              <input class="field-item-children" name="children[]" type="text" aria-required="true" aria-invalid="false"/>
+            </div>            
+          </div>
+          <div class="actions">
+            <%= f.button 'Añadir otro hijo' , { class: 'btn-add-children'} %>
+          </div>        
+        </div>
       </div>
     </li>
     <li class="field-grid-item">
-      <div class="field -checkbox">
-        <input id="allergic-checkbox" type="checkbox" name="allergic-checkbox" class="toggle-checkbox" />
-        <label for="allergic-checkbox">¿Eres alérgico a algún tipo de alimento?</label>
+      <div class="field -radio">
+        <div class="label">¿Eres alérgico a algún tipo de alimento?</div>
+        <div class="-radio-content">        
+          <div class="-radio-box">
+            <input id="allergic-radio-true" type="radio" name="allergic-radio" class="toggle-radio" value="true"/>
+            <label for="allergic-radio-true">Sí</label>
+          </div>
+          <div class="-radio-box">
+            <input id="allergic-radio-false" type="radio" name="allergic-radio" class="toggle-radio" value="false" checked/>
+            <label for="allergic-radio-false">No</label>          
+          </div>
+        </div>
       </div>
       <div class="field -toggle -hidden">
         <%= f.label :allergic %>
-        <%= f.text_area :allergic %>
+        <%= f.text_field :allergic %>
       </div>
     </li>
     <li class="field-grid-item">
-      <div class="field -checkbox">
-        <input id="comment-checkbox" type="checkbox" name="comment-checkbox" class="toggle-checkbox" />
-        <label for="comment-checkbox">Deja tu comentario</label>
-      </div>
-      <div class="field -toggle -hidden">
-        <%= f.label :comment %>
+      <div class="field">
+        <%= f.label :comment, 'Déjanos tus comentarios' %>
         <%= f.text_area :comment %>
       </div>
     </li>
     <li>
       <div class="actions">
-        <%= f.submit %>
+        <%= f.submit 'Confirmar asistencia' %>
       </div>
     </li>
   </ul>

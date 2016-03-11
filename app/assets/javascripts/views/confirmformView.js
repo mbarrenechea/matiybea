@@ -10,8 +10,11 @@
     el: '.confirm-form',
 
     events: {
-      'change .toggle-checkbox' : 'toggleCheckboxField'
+      'change .toggle-radio' : 'toggleRadioField',
+      'click .btn-add-children' : 'addChildren'
     },
+
+    templateAddChildren: HandlebarsTemplates['addChildrenTpl'],
 
     initialize: function(settings) {
       var opts = settings && settings.options ? settings.options : {};
@@ -22,6 +25,7 @@
 
     cache: function() {
       this.$fieldGridItem = $('.field-grid-item');
+      this.$fieldArrayChildren = $('#field-array-children');
     },
 
     validate: function() {
@@ -70,14 +74,25 @@
       return paramObj;
     },
 
-    toggleCheckboxField: function(e) {
+
+    // Events
+    toggleRadioField: function(e) {
       var $toggle = $(e.currentTarget).parents('.field-grid-item').find('.-toggle');
       var $input = $toggle.find('textarea, input');
-      var checked = $(e.currentTarget).is(':checked');
+      var checked = ($(e.currentTarget).val() == 'true');
 
       $toggle.toggleClass('-hidden',!checked);
       $input.attr('required', checked);
     },
+
+    addChildren: function(e) {
+      e && e.preventDefault();
+      var order = this.getParams()
+      this.$fieldArrayChildren.append(this.templateAddChildren({
+        order: $('.field-item-children').length + 1
+      }));
+
+    }
 
   });
 
