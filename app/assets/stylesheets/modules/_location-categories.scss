@@ -10,6 +10,9 @@
       label {
         position: relative;
         text-indent: 15px;
+        white-space: nowrap;
+        text-align: left;
+        
         &:after {
           content: "";
           display: block;

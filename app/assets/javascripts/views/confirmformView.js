@@ -11,7 +11,8 @@
 
     events: {
       'change .toggle-radio' : 'toggleRadioField',
-      'click .btn-add-children' : 'addChildren'
+      'click .btn-add-children' : 'addChildren',
+      'click .btn-remove-children' : 'removeChildren'
     },
 
     templateAddChildren: HandlebarsTemplates['addChildrenTpl'],
@@ -26,6 +27,7 @@
     cache: function() {
       this.$fieldGridItem = $('.field-grid-item');
       this.$fieldArrayChildren = $('#field-array-children');
+      this.$sectionSuccess = $('.m-section-box.-success');
     },
 
     validate: function() {
@@ -48,6 +50,7 @@
     },
 
     success: function(data) {
+      this.$sectionSuccess.removeClass('-right -bottom');
       console.log(data);
     },
 
@@ -87,11 +90,14 @@
 
     addChildren: function(e) {
       e && e.preventDefault();
-      var order = this.getParams()
       this.$fieldArrayChildren.append(this.templateAddChildren({
         order: $('.field-item-children').length + 1
       }));
+    },
 
+    removeChildren: function(e) {
+      e && e.preventDefault();
+      $(e.currentTarget).parents('.-field-to-remove').remove();
     }
 
   });

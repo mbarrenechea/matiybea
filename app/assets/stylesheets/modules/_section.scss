@@ -87,6 +87,32 @@
     
   }
 
+  &.-absolute {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    width: 50%;
+    background: #FFF;
+    transform: translate(0%,0%);
+    transition: all $easeInOutSine 0.5s;
+    opacity: 1;
+    visibility: visible;
+
+    &.-right {
+      transform: translate(100%,0%);
+      opacity: 0;
+      visibility: hidden;
+    }
+
+    &.-bottom {
+      transform: translate(0%,100%);
+      opacity: 0;
+      visibility: hidden;
+    }
+  }
+
+
   &.-home {
     background: image-url("section/home.jpg");
     background-size: cover;
@@ -100,13 +126,17 @@
   }
 
   &.-confirm-form {
+    z-index: 2;
     background: image-url("section/confirm-form.jpg");
     background-size: cover;
     background-position: center;
   }
 
   &.-confirm-form-final {
-    background: image-url("section/confirm-form-final.jpg");
+    z-index: 3;
+    left: auto;
+    right: 0;    
+    background: image-url("section/confirm-form-success.jpg");
     background-size: cover;
     background-position: center;
   }

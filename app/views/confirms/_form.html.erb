@@ -23,7 +23,7 @@
         <div class="-radio-content">        
           <div class="-radio-box">
             <input id="companion-radio-true" type="radio" name="companion-radio" class="toggle-radio" value="true"/>
-            <label for="companion-radio-true">Sí</label>
+            <label for="companion-radio-true" class="-true">Sí</label>
           </div>
           <div class="-radio-box">
             <input id="companion-radio-false" type="radio" name="companion-radio" class="toggle-radio" value="false" checked/>
@@ -42,7 +42,7 @@
         <div class="-radio-content">        
           <div class="-radio-box">
             <input id="childs-radio-true" type="radio" name="childs-radio" class="toggle-radio" value="true"/>
-            <label for="childs-radio-true">Sí</label>
+            <label for="childs-radio-true" class="-true">Sí</label>
           </div>
           <div class="-radio-box">
             <input id="childs-radio-false" type="radio" name="childs-radio" class="toggle-radio" value="false" checked/>
@@ -52,7 +52,7 @@
       </div>
       <div class="field -toggle -hidden">
         <%= f.hidden_field :childs %>
-        <div class="-array">
+        <div class="field-array">
           <div id="field-array-children">
             <div class="field">
               <div class="label">Nombre <br>hijo nº 1</div>          
@@ -71,7 +71,7 @@
         <div class="-radio-content">        
           <div class="-radio-box">
             <input id="allergic-radio-true" type="radio" name="allergic-radio" class="toggle-radio" value="true"/>
-            <label for="allergic-radio-true">Sí</label>
+            <label for="allergic-radio-true" class="-true">Sí</label>
           </div>
           <div class="-radio-box">
             <input id="allergic-radio-false" type="radio" name="allergic-radio" class="toggle-radio" value="false" checked/>
@@ -92,7 +92,7 @@
     </li>
     <li>
       <div class="actions">
-        <%= f.submit 'Confirmar asistencia' %>
+        <%= f.button 'Confirmar asistencia' %>
       </div>
     </li>
   </ul>
