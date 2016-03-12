@@ -66,11 +66,24 @@
     },
 
     homePage: function() {
+      this.scrollModel = new (Backbone.Model.extend({
+        defaults: {
+          index: 0,
+          is_moving: false
+        } 
+      })),
+
       this.scrollView = new root.app.View.ScrollView({
+        model: this.scrollModel,        
         options: {
           route: this.getRoute()
         }        
       });
+
+      this.scrollNavigationView = new root.app.View.ScrollNavigationView({
+        model: this.scrollModel
+      });
+
       this.countdownView = new root.app.View.CountdownView();
       this.initGlobalViews();
     },

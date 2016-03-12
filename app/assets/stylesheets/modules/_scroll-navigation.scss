@@ -3,6 +3,7 @@
   top: 50%;
   left: 25px;
   transform: translate(0,-50%);
+  z-index: 5;
 
   ul {
     li {
@@ -12,12 +13,13 @@
       border-radius: 50%;
       margin: 15px 0 0;
       transition: transform 0.5s $easeInOutSine;
+      cursor: pointer;
 
       &:first-child {
         margin: 0;        
       }
 
-      &.-selected {
+      &:hover, &.-selected {
         background: $white;
         transform: scale(1.25);
         box-shadow: 0 0 0 1px $bg-color-1;

@@ -9,31 +9,26 @@
 
     el: '#scrollView',
 
-    model: new (Backbone.Model.extend({
-      defaults: {
-        index: 0,
-        is_moving: false
-      } 
-    })),
+    events: {
+      'click .m-header-btn-menu' : 'clickNavigation'
+    },
 
     template: HandlebarsTemplates['scrollTpl'],
 
     initialize: function(settings) {
       var opts = settings && settings.options ? settings.options : {};
       this.options = _.extend({}, this.defaults, opts);
+      this.model = settings.model;
       this.cache();
       this.setListeners();
       this.initIndex()
-      this.initNavigation();
+      console.log(this);
     },
 
     cache: function() {
       // Sections
       this.$sections = this.$el.find('.m-section');
       this.sectionsLength = this.$sections.length;
-
-      // Navigation
-      this.$scrollNavigation = $('#scrollNavigation');
     },
 
     setListeners: function() {
@@ -44,7 +39,6 @@
       });      
 
       this.model.on('change:index', this.scrollTo.bind(this));
-      this.model.on('change:index', this.navigateTo.bind(this));
     },
 
     // SECTIONS SCROLL
@@ -92,18 +86,6 @@
       }, 500, function(){
         this.model.set('is_moving', false);
       }.bind(this));
-    },
-
-
-    // NAVIGATION
-    initNavigation: function() {
-      this.$scrollNavigation.html(this.template({numbers: _.range(0, this.sectionsLength, 1) }));
-      this.navigateTo();
-    },
-
-    navigateTo: function() {
-      this.$scrollNavigation.find('li').removeClass('-selected');
-      this.$scrollNavigation.find('li[data-index='+this.model.get('index')+']').addClass('-selected');
     }
 
   });
