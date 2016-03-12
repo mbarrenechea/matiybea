@@ -1,23 +1,45 @@
 .wrapper {
   &.-fullscreen {
-    height: 100vh;
-    overflow: hidden;
+    @media (min-width: $br-mobile){
+      height: 100vh;
+      overflow: hidden;
+    }
   }
 }
 
 .m-content {
-  width: 100%;
-  height: 100%;
-  transform: translate(0,0);
+  @media (min-width: $br-mobile){
+    width: 100%;
+    height: 100%;
+    transform: translate(0,0);
+  }
 }
 
 .m-section {
   width: 100%;
-  height: 100%;
-  display: flex;
+  padding: 50px 20px 0;
+  
+  &:first-child {
+    padding: 100px 20px 0px;      
+  }
+
+  &:last-child {
+    padding: 50px 20px 50px;      
+  }
+
+  @media (min-width: $br-mobile){
+    height: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    padding: 0;
+  }
 
   .m-section-box {
-    width: 50%;
-    height: 100%;
+    
+    @media (min-width: $br-mobile){
+      width: 50%;
+      height: 100%;
+      padding: 0;
+    }    
   }
 }

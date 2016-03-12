@@ -21,8 +21,7 @@
       this.model = settings.model;
       this.cache();
       this.setListeners();
-      this.initIndex()
-      console.log(this);
+      this.initIndex();
     },
 
     cache: function() {
@@ -32,13 +31,14 @@
     },
 
     setListeners: function() {
-      
-      this.wheel = new WheelIndicator({
-        elem: document.querySelector('#scrollView'),
-        callback: this.scrollIndex.bind(this)
-      });      
+      if (!utilsHelper.isSmallScreen()) {
+        this.wheel = new WheelIndicator({
+          elem: document.querySelector('#scrollView'),
+          callback: this.scrollIndex.bind(this)
+        });
 
-      this.model.on('change:index', this.scrollTo.bind(this));
+        this.model.on('change:index', this.scrollTo.bind(this));
+      }
     },
 
     // SECTIONS SCROLL

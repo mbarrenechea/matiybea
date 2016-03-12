@@ -30,13 +30,15 @@
     .content {
       color: $font-color-2;
       width: 100%;
-      position: absolute;
-      top: 50%;   
-      left: 50%;
-      transform: translate(-50%,-50%);
-      padding: 0 100px;
       max-width: 560px;
       margin: 0 auto;
+      @media (min-width: $br-mobile){
+        position: absolute;
+        top: 50%;   
+        left: 50%;
+        transform: translate(-50%,-50%);
+        padding: 0 100px;
+      }
     }
 
     header {
@@ -88,7 +90,10 @@
       top: 0%;   
       left: 0%;
       transform: translate(0%,0%);
-      padding: 80px 100px 0;
+
+      @media (min-width: $br-mobile){
+        padding: 80px 100px 0;
+      }
     }
     
   }
@@ -123,18 +128,21 @@
   }
 
   &.-home {
+    padding-bottom: 250px;    
     background: image-url("section/home.jpg");
     background-size: cover;
     background-position: bottom right;
   }
 
   &.-confirm {
+    padding-bottom: 250px;    
     background: image-url("section/confirm.jpg");
     background-size: cover;
     background-position: center;
   }
 
   &.-confirm-form {
+    padding-bottom: 250px;    
     z-index: 2;
     background: image-url("section/confirm-form.jpg");
     background-size: cover;
@@ -142,6 +150,7 @@
   }
 
   &.-confirm-form-final {
+    padding-bottom: 250px;    
     z-index: 3;
     left: auto;
     right: 0;    
@@ -151,18 +160,21 @@
   }
 
   &.-plan {
+    padding-bottom: 250px;    
     background: image-url("section/plan-del-dia.jpg");
     background-size: cover;
     background-position: center;    
   }
 
   &.-coruna {
+    padding-bottom: 250px;    
     background: image-url("section/coruna.jpg");
     background-size: cover;
     background-position: center;    
   }
 
   &.-regalo {
+    padding-bottom: 250px;    
     background: image-url("section/regalo.jpg");
     background-size: cover;
     background-position: center;    

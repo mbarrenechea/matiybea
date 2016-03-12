@@ -7,6 +7,8 @@
 //= require wheel-indicator
 //= require jquery.transit
 
+//= require ./helpers/utils
+
 //= require_tree ./models
 //= require_tree ./collections
 //= require_tree ./templates
@@ -26,10 +28,10 @@
    * @type {Object}
    */
   root.app = root.app || {
+    Helper: {},
     Model: {},
     Collection: {},
     View: {},
-    Helper: {}
   };
 
   /**

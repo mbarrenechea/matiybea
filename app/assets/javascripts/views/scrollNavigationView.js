@@ -19,10 +19,12 @@
       var opts = settings && settings.options ? settings.options : {};
       this.options = _.extend({}, this.defaults, opts);
 
-      this.cache();
-      this.render();
-      this.navigateTo();
-      this.setListeners();
+      if (!utilsHelper.isSmallScreen()) {
+        this.cache();
+        this.render();
+        this.navigateTo();
+        this.setListeners();
+      }
     },
 
     cache: function() {
