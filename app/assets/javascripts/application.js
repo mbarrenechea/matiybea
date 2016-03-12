@@ -7,12 +7,13 @@
 //= require wheel-indicator
 //= require jquery.transit
 
-//= require ./helpers/class
-//= require ./helpers/cartodb_layer
 //= require_tree ./models
 //= require_tree ./collections
 //= require_tree ./templates
 //= require_tree ./views
+//= require ./helpers/class
+//= require ./helpers/cartodb_layer
+
 //= require router
 
 
@@ -44,6 +45,7 @@
 
     initialize: function() {
       this.router = new root.app.Router();
+      this._cartodbHack();
       this.setListeners();
     },
 
@@ -116,7 +118,17 @@
 
     getRoute: function() {
       return Backbone.history.getFragment().replace('?section=','').replace('/','');
-    }
+    },
+
+    /**
+     * Cartodb Handlebars hack.
+     */
+    _cartodbHack: function() {
+      cdb.core.Template.compilers = _.extend(cdb.core.Template.compilers, {
+        handlebars: typeof(Handlebars) === 'undefined' ? null : Handlebars.compile
+      });
+    },
+
 
   });
 

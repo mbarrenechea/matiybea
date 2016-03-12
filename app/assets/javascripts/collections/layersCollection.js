@@ -16,7 +16,6 @@
         cartocss: '#matiybea { marker-fill-opacity: 1;marker-line-color: #FFF;marker-line-width: 1;marker-line-opacity: 1;marker-placement: point;marker-type: ellipse;marker-width: 15;marker-allow-overlap: true;}#matiybea[category="alojamiento"] { marker-fill: #d0021b;}',
         sql: 'SELECT * FROM matiybea WHERE category = \'alojamiento\'',
         color: 'red',
-        bounds: true,
         opacity: 1,
         order: 1000,
         active: true,

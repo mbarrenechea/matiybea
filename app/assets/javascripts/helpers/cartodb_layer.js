@@ -15,14 +15,17 @@
       user_name: 'miguel-barrenechea', // Required
       type: 'cartodb', // Required
       cartodb_logo: false,
+      interactivity: ['name', 'category', 'category_name', 'description'],
       // maps_api_template: 'https://grp.global.ssl.fastly.net/user/{user}',
       // sql_api_template: 'https://grp.global.ssl.fastly.net/user/{user}',
+
       sublayers: [{
-        sql: 'SELECT * FROM table_name', // Required
-        cartocss: '#table_name {marker-fill: #F0F0F0;}', // Required
-        interactivity: 'column1, column2, ...' // Optional
+        sql: 'SELECT * FROM matiybea', // Required
+        interactivity: ['name', 'category', 'category_name', 'description'] // Optional
       }]
     },
+
+    tooltipTpl: $('#infowindow_template').html(),
 
     initialize: function(map, settings) {
       if (!map && map instanceof L.Map) {
@@ -37,13 +40,23 @@
      * Create a CartoDB layer
      * @param  {Function} callback
      */
-    create: function(callback) {
+    create: function(callback) {    
       cartodb.createLayer(this.map, this.options, { 'no_cdn': true })
         .addTo(this.map)
         .on('done', function(layer) {
           this.layer = layer;
-          this.suboptions = this.options.sublayers[0];
-          
+          var sublayer = this.layer.getSubLayer(0);
+              sublayer.set({ 'interactivity': this.options.interactivity }); 
+
+          console.log(this.tooltipTpl);
+          this.layer.leafletMap.viz.addOverlay({
+            type: 'tooltip',
+            layer: sublayer,
+            template: this.tooltipTpl,
+            position: 'top|center',
+            fields: ['name', 'category', 'category_name', 'description']
+          });          
+
           if (callback && typeof callback === 'function') {
             callback.apply(this, arguments);
           }

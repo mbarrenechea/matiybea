@@ -13,6 +13,20 @@
     </div>
     <div class="m-section-box -map">
       <div id="mapView" class="m-map"></div>
+      <script type="infowindow/html" id="infowindow_template">
+         <div class="cartodb-tooltip-content-wrapper">
+          <div class="cartodb-tooltip-content">
+            <h4>category</h4>
+            <p>{{category}}</p>
+            <h4>category_name</h4>
+            <p>{{category_name}}</p>
+            <h4>description</h4>
+            <p>{{description}}</p>
+            <h4>name</h4>
+            <p>{{name}}</p>
+          </div>
+        </div>     
+      </script>      
     </div>    
   </section>
 </div>
