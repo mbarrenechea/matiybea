@@ -3,7 +3,7 @@
     <tr>
       <th>Name</th>
       <th>Companion</th>
-      <th>Childs</th>
+      <th>Children</th>
       <th>Allergic</th>
       <th>Comment</th>
       <th colspan="3">Actions</th>
@@ -15,7 +15,7 @@
       <tr>
         <td><%= confirm.name %></td>
         <td><%= confirm.companion %></td>
-        <td><%= confirm.childs %></td>
+        <td><%= (confirm.childs.empty?) ? '' : confirm.childs %></td>
         <td><%= confirm.allergic %></td>
         <td><%= confirm.comment %></td>
         <td><%= link_to 'Show', confirm %></td>

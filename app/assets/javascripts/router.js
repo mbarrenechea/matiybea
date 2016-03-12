@@ -8,8 +8,9 @@
 
     routes: {
       '': 'home',
-      'confirms/new' : 'new',
-      'confirms/:id/edit' : 'edit',
+      'confirms' : 'confirm_index',
+      'confirms/new' : 'confirm_new',
+      'confirms/:id/edit' : 'confirm_edit',
       'que-hacer' : 'quehacer',
     },
 

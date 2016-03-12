@@ -51,8 +51,9 @@
       this.listenTo(this.router, 'route:home', this.homePage);
 
       // Confirm
-      this.listenTo(this.router, 'route:new', this.confirmPage);
-      this.listenTo(this.router, 'route:edit', this.editPage);
+      this.listenTo(this.router, 'route:confirm_index', this.confirmIndexPage);
+      this.listenTo(this.router, 'route:confirm_new', this.confirmNewPage);
+      this.listenTo(this.router, 'route:confirm_edit', this.confirmEditPage);
 
       // Map
       this.listenTo(this.router, 'route:quehacer', this.mapPage);
@@ -72,12 +73,16 @@
       this.initGlobalViews();
     },
 
-    confirmPage: function() {
+    confirmIndexPage: function() {
+      this.initGlobalViews();
+    },
+
+    confirmNewPage: function() {
       this.confirmformView = new app.View.ConfirmformView();
       this.initGlobalViews();
     },
 
-    editPage: function() {
+    confirmEditPage: function() {
       this.confirmformView = new app.View.ConfirmformView();
       this.initGlobalViews();
     },

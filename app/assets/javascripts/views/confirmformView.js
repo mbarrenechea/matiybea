@@ -56,11 +56,18 @@
 
     setParams: function(form) {
       var params = this.getParams(form);
-
       // set childs
-      params['confirm[childs]'] = (!!params['children[]'].length) ? params['children[]'] : [];
+      params['confirm[childs]'] = this.setChildren(params['children[]']);
 
       return params;
+    },
+
+    setChildren: function(children) {
+      if (_.isArray(children)) {
+        return children;
+      } else {
+        return (!!children) ? [children] : [];
+      }
     },
 
     getParams: function(form) {
