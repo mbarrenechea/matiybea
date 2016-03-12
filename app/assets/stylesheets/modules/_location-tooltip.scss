@@ -1,10 +1,46 @@
-.cartodb-tooltip {
-  transform: translate(0,-20px);
+.m-location-tooltip {
+  position: absolute;
+  transform: translate(-50%,-100%);
+  margin: -10px 0 0;
   overflow: visible;
-  
-  .cartodb-tooltip-content-wrapper {
-    .cartodb-tooltip-content{
+  max-width: 160px;
+  background: $white;
+  visibility: hidden;
+  opacity: 0;
+  pointer-events: none;
 
-    } 
+  &.-active {
+    visibility: visible;
+    opacity: 1;
+  }
+
+  &:after {
+    content: "";
+    display: block;
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translate(-50%,-50%) rotate(45deg);
+    width: 8px;
+    height: 8px;
+    background: $white;
+  }
+
+  .m-location-tooltip-scroll {
+    overflow-y: auto;
+    max-height: 200px;
+  }
+
+  .m-location-tooltip-content {
+    padding: 20px;
+    
+    h4 {
+      text-transform: uppercase;
+      color: $font-color-2;
+    }
+    
+    p {
+      color: $font-color-3; 
+    }
   }
 }

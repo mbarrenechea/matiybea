@@ -5,74 +5,27 @@
   root.app = root.app || {};
   root.app.View = root.app.View || {};
 
-  root.app.Model = root.app.Model || {};
-  root.app.Model.LocationsModel = Backbone.Model.extend({
-    defaults: {
-      categories: []
-    }
-  });
-
-  
-  root.app.Collection = root.app.Collection || {};
-  root.app.Collection.LocationsCollection = Backbone.Collection.extend({
-    
-    url: 'https://miguel-barrenechea.cartodb.com/api/v2/sql?q=SELECT * FROM matiybea',
-    
-    parse: function(response) {
-      return response.rows;
-    },
-
-    initialize: function(settings) {
-      this.categories = settings.categories;
-    },
-
-    getCategories: function() {
-      return _.sortBy(_.map(_.uniq(this.toJSON(),'category'), function(el){
-        return {
-          category: el.category,
-          category_name: el.category_name,
-        }
-      }), function(c){
-        return c.category_name
-      });
-    },
-
-    getLocations: function() {
-      return _.sortBy(_.compact(_.map(this.toJSON(), function(l){
-        if (_.indexOf(this.categories.get('categories'),l.category) != -1) {
-          return l;  
-        }
-        return null;
-      }.bind(this))), function(c){
-        return c.category_name
-      });      
-    }
-  });
-
   root.app.View.LocationsView = Backbone.View.extend({
 
     el: '#locationsView',
 
     events: {
-      'change .category-checkbox' : 'changeCategories'
+      'change .category-checkbox' : 'changeCategories',
+      'click #locationListView li' : 'renderLocation'
     },
 
     template: HandlebarsTemplates['locationsTpl'],
     templateList: HandlebarsTemplates['locationsListTpl'],
 
     initialize: function(settings) {    
-      this.model = new root.app.Model.LocationsModel();
-      this.collection = new root.app.Collection.LocationsCollection({
-        categories: this.model
-      });
-      this.collection.fetch().done(function() {
-        this.render();
-      }.bind(this));
+      this.model = settings.model;
+      this.locations = settings.locations;
       this.layers = settings.layers;
       this.setListeners();
     },
 
     setListeners: function() {
+      this.locations.on('sync', this.render.bind(this));
       this.model.on('change:categories', this.renderLocations.bind(this));
       this.model.on('change:categories', this.renderLayers.bind(this));
     },
@@ -84,16 +37,21 @@
 
     render: function() {
       this.$el.html(this.template({
-        categories: this.collection.getCategories()
+        categories: this.locations.getCategories()
       }));
       // Cache and set categories model
       this.cache();
       this.changeCategories();
     },
 
+    renderLocation: function(e) {
+      e && e.preventDefault();
+      Backbone.Events.trigger('Location/update', $(e.currentTarget).data('id'));
+    },
+
     renderLocations: function() {
       this.$locationList.html(this.templateList({
-        locations: this.collection.getLocations()
+        locations: this.locations.getLocations()
       }));
     },
 

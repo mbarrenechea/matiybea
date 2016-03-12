@@ -42,10 +42,16 @@
     header {
       width: 100%;
 
+      > * {
+        padding: 10px 0 0;
+        &:first-child {
+          padding: 0;
+        }
+      }
+
       h3 {
         color: $font-color-3;
         text-transform: uppercase;
-        padding: 0 0 10px;
       }
 
       h2 {
@@ -112,6 +118,9 @@
     }
   }
 
+  &.-map {
+    z-index: 2;
+  }
 
   &.-home {
     background: image-url("section/home.jpg");

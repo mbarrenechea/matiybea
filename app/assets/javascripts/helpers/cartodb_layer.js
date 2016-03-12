@@ -15,17 +15,18 @@
       user_name: 'miguel-barrenechea', // Required
       type: 'cartodb', // Required
       cartodb_logo: false,
-      interactivity: ['name', 'category', 'category_name', 'description'],
+      interactivity: ['cartodb_id', 'name', 'category', 'category_name', 'description'],
       // maps_api_template: 'https://grp.global.ssl.fastly.net/user/{user}',
       // sql_api_template: 'https://grp.global.ssl.fastly.net/user/{user}',
 
       sublayers: [{
         sql: 'SELECT * FROM matiybea', // Required
-        interactivity: ['name', 'category', 'category_name', 'description'] // Optional
+        interactivity: ['cartodb_id', 'name', 'category', 'category_name', 'description'] // Optional
       }]
     },
 
-    tooltipTpl: $('#infowindow_template').html(),
+    tooltipEl: $('#locationTooltipView'),
+    tooltipTpl: HandlebarsTemplates['locationsTooltipTpl'],
 
     initialize: function(map, settings) {
       if (!map && map instanceof L.Map) {
@@ -45,16 +46,51 @@
         .addTo(this.map)
         .on('done', function(layer) {
           this.layer = layer;
+          this.layer.hover = false;
+
+          // Mouse Click
+          this.layer.on('featureClick', function(e, latlng, pos, data,layer) {
+            e && e.preventDefault() && e.stopPropagation();
+            Backbone.Events.trigger('Location/update', data.cartodb_id);
+          }.bind(this));
+
+          // Mouse Hover
+          this.layer.on('featureOver', function(e, latlng, pos, data,layer) {
+            e && e.preventDefault() && e.stopPropagation();
+
+            this.layer.hover = true;
+            $(this.map._container).css('cursor', 'pointer');
+
+            this.tooltipEl
+              .css({
+                left: pos.x,
+                top: pos.y
+              })
+              .html(this.tooltipTpl(data))
+              .addClass('-active');
+
+          }.bind(this));
+          
+          // Mouse Out
+          this.layer.on('featureOut', function(e, latlng, pos, data,layer) {
+            if (!!this.layer.hover) {
+              this.layer.hover = false;
+              $(this.map._container).css('cursor', '');
+              this.tooltipEl
+                .html('')
+                .removeClass('-active');
+            }
+          }.bind(this));
+
           var sublayer = this.layer.getSubLayer(0);
               sublayer.set({ 'interactivity': this.options.interactivity }); 
 
-          console.log(this.tooltipTpl);
+          // console.log(this.tooltipTpl);
           this.layer.leafletMap.viz.addOverlay({
             type: 'tooltip',
             layer: sublayer,
-            template: this.tooltipTpl,
             position: 'top|center',
-            fields: ['name', 'category', 'category_name', 'description']
+            fields: ['cartodb_id', 'name', 'category', 'category_name', 'description']
           });          
 
           if (callback && typeof callback === 'function') {
