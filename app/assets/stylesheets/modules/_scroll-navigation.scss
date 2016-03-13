@@ -1,91 +1,117 @@
 .m-scroll-navigation {
-  position: fixed;
-  top: 50%;
-  left: 25px;
-  transform: translate(0,-50%);
   z-index: 5;
 
-  ul {
-    li {
-      position: relative;
-      width: 6px;
-      height: 6px;      
-      margin: 15px 0 0;
-      cursor: pointer;
+  .m-scroll-navigation-box {
+    position: fixed;
+    top: 50%;
+    left: 25px;
+    transform: translate(0,-50%);
 
-      &:before {
-        content: "";
-        display: block;
+    ul {
+      li {
         position: relative;
         width: 6px;
-        height: 6px;
-        background: $bg-color-3;
-        border-radius: 50%;
-        transition: transform 0.25s $easeInOutSine;
-      }
-
-      &:after {
-        content: "";
-        display: block;
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%,-50%);
-        width: 300%;
-        height: 300%;
-        background: transparent;
-        border-radius: 50%;
-      }
-
-
-      .m-scroll-navigation-tooltip {
-        position: absolute;
-        top: 50%;
-        left: 100%;
-        transform: translate(0px,-50%);
-        opacity: 0;
-        visibility: hidden;
-
-        background: $bg-color-1;
-        color: $white;
-        font-size: 10px;
-        white-space: nowrap;
-        padding: 10px;
-        transition: all 0.25s $easeInOutSine;
+        height: 6px;      
+        margin: 15px 0 0;
+        cursor: pointer;
 
         &:before {
           content: "";
-          position: absolute;          
-          top: 50%;
-          left: 0;
-          transform: translate(-50%,-50%) rotate(45deg);
-          background: $bg-color-1;
+          display: block;
+          position: relative;
           width: 6px;
           height: 6px;
+          background: $bg-color-3;
+          border-radius: 50%;
+          transition: transform 0.25s $easeInOutSine;
         }
 
-      }
-
-      &:first-child {
-        margin: 0;        
-      }
-
-      &:hover, &.-selected {
-        &:before {
-          background: $white;
-          transform: scale(1.25);
-          box-shadow: 0 0 0 1px $bg-color-1;          
+        &:after {
+          content: "";
+          display: block;
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%,-50%);
+          width: 300%;
+          height: 300%;
+          background: transparent;
+          border-radius: 50%;
         }
-        
-      }
 
-      &:hover {
+
         .m-scroll-navigation-tooltip {
-          transform: translate(8px,-50%);
-          opacity: 1;
-          visibility: visible;
-        }  
+          position: absolute;
+          top: 50%;
+          left: 100%;
+          transform: translate(0px,-50%);
+          opacity: 0;
+          visibility: hidden;
+
+          background: $bg-color-1;
+          color: $white;
+          font-size: 10px;
+          white-space: nowrap;
+          padding: 10px;
+          transition: all 0.25s $easeInOutSine;
+
+          &:before {
+            content: "";
+            position: absolute;          
+            top: 50%;
+            left: 0;
+            transform: translate(-50%,-50%) rotate(45deg);
+            background: $bg-color-1;
+            width: 6px;
+            height: 6px;
+          }
+
+        }
+
+        &:first-child {
+          margin: 0;        
+        }
+
+        &:hover, &.-selected {
+          &:before {
+            background: $white;
+            transform: scale(1.25);
+            box-shadow: 0 0 0 1px $bg-color-1;          
+          }
+          
+        }
+
+        &:hover {
+          .m-scroll-navigation-tooltip {
+            transform: translate(8px,-50%);
+            opacity: 1;
+            visibility: visible;
+          }  
+        }
+      }
+    }
+
+  }
+
+  .btn-arrow {
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    width: 20px;
+    height: 20px;
+    @include animation(pulse_animation,0.75s,infinite,$easeInOutSine);
+
+    svg {
+      width: 100%;
+      height: 100%;
+      fill: $font-color-3;
+    }
+
+    &:hover {
+      svg {
+        fill: $font-color-1;
       }
     }
   }
+
 }

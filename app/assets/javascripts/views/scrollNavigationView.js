@@ -10,7 +10,8 @@
     el: '#scrollNavigationView',
 
     events: {
-      'click .m-scroll-navigation-item' : 'clickNavigation'
+      'click .m-scroll-navigation-item' : 'clickNavigation',
+      'click .m-scroll-navigation-next' : 'clickNext',
     },
 
     template: HandlebarsTemplates['scrollNavigationTpl'],
@@ -49,6 +50,13 @@
       e && e.preventDefault();
       var index = $(e.currentTarget).data('index');
       this.model.set('index',index);
+    },
+
+    clickNext: function(e) {
+      e && e.preventDefault();
+      var index = this.model.get('index');
+      (index != this.sectionsLength - 1) ? this.model.set('index',++index) : null;
+      
     },
 
     navigateTo: function() {
