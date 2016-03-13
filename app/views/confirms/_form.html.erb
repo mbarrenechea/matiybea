@@ -13,8 +13,8 @@
   <ul class="field-grid">
     <li class="field-grid-item">
       <div class="field">
-        <%= f.label :name , 'Nombre' %>
-        <%= f.text_field :name, required: true %>
+        <%= f.label :name , 'Nombre y apellidos' %>
+        <%= f.text_field :name, required: true, placeholder: "¿Quién eres?" %>
       </div>
     </li>
     <li class="field-grid-item">
@@ -32,8 +32,8 @@
         </div>
       </div>
       <div class="field -toggle -hidden">
-        <%= f.label :companion, 'Nombre acompañante' %>
-        <%= f.text_field :companion %>
+        <%= f.label :companion, '-' %>
+        <%= f.text_field :companion, placeholder: "Nombre y apellidos del acompañante" %>
       </div>
     </li>
     <li class="field-grid-item">
@@ -55,12 +55,12 @@
         <div class="field-array">
           <div id="field-array-children">
             <div class="field">
-              <div class="label">Nombre <br>hijo nº 1</div>          
-              <input class="field-item-children" name="children[]" type="text" aria-required="true" aria-invalid="false"/>
+              <div class="label">-</div>          
+              <input class="field-item-children" name="children[]" placeholder="Nombre de tu hijo nº1" type="text" aria-required="true" aria-invalid="false"/>
             </div>            
           </div>
           <div class="actions">
-            <%= f.button 'Añadir otro hijo' , { class: 'btn-add-children'} %>
+            <%= f.button 'Añadir otro hijo' , { class: 'btn btn-add-children'} %>
           </div>        
         </div>
       </div>
@@ -80,7 +80,7 @@
         </div>
       </div>
       <div class="field -toggle -hidden">
-        <%= f.label :allergic %>
+        <%= f.label :allergic, '-' %>
         <%= f.text_field :allergic %>
       </div>
     </li>
@@ -92,7 +92,7 @@
     </li>
     <li>
       <div class="actions">
-        <%= f.button 'Confirmar asistencia' %>
+        <%= f.button 'Confirmar asistencia', { class: 'btn -dark'} %>
       </div>
     </li>
   </ul>
