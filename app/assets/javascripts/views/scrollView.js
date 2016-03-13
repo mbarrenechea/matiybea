@@ -39,6 +39,8 @@
           callback: this.scrollIndex.bind(this)
         });
 
+        $(document).on('keyup.scroll', this.keyIndex.bind(this));
+
         this.model.on('change:index', this.scrollTo.bind(this));
         this.model.on('change:index', this.sectionIndex.bind(this));
       }
@@ -87,6 +89,34 @@
           break;
 
           case 'down':
+            if (index == this.sectionsLength - 1) {
+              index = this.sectionsLength - 1
+              this.model.set('is_moving', false);
+            } else {
+              index++
+            }
+          break;
+        }
+        this.model.set('index', index);
+      }
+    },
+
+    keyIndex: function(e) {
+      e && e.preventDefault();
+      if (!this.model.get('is_moving')) {
+        this.model.set('is_moving', true);
+        var index = this.model.get('index');
+        switch(e.keyCode) {
+          case 38:
+            if (index == 0) {
+              index = 0;
+              this.model.set('is_moving', false);
+            } else {
+              index--
+            }
+          break;
+
+          case 40:
             if (index == this.sectionsLength - 1) {
               index = this.sectionsLength - 1
               this.model.set('is_moving', false);

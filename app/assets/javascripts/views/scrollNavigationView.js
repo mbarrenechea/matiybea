@@ -32,8 +32,7 @@
       // Sections
       this.$sections = $('.m-section');
       this.sectionsNames = _.map($('.m-section'), function(s){ return s.dataset.tooltip });
-      this.sectionsLength = this.$sections.length;
-      console.log(this.sectionsNames);
+      this.sectionsLength = this.$sections.length;      
     },
 
     setListeners: function() {
@@ -43,7 +42,10 @@
     render: function() {
       this.$el.html(this.template({
         sections: this.sectionsNames
-      }));      
+      }));   
+      
+      // Arrow
+      this.$arrow = this.$el.find('.m-scroll-navigation-next');         
     },
 
     clickNavigation: function(e) {
@@ -60,8 +62,10 @@
     },
 
     navigateTo: function() {
+      var last = (this.model.get('index') == this.sectionsLength - 1);
       this.$el.find('li').removeClass('-selected');
       this.$el.find('li[data-index='+this.model.get('index')+']').addClass('-selected');
+      this.$arrow.toggleClass('-hidden', last);
     }
 
   });
