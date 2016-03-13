@@ -1,14 +1,21 @@
 .m-grid {
   display: flex;
+  flex-wrap: wrap;
   width: 100%;
   
   .m-grid-col {
-    width: 50%;
+    width: 100%;
+    @media (min-width: $br-mobile){
+      width: 50%;
+    }
 
     // Justify-content
     &.-end {
-      display: flex;
-      justify-content: flex-end;
+      display: none;
+      @media (min-width: $br-mobile){
+        display: flex;
+        justify-content: flex-end;
+      }
     }
 
     &.-space-between {

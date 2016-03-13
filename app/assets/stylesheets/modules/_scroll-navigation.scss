@@ -7,22 +7,84 @@
 
   ul {
     li {
+      position: relative;
       width: 6px;
-      height: 6px;
-      background: $bg-color-3;
-      border-radius: 50%;
+      height: 6px;      
       margin: 15px 0 0;
-      transition: transform 0.5s $easeInOutSine;
       cursor: pointer;
+
+      &:before {
+        content: "";
+        display: block;
+        position: relative;
+        width: 6px;
+        height: 6px;
+        background: $bg-color-3;
+        border-radius: 50%;
+        transition: transform 0.25s $easeInOutSine;
+      }
+
+      &:after {
+        content: "";
+        display: block;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%,-50%);
+        width: 300%;
+        height: 300%;
+        background: transparent;
+        border-radius: 50%;
+      }
+
+
+      .m-scroll-navigation-tooltip {
+        position: absolute;
+        top: 50%;
+        left: 100%;
+        transform: translate(0px,-50%);
+        opacity: 0;
+        visibility: hidden;
+
+        background: $bg-color-1;
+        color: $white;
+        font-size: 10px;
+        white-space: nowrap;
+        padding: 10px;
+        transition: all 0.25s $easeInOutSine;
+
+        &:before {
+          content: "";
+          position: absolute;          
+          top: 50%;
+          left: 0;
+          transform: translate(-50%,-50%) rotate(45deg);
+          background: $bg-color-1;
+          width: 6px;
+          height: 6px;
+        }
+
+      }
 
       &:first-child {
         margin: 0;        
       }
 
       &:hover, &.-selected {
-        background: $white;
-        transform: scale(1.25);
-        box-shadow: 0 0 0 1px $bg-color-1;
+        &:before {
+          background: $white;
+          transform: scale(1.25);
+          box-shadow: 0 0 0 1px $bg-color-1;          
+        }
+        
+      }
+
+      &:hover {
+        .m-scroll-navigation-tooltip {
+          transform: translate(8px,-50%);
+          opacity: 1;
+          visibility: visible;
+        }  
       }
     }
   }

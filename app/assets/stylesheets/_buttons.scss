@@ -2,10 +2,13 @@
   display: inline-flex;
   align-items: center;
   cursor: pointer;
-  padding: 22px 25px;
+  padding: 15px 20px;
   width: auto;
   background: $white;
   color: $font-color-1;
+  @media (min-width: $br-mobile){
+    padding: 22px 25px;   
+  }
 
   &.-dark {
     background: $font-color-1;

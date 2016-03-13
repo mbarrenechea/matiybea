@@ -17,14 +17,14 @@
 
 .m-section {
   width: 100%;
-  padding: 50px 20px 0;
+  padding: 0px 20px;
   
   &:first-child {
-    padding: 100px 20px 0px;      
+    padding: 50px 20px 0px;      
   }
 
   &:last-child {
-    padding: 50px 20px 50px;      
+    padding: 0px 20px 0px;      
   }
 
   @media (min-width: $br-mobile){
@@ -32,6 +32,13 @@
     display: flex;
     flex-wrap: wrap;
     padding: 0;
+    &:first-child {
+      padding: 0;
+    }
+
+    &:last-child {
+      padding: 0;
+    }
   }
 
   .m-section-box {

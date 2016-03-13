@@ -30,7 +30,9 @@
     cache: function() {
       // Sections
       this.$sections = $('.m-section');
+      this.sectionsNames = _.map($('.m-section'), function(s){ return s.dataset.tooltip });
       this.sectionsLength = this.$sections.length;
+      console.log(this.sectionsNames);
     },
 
     setListeners: function() {
@@ -39,7 +41,7 @@
 
     render: function() {
       this.$el.html(this.template({
-        numbers: _.range(0, this.sectionsLength, 1) 
+        sections: this.sectionsNames
       }));      
     },
 

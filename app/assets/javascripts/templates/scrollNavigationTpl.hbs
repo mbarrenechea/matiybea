@@ -1,5 +1,7 @@
 <ul>
-  {{#each numbers}}
-    <li class="m-scroll-navigation-item" data-index="{{this}}"></li>
+  {{#each sections}}
+    <li class="m-scroll-navigation-item" data-index="{{@index}}">
+      <span class="m-scroll-navigation-tooltip">{{this}}</span>
+    </li>
   {{/each}}
 </ul>

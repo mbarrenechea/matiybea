@@ -1,16 +1,24 @@
 .m-countdown {
   width: 100%;
-  padding: 20px 0 25px;
-  position: absolute;
-  bottom: 0;
-  left: 0;
+  padding: 20px 0 30px;
   background: $bg-color-1;
+  @media (min-width: $br-mobile){
+    padding: 20px 0 25px;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+  }
 
   .m-countdown-box {
-    width: 440px;
+    max-width: 340px;
+    padding: 0 20px;
     margin: 0 auto;
     display: flex;
     justify-content: space-between;
+    @media (min-width: $br-mobile){
+      padding: 0;
+      max-width: 440px;
+    }
   }
 
   .m-countdown-numberbox {
@@ -28,12 +36,17 @@
     }
 
     .m-countdown-number {
-      width: 36px;
-      height: 60px;
+      width: 22px;
+      height: 36px;
       margin: 0 0 0 5px;
       position: relative;
       overflow: hidden;
       background: $black;
+      @media (min-width: $br-mobile){
+        width: 36px;
+        height: 60px;
+      }
+
 
       &:first-child {
         margin: 0;
@@ -48,10 +61,14 @@
         transition: all .2s $easeInOutCubic;
         
         > li {
-          font-size: 36px;
+          font-size: 22px;
+          line-height: 36px;
           text-align: center;
-          line-height: 60px;
           color: $white;
+          @media (min-width: $br-mobile){
+            font-size: 36px;
+            line-height: 60px;
+          }
         }
       }
     }

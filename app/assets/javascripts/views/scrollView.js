@@ -25,6 +25,7 @@
     },
 
     cache: function() {
+      this.$htmlbody = $('html,body');
       // Sections
       this.$sections = this.$el.find('.m-section');
       this.sectionsLength = this.$sections.length;
@@ -43,13 +44,20 @@
 
     // SECTIONS SCROLL
     initIndex: function() {
-      var index = this.$sections.index($('#section-'+this.options.route));
-      if (index > 0) {
-        this.model.set('index',index, {silent: true});
-        this.$el.css({
-          y: -100 * this.model.get('index') + '%'
-        });
-
+      if (!utilsHelper.isSmallScreen()) {
+        var index = this.$sections.index($('#section-'+this.options.route));
+        if (index > 0) {
+          this.model.set('index',index, {silent: true});
+          this.$el.css({
+            y: -100 * this.model.get('index') + '%'
+          });
+        }       
+      } else {
+        if (!!this.options.route) {
+          this.$htmlbody.animate({
+            scrollTop: $('#section-'+this.options.route).offset().top
+          }, 500);        
+        }       
       }
     },
 
@@ -81,11 +89,13 @@
     },
 
     scrollTo: function() {
-      this.$el.transition({
-        y: -100 * this.model.get('index') + '%'
-      }, 500, function(){
-        this.model.set('is_moving', false);
-      }.bind(this));
+      if (!utilsHelper.isSmallScreen()) {
+        this.$el.transition({
+          y: -100 * this.model.get('index') + '%'
+        }, 500, function(){
+          this.model.set('is_moving', false);
+        }.bind(this));
+      }
     }
 
   });

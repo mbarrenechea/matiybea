@@ -12,7 +12,7 @@
         zoom: 3,
         center: [0, 15],
         zoomControl: false,
-        scrollWheelZoom: false,
+        // scrollWheelZoom: false,
         maxBounds: L.latLngBounds(L.latLng(43.334043422613284, -8.434581756591797), L.latLng(43.39101549114081, -8.378877639770508)),
 
       },
