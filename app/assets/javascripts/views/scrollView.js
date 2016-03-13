@@ -22,6 +22,7 @@
       this.cache();
       this.setListeners();
       this.initIndex();
+      this.sectionIndex();
     },
 
     cache: function() {
@@ -39,11 +40,13 @@
         });
 
         this.model.on('change:index', this.scrollTo.bind(this));
+        this.model.on('change:index', this.sectionIndex.bind(this));
       }
     },
 
     // SECTIONS SCROLL
     initIndex: function() {
+      // scroll
       if (!utilsHelper.isSmallScreen()) {
         var index = this.$sections.index($('#section-'+this.options.route));
         if (index > 0) {
@@ -59,6 +62,14 @@
           }, 500);        
         }       
       }
+    },
+
+    sectionIndex: function() {
+      var index = this.model.get('index');
+      var $section = this.$sections.eq(index);
+
+      this.$sections.removeClass('-selected');
+      $section.addClass('-selected');
     },
 
     scrollIndex: function(e) {
