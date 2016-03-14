@@ -1,3 +1,4 @@
+// GRID
 .field-grid {
   padding: 20px 0;
   max-width: 600px;
@@ -14,29 +15,8 @@
     }
   }
 }
-.actions {
-  padding-left: 120px;
-  
-  button {
-    -webkit-appearance: none;
-    appearance: none;
-    display: block;
-    width: 100%;
-    border: 2px solid $font-color-3;
-    color: $font-color-3;
-    background: $white;
-    padding: 20px 0;
-    line-height: 1;
-    outline: none;
 
-    &:hover {
-      color: $white;
-      border: 2px solid $bg-color-1;
-      background: $bg-color-1;
-    }
-  }
-}
-
+// FIELD
 .field {
   position: relative;
   display: flex;
@@ -88,6 +68,9 @@
 
   .field-array {
     width: 100%;
+    .actions {
+      margin: 10px 0 0;
+    }
   }
 
   .btn-icon {
@@ -214,6 +197,25 @@
         display: block;
       }
     }
+  }
+
+}
+
+// ACTIONS
+.actions {
+  padding-left: 120px;
+  display: flex;
+
+  &.-j-left {
+    justify-content: flex-start;
+  }
+
+  &.-j-center {
+    justify-content: center;
+  }
+
+  &.-j-right {
+    justify-content: flex-end;
   }
 
 }

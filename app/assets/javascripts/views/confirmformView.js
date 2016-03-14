@@ -92,7 +92,7 @@
       var checked = ($(e.currentTarget).val() == 'true');
 
       $toggle.toggleClass('-hidden',!checked);
-      $input.attr('required', checked);
+      $input.attr('required', checked).focus();
     },
 
     addChildren: function(e) {
@@ -100,6 +100,10 @@
       this.$fieldArrayChildren.append(this.templateAddChildren({
         order: $('.field-item-children').length + 1
       }));
+
+      // focus input
+      this.$fieldArrayChildren.find('input').eq($('.field-item-children').length - 1).focus();
+
     },
 
     removeChildren: function(e) {
