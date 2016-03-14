@@ -23,9 +23,13 @@
     margin: 0;
   }
 
+  td {
+    padding: 5px 0;
+  }
+
   strong {
     display: block;
-    padding: 0 15px 10px;
+    padding: 0 15px;
     text-align: right;
   }
 }
