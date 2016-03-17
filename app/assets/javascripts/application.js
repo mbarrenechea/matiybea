@@ -60,6 +60,8 @@
 
       // Map
       this.listenTo(this.router, 'route:quehacer', this.mapPage);
+
+      this.listenTo(this.router, 'route:cuantosabes', this.enquirePage);
     },
 
     start: function() {
@@ -132,6 +134,11 @@
         locations: locationsCollection
       });
       
+      this.initGlobalViews();
+    },
+
+    enquirePage: function() {
+      this.enquireView = new app.View.EnquireView();
       this.initGlobalViews();
     },
 

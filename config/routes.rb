@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
 
   get 'que-hacer/' => 'quehacer#index'
+  get 'cuanto-sabes-de-nosotros/' => 'cuantosabes#index'
 
   root 'home#index'
 

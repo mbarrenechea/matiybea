@@ -12,6 +12,7 @@
       'confirms/new' : 'confirm_new',
       'confirms/:id/edit' : 'confirm_edit',
       'que-hacer' : 'quehacer',
+      'cuanto-sabes-de-nosotros' : 'cuantosabes',
     },
 
     ParamsModel: Backbone.Model.extend({}),
