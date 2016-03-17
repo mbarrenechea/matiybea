@@ -51,6 +51,10 @@
           // Mouse Click
           this.layer.on('featureClick', function(e, latlng, pos, data,layer) {
             e && e.preventDefault() && e.stopPropagation();
+            
+            var new_cartocss = this.options.sublayers[0].cartocss + '#matiybea[cartodb_id = '+ data.cartodb_id +'] { marker-width: 50 }';
+            this.layer.setCartoCSS(new_cartocss);
+
             Backbone.Events.trigger('Location/update', data.cartodb_id);
           }.bind(this));
 

@@ -10,7 +10,7 @@
     url: 'https://miguel-barrenechea.cartodb.com/api/v2/sql?q=SELECT * FROM matiybea',
     
     parse: function(response) {
-      return response.rows;
+      return response.features;
     },
 
     initialize: function(settings) {
@@ -18,7 +18,8 @@
     },
 
     getCategories: function() {
-      return _.sortBy(_.map(_.uniq(this.toJSON(),'category'), function(el){
+      var locations = _.pluck(this.toJSON(), 'properties');
+      return _.sortBy(_.map(_.uniq(locations,'category'), function(el){
         return {
           category: el.category,
           category_name: el.category_name,
@@ -29,7 +30,8 @@
     },
 
     getLocations: function() {
-      return _.sortBy(_.compact(_.map(this.toJSON(), function(l){
+      var locations = _.pluck(this.toJSON(), 'properties');
+      return _.sortBy(_.compact(_.map(locations, function(l){
         if (_.indexOf(this.categories.get('categories'),l.category) != -1) {
           return l;  
         }
@@ -39,8 +41,10 @@
       });      
     },
 
-    getData: function() {
-      this.fetch();
+    getData: function(data) {
+      this.fetch({
+        data: data
+      });
     }
 
   });

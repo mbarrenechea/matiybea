@@ -39,17 +39,30 @@
 
     toggle: function(e) {
       var cartodb_id = this.model.get('cartodb_id');
-      var data = _.findWhere(this.locations.toJSON(), { cartodb_id: cartodb_id });
+      var data = _.find(this.locations.toJSON(), function(location) {
+        return (cartodb_id == location.properties.cartodb_id)
+      });
 
-      console.log(data);
-      this.$el
-        .html(this.template(data))
-        .toggleClass('-right', ! !!cartodb_id);
+      this.$el.toggleClass('-right', ! !!cartodb_id);
 
+      if (!!data) {
+        this.$el.html(this.template(data.properties));
+        this.setCenter(data.geometry);
+      }
     },
 
     hide: function() {
       this.model.set('cartodb_id', null);
+    },
+
+    setCenter: function(geometry) {
+      console.log(geometry);
+      var latLng = {
+        lat: geometry.coordinates[1],
+        lng: geometry.coordinates[0]
+      }
+      Backbone.Events.trigger('Map/center', latLng);
+      Backbone.Events.trigger('Map/zoom', 15);
     }
 
   });

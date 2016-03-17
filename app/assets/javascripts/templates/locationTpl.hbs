@@ -9,34 +9,42 @@
     <img src="/assets/home/new-york.jpg">
     <table class="m-table-plan">
       <tbody>
-        <tr>
-          <td><strong>Dirección</strong></td>
-          <td>Avda. de Navarra s/n. 15002 A Coruña</td>
-        </tr>
-        <tr>
-          <td><strong>Teléfono</strong></td>
-          <td>981 223 730</td>
-        </tr>
-        <tr>
-          <td><strong>Localización</strong></td>
-          <td>GPS: 43º 23´N - 8º 24´W</td>
-        </tr>
-        <tr>
-          <td><strong>Bus</strong></td>
-          <td>3, 3A, 5</td>
-        </tr>
-        <tr>
-          <td><strong>Horarios</strong></td>
-          <td>De octubre a mayo, de 10h a 18h (cierre de entrada a las 17:30h) </td>
-        </tr>
-        <tr>
-          <td><strong>Tarifa</strong></td>
-          <td>3€, lunes gratis</td>
-        </tr>
-        <tr>
-          <td><strong>Web</strong></td>
-          <td><a href="http://www.torredeherculesacoruna.com">http://www.torredeherculesacoruna.com</a></td>
-        </tr>
+        {{#if this.address}}
+          <tr>
+            <td><strong>Dirección</strong></td>
+            <td>{{this.address}}</td>
+          </tr>
+        {{/if}}
+        {{#if this.phone}}
+          <tr>
+            <td><strong>Teléfono</strong></td>
+            <td>{{this.phone}}</td>
+          </tr>
+        {{/if}}
+        {{#if this.location}}
+          <tr>
+            <td><strong>Localización</strong></td>
+            <td>{{this.location}}</td>
+          </tr>
+        {{/if}}
+        {{#if this.schedule}}
+          <tr>
+            <td><strong>Horarios</strong></td>
+            <td>{{this.schedule}}</td>
+          </tr>
+        {{/if}}
+        {{#if this.price}}
+          <tr>
+            <td><strong>Tarifa</strong></td>
+            <td>{{this.price}}</td>
+          </tr>
+        {{/if}}
+        {{#if this.link}}
+          <tr>
+            <td><strong>Web</strong></td>
+            <td><a href="{{this.address}}">{{this.address}}</a></td>
+          </tr>
+        {{/if}}
       </tbody>
     </table>    
   </div>

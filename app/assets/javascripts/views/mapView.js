@@ -13,7 +13,7 @@
         center: [0, 15],
         zoomControl: false,
         // scrollWheelZoom: false,
-        maxBounds: L.latLngBounds(L.latLng(43.334043422613284, -8.434581756591797), L.latLng(43.39101549114081, -8.378877639770508)),
+        // maxBounds: L.latLngBounds(L.latLng(43.334043422613284, -8.434581756591797), L.latLng(43.39101549114081, -8.378877639770508)),
 
       },
       basemap: {
@@ -36,7 +36,17 @@
 
     setListeners: function() {
       this.listenTo(this.layers, 'change', this.renderLayers);
-      this.listenTo(this.layers, 'sort', this.renderLayers);      
+      this.listenTo(this.layers, 'sort', this.renderLayers);
+
+      Backbone.Events.on('Map/center', function(latLng){
+        this.map.panTo(latLng, {
+          animate: false
+        });
+      }.bind(this));
+
+      Backbone.Events.on('Map/zoom', function(zoom){
+        this.map.setZoom(zoom);
+      }.bind(this))
     },
 
     /**

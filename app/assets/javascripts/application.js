@@ -109,7 +109,7 @@
       var layersCollection = new root.app.Collection.Layers();
 
       var locationsModel = new (Backbone.Model.extend({ defaults: { categories: [] }}))();
-      console.log(locationsModel);
+      
       var locationsCollection = new root.app.Collection.LocationsCollection({ categories: locationsModel});
 
       var mapView = new root.app.View.Map({
@@ -123,7 +123,9 @@
 
       mapView.createMap();
       layersCollection.getData();
-      locationsCollection.getData();
+      locationsCollection.getData({
+        format: 'geojson'
+      });
 
       this.locationsView = new root.app.View.LocationsView({
         layers: layersCollection,
