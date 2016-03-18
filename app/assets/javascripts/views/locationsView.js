@@ -10,7 +10,7 @@
     el: '#locationsView',
 
     events: {
-      'change .category-checkbox' : 'changeCategories',
+      'change .category-radio' : 'changeCategories',
       'click #locationListView li' : 'renderLocation'
     },
 
@@ -26,8 +26,7 @@
 
     setListeners: function() {
       this.locations.on('sync', this.render.bind(this));
-      this.model.on('change:categories', this.renderLocations.bind(this));
-      this.model.on('change:categories', this.renderLayers.bind(this));
+      this.model.on('change:category', this.renderLocations.bind(this));
     },
 
     cache: function() {
@@ -55,21 +54,14 @@
       }));
     },
 
-    renderLayers: function() {
-      _.each(this.layers.models, function(model) {
-        var active = (_.indexOf(this.model.get('categories'),model.attributes.slug) != -1);
-        model.set('active', active);
-      }.bind(this));
-    },
-
     changeCategories: function() {
       var categories = new Array();
-      _.each(this.$categoriesList.find('input[type=checkbox]'), function(v){
+      _.each(this.$categoriesList.find('input[type=radio]'), function(v){
         if ($(v).is(':checked')) {
-          categories.push($(v).data('category'));
+          this.model.set('category', $(v).data('category'));
         }
-      });
-      this.model.set('categories', categories);
+      }.bind(this));
+      
     }
   });
 

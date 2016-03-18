@@ -109,7 +109,7 @@
     mapPage: function() {
       var layersCollection = new root.app.Collection.Layers();
 
-      var locationsModel = new (Backbone.Model.extend({ defaults: { categories: [] }}))();
+      var locationsModel = new (Backbone.Model.extend({ defaults: { category: null }}))();
       
       var locationsCollection = new root.app.Collection.LocationsCollection({ categories: locationsModel});
 
@@ -117,6 +117,7 @@
         el: '#mapView',
         layers: layersCollection,
         locations: locationsCollection,
+        categories: locationsModel,
         model: new (Backbone.Model.extend({
           defaults: {
           }

@@ -5,6 +5,7 @@
   ul {
     padding: 20px 0 0;    
     li {
+      position: relative;
       display: flex;
       align-items: center;
       margin: 20px 0 0;
@@ -12,6 +13,14 @@
 
       &:first-child {
         margin: 0;
+      }
+
+      &:hover {
+        svg {
+          opacity: 1;
+          visibility: visible;
+          transform: translate(0,-50%);
+        }
       }
 
       .-img {
@@ -54,6 +63,19 @@
           font-weight: 400;
           padding: 5px 0 0;
         }
+      }
+
+      svg {
+        display: block;
+        width: 26px;
+        height: 26px;
+        position: absolute;
+        top: 50%;
+        right: 0;
+        opacity: 0;
+        visibility: hidden;
+        transform: translate(-10px,-50%);
+        transition: all 0.25s $easeInOutSine;
       }      
     }
   }

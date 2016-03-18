@@ -9,26 +9,28 @@
       width: 50%;
       label {
         position: relative;
-        text-indent: 15px;
         white-space: nowrap;
         text-align: left;
         
-        &:after {
-          content: "";
-          display: block;
-          position: absolute;
-          top: 50%;
-          left: 30px;
-          width: 6px;
-          height: 6px;
-          border-radius: 50%;
-          background: #000;
-          transform: translate(0,-50%);
+        span {
+          display: inline-block;
+          padding-right: 8px;
+          position: relative;
+          &:after {
+            content: "";
+            position: absolute;
+            top: 50%;
+            right: 0px;
+            width: 3px;
+            height: 9px;
+            background: #000;
+            transform: translate(0,-50%);
+          }
         }        
       }
       @for $i from 1 through length($locationCategories) {
         &.#{nth($locationCategories, $i)}{
-          label:after {
+          label:after, label span:after {
             background: nth($locationCategoriesColor, $i);
           }
         }

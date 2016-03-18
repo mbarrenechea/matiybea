@@ -31,14 +31,35 @@
 
     getLocations: function() {
       var locations = _.pluck(this.toJSON(), 'properties');
+      var currentCategory = this.categories.get('category');
       return _.sortBy(_.compact(_.map(locations, function(l){
-        if (_.indexOf(this.categories.get('categories'),l.category) != -1) {
-          return l;  
+        if (currentCategory != 'all') {
+          if (currentCategory == l.category) {
+            return l;  
+          }
+          return null;          
+        } else {
+          return l;
         }
-        return null;
+        
       }.bind(this))), function(c){
         return c.category_name
       });      
+    },
+
+    getMapLocations: function() {
+      var currentCategory = this.categories.get('category');
+      return _.compact(_.map(this.toJSON(), function(l){
+        if (currentCategory != 'all') {
+          if (currentCategory == l.properties.category) {
+            return l;  
+          }
+          return null;          
+        } else {
+          return l;
+        }
+        
+      }.bind(this)));      
     },
 
     getData: function(data) {

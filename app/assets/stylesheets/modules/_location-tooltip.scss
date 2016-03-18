@@ -3,11 +3,12 @@
   transform: translate(-50%,-100%);
   margin: -10px 0 0;
   overflow: visible;
-  max-width: 160px;
+  max-width: 200px;
   background: $white;
   visibility: hidden;
   opacity: 0;
   pointer-events: none;
+  box-shadow: $shadow-1;
 
   &.-active {
     visibility: visible;
@@ -35,17 +36,27 @@
     padding: 20px;
     
     h4 {
-      text-transform: uppercase;
+      font-size: 20px;
       color: $font-color-2;
-      padding-top: 10px;
-      
-      &:first-child {
-        padding-top: 0px;
-      }
+      padding: 0 0 10px;      
     }
     
     p {
+      font-size: 10px;
+      text-transform: uppercase;
       color: $font-color-3; 
     }
   }
+
+  @for $i from 1 through length($locationCategories) {
+    &.-#{nth($locationCategories, $i)}{
+      .m-location-tooltip-content {
+        p {
+          color: nth($locationCategoriesColor, $i);
+        }
+      }
+    }
+  }      
+
+
 }

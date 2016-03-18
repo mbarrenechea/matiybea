@@ -53,10 +53,10 @@
 
     hide: function() {
       this.model.set('cartodb_id', null);
+      Backbone.Events.trigger('Location/close');
     },
 
     setCenter: function(geometry) {
-      console.log(geometry);
       var latLng = {
         lat: geometry.coordinates[1],
         lng: geometry.coordinates[0]

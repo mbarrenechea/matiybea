@@ -31,16 +31,13 @@
       this.options = _.extend({}, this.defaults, opts);
       this.layers = settings.layers;
       this.locations = settings.locations;
+      this.categories = settings.categories;
       
       this.setListeners();
     },
 
     setListeners: function() {
-      // this.listenTo(this.layers, 'change', this.renderLayers);
-      // this.listenTo(this.layers, 'sort', this.renderLayers);
-
-      this.listenTo(this.locations, 'change', this.renderLayers);
-      this.listenTo(this.locations, 'sync', this.renderLayers);
+      this.categories.on('change:category', this.renderLayers.bind(this));
 
       Backbone.Events.on('Map/center', function(latLng){
         this.map.panTo(latLng);
@@ -126,15 +123,30 @@
           this.removeLayer(layerData);
         }
       }, this);
+      this.fitBounds();
+    },
 
-
-      var sql = new cartodb.SQL({ user: 'miguel-barrenechea' });
-      
-      sql.getBounds('SELECT * FROM matiybea').done(function(bounds) {
+    fitBounds: function() {
+      // Fit bounds
+      var cartodbSQL = new cartodb.SQL({ user: 'miguel-barrenechea' });
+      var sql = this.getFitBoundsSql();
+      cartodbSQL.getBounds(sql).done(function(bounds) {
         this.map.fitBounds(bounds, {padding: [50,50]})
       }.bind(this));            
+    },
 
+    getFitBoundsSql: function() {
+      var sql;
+      switch(this.categories.get('category')) {
+        case 'all':
+          sql = 'SELECT * FROM matiybea';
+        break;
 
+        default:
+          sql = 'SELECT * FROM matiybea WHERE category = \''+this.categories.get('category')+'\'';
+      }
+
+      return sql;
     },
 
     /**
@@ -151,6 +163,11 @@
       }
       var layer = this.model.get(layerData.id);
 
+      if (!!layer) {
+        this.removeLayer(layerData);
+        layer = null;
+      }
+
       var layerInstance;
       if (!layer) {
         switch(layerData.type) {
@@ -164,7 +181,7 @@
             }.bind(this));
           break;
           case 'marker':
-            var options = { locations: this.locations.toJSON() };
+            var options = { locations: this.locations.getMapLocations() };
             layerInstance = new root.app.Helper.MarkerLayer(this.map, options);
             layerInstance.create(function(layer) {
               layer.setOpacity(layerData.opacity);
@@ -184,7 +201,7 @@
           layer.layer.setOpacity(layerData.opacity);
           layer.layer.setZIndex(1000-layerData.order);
         }
-        // console.info('Layer "' + layerData.id + '"" already exists.');
+        console.info('Layer "' + layerData.id + '"" already exists.');
       }
     },
 
@@ -194,6 +211,7 @@
      */
     removeLayer: function(layerData) {
       var layerInstance = this.model.get(layerData.id);
+
       if (layerInstance) {
         this.model.set(layerData.id, null);
         layerInstance.remove();
