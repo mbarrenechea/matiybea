@@ -48,8 +48,15 @@
               background: nth($locationCategoriesColor, $i);
             }
           }
-        }      
+        }
 
+        $locationIds: 8, 11, 3, 9, 10, 4, 12, 17, 6, 18, 15, 20, 19, 25, 26, 13, 16, 23, 14, 21, 22, 24, 5, 7, 28, 31, 29, 30;
+
+        @for $i from 1 through length($locationIds) {
+          &.-image-#{nth($locationIds, $i)}{
+            background-image: image-url("locations/image-#{nth($locationIds, $i)}.jpg");
+          }
+        }
       }
 
       .-content {
