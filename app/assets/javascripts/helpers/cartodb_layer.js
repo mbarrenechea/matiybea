@@ -16,6 +16,7 @@
       type: 'cartodb', // Required
       cartodb_logo: false,
       interactivity: ['cartodb_id', 'name', 'category', 'category_name', 'description'],
+      defaultcartocss: '#matiybea { marker-fill-opacity: 1;marker-line-color: #FFF;marker-line-width: 1;marker-line-opacity: 1;marker-placement: point;marker-type: ellipse;marker-width: 15;marker-allow-overlap: true;}#matiybea[category="alojamiento"] { marker-fill: #d0021b;} #matiybea[category="cafe"] { marker-fill: #1F78B4;} #matiybea[category="compras"] { marker-fill: #bd10e0;} #matiybea[category="cultura"] { marker-fill: #f5a623;} #matiybea[category="entretenimiento"] { marker-fill: #FB9A99;} #matiybea[category="restaurante"] { marker-fill: #4a90e2;} #matiybea[category="sitios-de-interes"] { marker-fill: #f8e71c;} #matiybea[category="tapas"] { marker-fill: #50e3c2;} #matiybea[category="tomar-algo"] { marker-fill: #7ed321;}',
       // maps_api_template: 'https://grp.global.ssl.fastly.net/user/{user}',
       // sql_api_template: 'https://grp.global.ssl.fastly.net/user/{user}',
 
@@ -48,11 +49,13 @@
           this.layer = layer;
           this.layer.hover = false;
 
+          this.layer.setCartoCSS(this.options.defaultcartocss);
+
           // Mouse Click
           this.layer.on('featureClick', function(e, latlng, pos, data,layer) {
             e && e.preventDefault() && e.stopPropagation();
             
-            var new_cartocss = this.options.sublayers[0].cartocss + '#matiybea[cartodb_id = '+ data.cartodb_id +'] { marker-width: 50 }';
+            var new_cartocss = this.options.defaultcartocss + '#matiybea[cartodb_id = '+ data.cartodb_id +'] { marker-width: 50 }';
             this.layer.setCartoCSS(new_cartocss);
 
             Backbone.Events.trigger('Location/update', data.cartodb_id);

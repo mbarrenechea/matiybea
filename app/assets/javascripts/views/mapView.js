@@ -30,13 +30,17 @@
       var opts = settings && settings.options ? settings.options : {};
       this.options = _.extend({}, this.defaults, opts);
       this.layers = settings.layers;
+      this.locations = settings.locations;
       
       this.setListeners();
     },
 
     setListeners: function() {
-      this.listenTo(this.layers, 'change', this.renderLayers);
-      this.listenTo(this.layers, 'sort', this.renderLayers);
+      // this.listenTo(this.layers, 'change', this.renderLayers);
+      // this.listenTo(this.layers, 'sort', this.renderLayers);
+
+      this.listenTo(this.locations, 'change', this.renderLayers);
+      this.listenTo(this.locations, 'sync', this.renderLayers);
 
       Backbone.Events.on('Map/center', function(latLng){
         this.map.panTo(latLng, {
@@ -156,6 +160,14 @@
             var data = _.pick(layerData, ['sql', 'cartocss', 'interactivity', 'bounds']);
             var options = { sublayers: [data] };
             layerInstance = new root.app.Helper.CartoDBLayer(this.map, options);
+            layerInstance.create(function(layer) {
+              layer.setOpacity(layerData.opacity);
+              layer.setZIndex(1000-layerData.order);
+            }.bind(this));
+          break;
+          case 'marker':
+            var options = { locations: this.locations.toJSON() };
+            layerInstance = new root.app.Helper.MarkerLayer(this.map, options);
             layerInstance.create(function(layer) {
               layer.setOpacity(layerData.opacity);
               layer.setZIndex(1000-layerData.order);

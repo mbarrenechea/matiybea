@@ -14,6 +14,7 @@
 //= require_tree ./views
 //= require ./helpers/class
 //= require ./helpers/cartodb_layer
+//= require ./helpers/marker_layer
 
 //= require router
 
@@ -115,6 +116,7 @@
       var mapView = new root.app.View.Map({
         el: '#mapView',
         layers: layersCollection,
+        locations: locationsCollection,
         model: new (Backbone.Model.extend({
           defaults: {
           }
