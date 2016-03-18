@@ -30,6 +30,7 @@
         height: 60px;
         border-radius: 50%;
         background: $black;
+        background-size: cover;
 
         &:before {
           content: "";
@@ -47,7 +48,8 @@
               background: nth($locationCategoriesColor, $i);
             }
           }
-        }
+        }      
+
       }
 
       .-content {
