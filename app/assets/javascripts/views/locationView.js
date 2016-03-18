@@ -61,8 +61,8 @@
         lat: geometry.coordinates[1],
         lng: geometry.coordinates[0]
       }
+      // Backbone.Events.trigger('Map/zoom', 15);
       Backbone.Events.trigger('Map/center', latLng);
-      Backbone.Events.trigger('Map/zoom', 15);
     }
 
   });

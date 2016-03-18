@@ -11,19 +11,21 @@
    */
   root.app.Helper.MarkerLayer = root.app.Helper.Class.extend({
 
-    defaults: {
-      // user_name: 'miguel-barrenechea', // Required
-      // type: 'cartodb', // Required
-      // cartodb_logo: false,
-      // interactivity: ['cartodb_id', 'name', 'category', 'category_name', 'description'],
-      // defaultcartocss: '#matiybea { marker-fill-opacity: 1;marker-line-color: #FFF;marker-line-width: 1;marker-line-opacity: 1;marker-placement: point;marker-type: ellipse;marker-width: 15;marker-allow-overlap: true;}#matiybea[category="alojamiento"] { marker-fill: #d0021b;} #matiybea[category="cafe"] { marker-fill: #1F78B4;} #matiybea[category="compras"] { marker-fill: #bd10e0;} #matiybea[category="cultura"] { marker-fill: #f5a623;} #matiybea[category="entretenimiento"] { marker-fill: #FB9A99;} #matiybea[category="restaurante"] { marker-fill: #4a90e2;} #matiybea[category="sitios-de-interes"] { marker-fill: #f8e71c;} #matiybea[category="tapas"] { marker-fill: #50e3c2;} #matiybea[category="tomar-algo"] { marker-fill: #7ed321;}',
-      // // maps_api_template: 'https://grp.global.ssl.fastly.net/user/{user}',
-      // // sql_api_template: 'https://grp.global.ssl.fastly.net/user/{user}',
+    defaults: {},
 
-      // sublayers: [{
-      //   sql: 'SELECT * FROM matiybea', // Required
-      //   interactivity: ['cartodb_id', 'name', 'category', 'category_name', 'description'] // Optional
-      // }]
+    tooltipEl: $('#locationTooltipView'),
+    tooltipTpl: HandlebarsTemplates['locationsTooltipTpl'],
+
+    colors: {
+      "alojamiento" : '#d0021b',
+      "cafe" : '#1F78B4',
+      "compras" : '#bd10e0',
+      "cultura" : '#f5a623',
+      "entretenimiento" : '#FB9A99',
+      "restaurante" : '#4a90e2',
+      "sitios-de-interes" : '#f8e71c',
+      "tapas" : '#50e3c2',
+      "tomar-algo" : '#7ed321',
     },
 
     initialize: function(map, settings) {
@@ -33,6 +35,32 @@
       var opts = settings || {};
       this.options = _.extend({}, this.defaults, opts);
       this._setMap(map);
+      this._initVars();
+      this._initListeners();
+    },
+
+    _initVars: function() {
+      this.myZoom = {
+        start: this.map.getZoom(),
+        end: this.map.getZoom()
+      };
+    },
+
+    _initListeners: function() {
+      // this.map.on('zoomstart', function(e) {
+      //   this.myZoom.start = this.map.getZoom();
+      // }.bind(this));
+
+      // this.map.on('zoomend', function(e) {
+
+      //   this.myZoom.end = this.map.getZoom();
+      //   var diff = this.myZoom.start - this.myZoom.end;
+      //   _.each(this.markers, function(marker){
+      //     var radius =  (diff > 0) ? marker.getRadius() * 2 : marker.getRadius() / 2;
+      //     marker.setRadius(radius);  
+      //   });
+
+      // }.bind(this));      
     },
 
     /**
@@ -45,99 +73,30 @@
       this.markers = _.map(locations, function(l){
         var lat = l.geometry.coordinates[1];
         var lng = l.geometry.coordinates[0];
-        return new L.circle([lat,lng], 200, {
-          color: '#3186cc',
-          fillColor: '#3186cc',
+        var category = l.properties.category;
+
+        return new L.circleMarker([lat,lng], {
+          // Stroke
+          color: '#FFF',
+          weight: 1,
+          data: l.properties,
+          // Fill
+          fillColor: this.colors[category],
           fillOpacity: 0.6,
-          radius: 15
-        }).addTo(this.map);
+          radius: 10
+
+        }).on('mouseover', this._onMouseover.bind(this))
+          .on('mouseout', this._onMouseout.bind(this))
+          .on('click', this._onMouseclick.bind(this));
+
       }.bind(this));
 
-      this.myZoom = {
-        start: this.map.getZoom(),
-        end: this.map.getZoom()
-      };
-
-      this.map.on('zoomstart', function(e) {
-        this.myZoom.start = this.map.getZoom();
+      // Add to map
+      _.each(this.markers, function(marker){
+        marker.addTo(this.map);
       }.bind(this));
 
-      this.map.on('zoomend', function(e) {
-        this.myZoom.end = this.map.getZoom();
-        var diff = this.myZoom.start - this.myZoom.end;
-        _.each(this.markers, function(marker){
-          var radius =  (diff > 0) ? marker.getRadius() * 2 : marker.getRadius() / 2;
-          marker.setRadius(radius);  
-        });
-      }.bind(this));      
 
-      // this.layer = L.mapbox.featureLayer().addTo(this.map);
-      // this.layer.setGeoJSON(locations);
-      // console.log(this.options);
-      // cartodb.createLayer(this.map, this.options, { 'no_cdn': true })
-      //   .addTo(this.map)
-      //   .on('done', function(layer) {
-      //     this.layer = layer;
-      //     this.layer.hover = false;
-
-      //     this.layer.setCartoCSS(this.options.defaultcartocss);
-
-      //     // Mouse Click
-      //     this.layer.on('featureClick', function(e, latlng, pos, data,layer) {
-      //       e && e.preventDefault() && e.stopPropagation();
-            
-      //       var new_cartocss = this.options.defaultcartocss + '#matiybea[cartodb_id = '+ data.cartodb_id +'] { marker-width: 50 }';
-      //       this.layer.setCartoCSS(new_cartocss);
-
-      //       Backbone.Events.trigger('Location/update', data.cartodb_id);
-      //     }.bind(this));
-
-      //     // Mouse Hover
-      //     this.layer.on('featureOver', function(e, latlng, pos, data,layer) {
-      //       e && e.preventDefault() && e.stopPropagation();
-
-      //       this.layer.hover = true;
-      //       $(this.map._container).css('cursor', 'pointer');
-
-      //       this.tooltipEl
-      //         .css({
-      //           left: pos.x,
-      //           top: pos.y
-      //         })
-      //         .html(this.tooltipTpl(data))
-      //         .addClass('-active');
-
-      //     }.bind(this));
-          
-      //     // Mouse Out
-      //     this.layer.on('featureOut', function(e, latlng, pos, data,layer) {
-      //       if (!!this.layer.hover) {
-      //         this.layer.hover = false;
-      //         $(this.map._container).css('cursor', '');
-      //         this.tooltipEl
-      //           .html('')
-      //           .removeClass('-active');
-      //       }
-      //     }.bind(this));
-
-      //     var sublayer = this.layer.getSubLayer(0);
-      //         sublayer.set({ 'interactivity': this.options.interactivity }); 
-
-      //     // console.log(this.tooltipTpl);
-      //     this.layer.leafletMap.viz.addOverlay({
-      //       type: 'tooltip',
-      //       layer: sublayer,
-      //       position: 'top|center',
-      //       fields: ['cartodb_id', 'name', 'category', 'category_name', 'description']
-      //     });          
-
-      //     if (callback && typeof callback === 'function') {
-      //       callback.apply(this, arguments);
-      //     }
-      //   }.bind(this))
-      //   .on('error', function(err) {
-      //     throw err;
-      //   });
     },
 
     /**
@@ -157,6 +116,40 @@
      */
     _setMap: function(map) {
       this.map = map;
+    },
+
+
+    _onMouseover: function(e) {
+      var pos = this.map.latLngToContainerPoint(e.target._latlng);
+      this.tooltipEl
+        .css({
+          left: pos.x,
+          top: pos.y
+        })
+        .html(this.tooltipTpl(e.target.options.data))
+        .addClass('-active');
+    },
+
+    _onMouseout: function(e) {
+      this.tooltipEl
+        .html('')
+        .removeClass('-active');
+    },
+
+    _onMouseclick: function(e) {
+      // set default radius to all markers
+      this.resetRadius();
+      // set default radius to current
+      e.target.setRadius(25);
+      e.target.bringToFront();
+      Backbone.Events.trigger('Location/update', e.target.options.data.cartodb_id);
+    },
+
+    resetRadius: function() {
+      // set default radius to all markers
+      _.each(this.markers, function(marker){
+        marker.setRadius(10);  
+      }.bind(this));      
     }
 
   });

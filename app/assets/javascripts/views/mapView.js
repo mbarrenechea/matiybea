@@ -43,9 +43,7 @@
       this.listenTo(this.locations, 'sync', this.renderLayers);
 
       Backbone.Events.on('Map/center', function(latLng){
-        this.map.panTo(latLng, {
-          animate: false
-        });
+        this.map.panTo(latLng);
       }.bind(this));
 
       Backbone.Events.on('Map/zoom', function(zoom){
