@@ -17,7 +17,7 @@ test:
 production:
   adapter: postgresql
   encoding: utf8
-  database: matiybea_production
+  database: d9o36i40dd263v
   pool: 5
-  username:
-  password:
+  username: nctqsexglzjcnn
+  password: OcWpPxmFBW-Q2Box3siSSDVPpU
