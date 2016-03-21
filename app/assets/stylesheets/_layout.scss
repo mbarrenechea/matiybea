@@ -42,11 +42,17 @@
   }
 
   .m-section-box {
-    
     @media (min-width: $br-mobile){
       width: 50%;
       height: 100%;
       padding: 0;
-    }    
+      
+      &.-fullscreen {
+        width: 100%;
+        .content {
+          max-width: 800px;
+        }
+      }
+    }
   }
 }

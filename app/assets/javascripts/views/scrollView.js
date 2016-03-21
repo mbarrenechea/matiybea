@@ -9,11 +9,7 @@
 
     el: '#scrollView',
 
-    events: {
-      'click .m-header-btn-menu' : 'clickNavigation'
-    },
-
-    template: HandlebarsTemplates['scrollTpl'],
+    template: HandlebarsTemplates['enquireTpl'],
 
     initialize: function(settings) {
       var opts = settings && settings.options ? settings.options : {};
@@ -34,12 +30,14 @@
 
     setListeners: function() {
       if (!utilsHelper.isSmallScreen()) {
+        // Navigation with scroll & keyboard
         this.wheel = new WheelIndicator({
           elem: document.querySelector('#scrollView'),
           callback: this.scrollIndex.bind(this)
         });
-
         $(document).on('keyup.scroll', this.keyIndex.bind(this));
+
+
 
         this.model.on('change:index', this.scrollTo.bind(this));
         this.model.on('change:index', this.sectionIndex.bind(this));
@@ -77,27 +75,15 @@
     scrollIndex: function(e) {
       if (!this.model.get('is_moving')) {
         this.model.set('is_moving', true);
-        var index = this.model.get('index');
         switch(e.direction) {
           case 'up':
-            if (index == 0) {
-              index = 0;
-              this.model.set('is_moving', false);
-            } else {
-              index--
-            }
+            this.prev()
           break;
 
           case 'down':
-            if (index == this.sectionsLength - 1) {
-              index = this.sectionsLength - 1
-              this.model.set('is_moving', false);
-            } else {
-              index++
-            }
+            this.next();
           break;
         }
-        this.model.set('index', index);
       }
     },
 
@@ -105,27 +91,15 @@
       e && e.preventDefault();
       if (!this.model.get('is_moving')) {
         this.model.set('is_moving', true);
-        var index = this.model.get('index');
         switch(e.keyCode) {
           case 38:
-            if (index == 0) {
-              index = 0;
-              this.model.set('is_moving', false);
-            } else {
-              index--
-            }
+            this.prev()
           break;
 
           case 40:
-            if (index == this.sectionsLength - 1) {
-              index = this.sectionsLength - 1
-              this.model.set('is_moving', false);
-            } else {
-              index++
-            }
+            this.next();
           break;
         }
-        this.model.set('index', index);
       }
     },
 
@@ -137,6 +111,28 @@
           this.model.set('is_moving', false);
         }.bind(this));
       }
+    },
+
+    next: function() {
+      var index = this.model.get('index');
+      if (index == this.sectionsLength - 1) {
+        index = this.sectionsLength - 1
+        this.model.set('is_moving', false);
+      } else {
+        index++
+      }
+      this.model.set('index', index);
+    },
+
+    prev: function() {
+      var index = this.model.get('index');
+      if (index == 0) {
+        index = 0;
+        this.model.set('is_moving', false);
+      } else {
+        index--
+      }
+      this.model.set('index', index);      
     }
 
   });

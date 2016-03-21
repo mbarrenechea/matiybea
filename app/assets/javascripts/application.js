@@ -143,7 +143,22 @@
     },
 
     enquirePage: function() {
-      this.enquireView = new app.View.EnquireView();
+      this.enquireModel = new (Backbone.Model.extend({
+        defaults: {
+          index: 0,
+          is_moving: false
+        } 
+      }))
+
+      this.enquireCollection = new (Backbone.Collection.extend({
+        url: '/json/enquire.json'
+      }))
+
+      this.enquireView = new root.app.View.EnquireView({
+        model: this.enquireModel,
+        collection: this.enquireCollection
+      });
+
       this.initGlobalViews();
     },
 

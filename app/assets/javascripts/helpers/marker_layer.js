@@ -48,11 +48,11 @@
 
     _initListeners: function() {
       Backbone.Events.on('Location/update', function(_cartodb_id){
-        this._setRadius(_cartodb_id);
+        this._setSelected(_cartodb_id);
       }.bind(this));
 
       Backbone.Events.on('Location/close', function(){
-        this._resetRadius();
+        this._resetSelected();
       }.bind(this));
     },
 
@@ -142,12 +142,12 @@
 
     _onMouseclick: function(e) {
       // set default radius to all markers
-      this._resetRadius();
+      this._resetSelected();
       // set default radius to current
       Backbone.Events.trigger('Location/update', e.target.options.data.cartodb_id);
     },
 
-    _setRadius: function(id) {
+    _setSelected: function(id) {
       if (!!this.markers && !!this.markers.length) {
         var currentMarker = _.find(this.markers, function(marker) {
           return (marker.options.data.cartodb_id == id);
@@ -158,7 +158,7 @@
       }
     },
 
-    _resetRadius: function() {
+    _resetSelected: function() {
       if (!!this.markers && !!this.markers.length) {
         // set default radius to all markers
         _.each(this.markers, function(marker){
