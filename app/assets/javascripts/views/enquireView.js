@@ -11,6 +11,7 @@
 
     events: {
       'click .js-click-index' : 'clickIndex',
+      'change .js-question-radio' : 'changeQuestion'
     },
 
     template: HandlebarsTemplates['enquireTpl'],
@@ -57,6 +58,7 @@
       $section.addClass('-selected');
     },
 
+    // Events
     clickIndex: function(e) {
       e && e.preventDefault();
       if (!this.model.get('is_moving')) {
@@ -71,6 +73,19 @@
           break;
         }
       }      
+    },
+
+    changeQuestion: function(e) {
+      var $radios = $('#js-question-radio-'+question+ ' input[name=question-radio-'+question+']');
+      var question = $(e.currentTarget).data('question');
+      var answers = this.model.get('answers');
+      var index = $radios.index($radios.filter(':checked'));
+      
+      answers[question] = index;
+      this.model.set('answers', answers);
+      
+      console.log(this.collection._getAnswers());
+      this.next();
     },
 
     scrollTo: function() {

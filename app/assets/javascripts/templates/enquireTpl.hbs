@@ -7,12 +7,12 @@
         <h2 class="js-click-index" data-direction="next">{{this.question.title}}</h2>
       </header>
       <div class="info">
-        <ul>
+        <ul id="js-question-radio-{{@index}}">
           {{#each this.question.options}}
           <li>
             <div class="field -radio1">
-              <input class="question-radio" type="radio" name="question-radio" data-question="{{@index}}" id="question-{{@index}}">
-              <label class="label-{{@index}}" for="question-{{@index}}"><span>{{this.title}}</span></label>            
+              <input class="js-question-radio" type="radio" name="question-radio-{{@../index}}" data-question="{{@../index}}" id="question-{{@../index}}-{{@index}}">
+              <label class="label-{{@index}} -enquire" for="question-{{@../index}}-{{@index}}"><span>{{this.title}}</span></label>            
             </div>
           </li>     
           {{/each}}       
@@ -21,4 +21,23 @@
     </div>
   </div>
 </section>
+<section id="m-section-home" data-tooltip="Home" class="m-section">
+  <div class="m-section-box -text">
+    <div class="content">
+      <header>
+        <h3 class="js-click-index" data-direction="prev">Respuesta</h3>
+        <h2>{{this.answer.title}}</h2>
+      </header>
+      <div class="info">
+        {{{this.answer.explanation}}}        
+        <div class="actions">
+          <button class="btn -default -dark -fullwidth js-click-index" data-direction="next">Continuar</button>
+        </div>
+
+      </div>
+    </div>
+  </div>
+  <div class="m-section-box -confirm -image"></div>
+</section>
+
 {{/each}}

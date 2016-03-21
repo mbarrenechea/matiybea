@@ -146,12 +146,27 @@
       this.enquireModel = new (Backbone.Model.extend({
         defaults: {
           index: 0,
-          is_moving: false
+          is_moving: false,
+          answers: []
         } 
       }))
 
       this.enquireCollection = new (Backbone.Collection.extend({
-        url: '/json/enquire.json'
+        url: '/json/enquire.json',
+
+        _getAnswers: function() {
+          return this.toJSON();
+        },
+
+        _getCorrect: function(question, val) {
+
+        },
+
+        _getCorrectLength: function(arr) {
+
+        }
+
+
       }))
 
       this.enquireView = new root.app.View.EnquireView({

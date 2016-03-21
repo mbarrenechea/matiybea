@@ -32,6 +32,11 @@
     color: $font-color-2;
     border-bottom: 2px solid transparent;
     
+    &.-enquire {
+      width: 100%;
+      text-align: left;
+    }
+
     &.error {
       text-transform: none;
       color: red;
