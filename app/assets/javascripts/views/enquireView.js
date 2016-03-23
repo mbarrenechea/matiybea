@@ -23,6 +23,7 @@
       this.collection = settings.collection;
 
       this.collection.fetch().done(function(){
+        this.collection._getAnswers();
         this.render();
       }.bind(this))
     },
@@ -76,15 +77,17 @@
     },
 
     changeQuestion: function(e) {
-      var $radios = $('#js-question-radio-'+question+ ' input[name=question-radio-'+question+']');
       var question = $(e.currentTarget).data('question');
       var answers = this.model.get('answers');
+      var $radios = $('#js-question-radio-'+question+ ' input[name=question-radio-'+question+']');
       var index = $radios.index($radios.filter(':checked'));
       
       answers[question] = index;
       this.model.set('answers', answers);
+
+      var correct = this.collection._getCorrect(question, index);
+      console.log(correct);
       
-      console.log(this.collection._getAnswers());
       this.next();
     },
 

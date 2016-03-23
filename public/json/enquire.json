@@ -24,10 +24,10 @@
     "options" : [{
       "title": "Milhojas de dulce de leche"
     },{
-      "title": "Brownie"
-    },{
-      "title": "Tarta Guinness",
+      "title": "Brownie",
       "correct" : true
+    },{
+      "title": "Tarta Guinness"
     },{
       "title": "Tarta de chocolate y galleta"
     }]

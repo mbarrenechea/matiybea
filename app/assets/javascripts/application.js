@@ -155,11 +155,16 @@
         url: '/json/enquire.json',
 
         _getAnswers: function() {
-          return this.toJSON();
+          this.answers = _.flatten(_.compact(_.map(this.toJSON(), function(question){ 
+            return _.compact(_.map(question.question.options, function(answer,index){
+              return (answer.correct) ? index : null;
+            }))
+          })));
+          return this.answers;
         },
 
         _getCorrect: function(question, val) {
-
+          return (this.answers[question] == val);
         },
 
         _getCorrectLength: function(arr) {
