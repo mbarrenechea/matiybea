@@ -90,13 +90,14 @@
     keyIndex: function(e) {
       e && e.preventDefault();
       if (!this.model.get('is_moving')) {
-        this.model.set('is_moving', true);
         switch(e.keyCode) {
           case 38:
+            this.model.set('is_moving', true);
             this.prev()
           break;
 
           case 40:
+            this.model.set('is_moving', true);
             this.next();
           break;
         }
