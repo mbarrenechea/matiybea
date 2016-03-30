@@ -1,7 +1,7 @@
 [{
   "question": {
     "title" : "¿Cuál es la tarta favorita de Matías que Bea siempre le prepara para su cumpleaños?",
-    "subtitle" : "Empezemos",
+    "subtitle" : "Pregunta 1",
     "options" : [{
       "title": "Milhojas de dulce de leche"
     },{
@@ -19,59 +19,154 @@
   }
 },{
   "question": {
-    "title" : "¿Cuál es la tarta favorita de Matías que Bea siempre le prepara para su cumpleaños?",
-    "subtitle" : "Empezemos",
+    "title" : "Hablemos de hermanos... ¿Cuál de estas afirmaciones es verdadera?",
+    "subtitle" : "Pregunta 2",
     "options" : [{
-      "title": "Milhojas de dulce de leche"
+      "title": "Somos el mediano de tres hermanos"
     },{
-      "title": "Brownie",
+      "title": "Todos nuestros hermanos son del mismo sexo"
+    },{
+      "title": "Entre los hermanos de ambos hay la misma diferencia de edad"
+    },{
+      "title": "Todas las anteriores",
       "correct" : true
-    },{
-      "title": "Tarta Guinness"
-    },{
-      "title": "Tarta de chocolate y galleta"
     }]
   },
   "answer" : {
-    "title" : "¡Tarta Guinness!",
-    "explanation" : "<p>Las inquietudes culinarias de Bea empezaron por los postres el día que descubrió una receta mágica que mezclaba cerveza y chocolate… ¡Cómo puede fallar!</p><p>Os la dejamos por si queréis intentarlo</p><p><a href='http://www.isasaweis.com/tarta-guinness'>http://www.isasaweis.com/tarta-guinness</a></p>"    
+    "title" : "¡Todas son correctas!",
+    "explanation" : "<p>Los mayores economistas y los pequeños ratas de laboratorio…</p><p>Las coincidencias continúan…</p>"    
   }
 },{
   "question": {
-    "title" : "¿Cuál es la tarta favorita de Matías que Bea siempre le prepara para su cumpleaños?",
-    "subtitle" : "Empezemos",
+    "title" : "Nos casamos en Coruña…",
+    "subtitle" : "Pregunta 3",
     "options" : [{
-      "title": "Milhojas de dulce de leche"
-    },{
-      "title": "Brownie"
-    },{
-      "title": "Tarta Guinness",
+      "title": "Aunque ninguno de los dos nació allí",
       "correct" : true
     },{
-      "title": "Tarta de chocolate y galleta"
+      "title": "Pero nos hubiera gustado casarnos en Las Vegas"
+    },{
+      "title": "Porque dicen...”Novia mojada, novia afortunada”"
+    },{
+      "title": "Porque no se come mejor en ningún otro lado"
     }]
   },
   "answer" : {
-    "title" : "¡Tarta Guinness!",
-    "explanation" : "<p>Las inquietudes culinarias de Bea empezaron por los postres el día que descubrió una receta mágica que mezclaba cerveza y chocolate… ¡Cómo puede fallar!</p><p>Os la dejamos por si queréis intentarlo</p><p><a href='http://www.isasaweis.com/tarta-guinness'>http://www.isasaweis.com/tarta-guinness</a></p>"    
+    "title" : "¡Ninguno de los dos nació allí!",
+    "explanation" : "<p>Aunque ambos tenemos raíces gallegas, Matías nació en Montevideo, Uruguay y Bea en Madrid</p>"    
   }
 },{
   "question": {
-    "title" : "¿Cuál es la tarta favorita de Matías que Bea siempre le prepara para su cumpleaños?",
-    "subtitle" : "Empezemos",
+    "title" : "¿Cuántos años llevamos juntos?",
+    "subtitle" : "Pregunta 4",
     "options" : [{
-      "title": "Milhojas de dulce de leche"
+      "title": "6 años"
     },{
-      "title": "Brownie"
-    },{
-      "title": "Tarta Guinness",
+      "title": "8 años",
       "correct" : true
     },{
-      "title": "Tarta de chocolate y galleta"
+      "title": "10 años"
+    },{
+      "title": "Demasiados para contar"
     }]
   },
   "answer" : {
-    "title" : "¡Tarta Guinness!",
-    "explanation" : "<p>Las inquietudes culinarias de Bea empezaron por los postres el día que descubrió una receta mágica que mezclaba cerveza y chocolate… ¡Cómo puede fallar!</p><p>Os la dejamos por si queréis intentarlo</p><p><a href='http://www.isasaweis.com/tarta-guinness'>http://www.isasaweis.com/tarta-guinness</a></p>"    
+    "title" : "¡8 años!",
+    "explanation" : "<p>El 31 de diciembre cumpliríamos 9 años de pareja. A pesar de que el día es fácil de recordar, ninguno de los dos suele acordarse con claridad del año (verídico!)</p>"    
+  }
+},{
+  "question": {
+    "title" : "¿Donde hicimos nuestro viaje más accidentado?",
+    "subtitle" : "Pregunta 5",
+    "options" : [{
+      "title": "Portugal",
+      "correct" : true      
+    },{
+      "title": "New York"
+    },{
+      "title": "Uruguay"
+    },{
+      "title": "Amsterdam"
+    }]
+  },
+  "answer" : {
+    "title" : "¡Portugal!",
+    "explanation" : "<p>Tuvimos problemas con el hotel, nos robaron, nos rompieron el retrovisor, perdimos las llaves del coche, viajamos a 40º en un coche sin aire acondicionado…</p><p>Vamos un viaje como para recordar</p>"    
+  }
+},{
+  "question": {
+    "title" : "¿Qué tiene Bea que no tiene Mati?",
+    "subtitle" : "Pregunta 6",
+    "options" : [{
+      "title": "Vergüenza"
+    },{
+      "title": "Canas"
+    },{
+      "title": "Primos",
+      "correct" : true
+    },{
+      "title": "Muelas del juicio"
+    }]
+  },
+  "answer" : {
+    "title" : "¡Primos!",
+    "explanation" : "<p>Aquí Bea gana por goleada!</p><p>Bea 11 - Matías 0</p><p>¡Os esperamos a todos!</p>"    
+  }
+},{
+  "question": {
+    "title" : "¿Qué plato es imprescindible siempre que volvemos a Galicia?",
+    "subtitle" : "Pregunta 7",
+    "options" : [{
+      "title": "Tortilla de Betanzos"
+    },{
+      "title": "Mejillones en salsa de Lorbé",
+      "correct" : true      
+    },{
+      "title": "Raxo del Burgo"
+    },{
+      "title": "Empanada de Ares"
+    }]
+  },
+  "answer" : {
+    "title" : "Mejillones en salsa de Lorbé",
+    "explanation" : "<p>Para nosotros es un placer volver a disfrutar de cualquiera de estos platos, pero estos mejillones tienen algo especial.</p><p>Si los queréis probar, podéis encontrar el restaurante justo en el Puerto de Lorbé, a unos 25km del centro de la ciudad.</p><p>Restaurante Vila II Teléfono 981 61 77 51 GPS: 43.394041, -8.300148</p>"
+  }
+},{
+  "question": {
+    "title" : "¿Cuál de estos looks se parece más al de Matías cuando Bea le conoció?",
+    "subtitle" : "Pregunta 8",
+    "options" : [{
+      "title": "Look 1",
+      "correct" : true      
+    },{
+      "title": "Look 2"
+    },{
+      "title": "Look 3"
+    },{
+      "title": "Look 4"
+    }]
+  },
+  "answer" : {
+    "title" : "El coletas",
+    "explanation" : "<p>Bea le conoció con el pelo largo pero sospechosamente comenzaron a salir cuando se cortó la coleta.</p>"
+  }
+},{
+  "question": {
+    "title" : "¿Que vamos a hacer en nuestra boda que es típico en todas las bodas uruguayas?",
+    "subtitle" : "Pregunta 9",
+    "options" : [{
+      "title": "Tomar Mate"
+    },{
+      "title": "Bailar un tango"
+    },{
+      "title": "Comer un asado"
+    },{
+      "title": "Vals participativo",
+      "correct" : true      
+    }]
+  },
+  "answer" : {
+    "title" : "Vals participativo",
+    "explanation" : "<p>El vals en Uruguay lo abren los novios, y se van produciendo cambios de pareja según el grado de cercanía (padres, hermanos, familiares, amigos…)</p><p>Solo hay dos parejas en la pista, el novio y la novia y su respectivo compañero.</p>"
   }
 }]

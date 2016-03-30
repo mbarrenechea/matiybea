@@ -154,21 +154,26 @@
       this.enquireCollection = new (Backbone.Collection.extend({
         url: '/json/enquire.json',
 
+        customModel: this.enquireModel,
+
         _getAnswers: function() {
           this.answers = _.flatten(_.compact(_.map(this.toJSON(), function(question){ 
             return _.compact(_.map(question.question.options, function(answer,index){
-              return (answer.correct) ? index : null;
+              return (answer.correct) ? String(index) : null;
             }))
           })));
           return this.answers;
         },
 
         _getCorrect: function(question, val) {
-          return (this.answers[question] == val);
+          return (this.answers[question] == String(val));
         },
 
-        _getCorrectLength: function(arr) {
-
+        _getCorrectTotal: function(arr) {
+          var currentAnswers = this.customModel.get('answers');
+          return _.compact(_.map(this.answers, function(v,k){
+            return (v == currentAnswers[k]);
+          }.bind(this))).length;
         }
 
 

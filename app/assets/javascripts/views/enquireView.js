@@ -87,6 +87,9 @@
 
       var correct = this.collection._getCorrect(question, index);
       console.log(correct);
+
+      var correctTotal = this.collection._getCorrectTotal();
+      console.log(correctTotal);
       
       this.next();
     },
