@@ -1,3 +1,21 @@
+<section id="section-juegos" data-tooltip="Regalo" class="m-section">
+  <div class="m-section-box -text">
+    <div class="content">
+      <header>
+        <h3>Lorem ipsum</h3>
+        <h2>¿Cuánto sabes de nosotros?</h2>
+      </header>
+      <div class="info">
+        <p>Toda nueva etapa supone cambios y muchas ilusiones. Luna de miel, equipar la casa, darnos algún capricho... Estamos encantados de que nos queráis ayudar a empezar nuestra nueva vida juntos.</p>
+        <div class="actions -j-left -no-padding">
+          <button class="btn -default -dark -big js-click-index" data-direction="next">Empezar</button>
+        </div>        
+      </div>
+    </div>
+  </div>
+  <div class="m-section-box -juegos -image"></div>    
+</section>    
+
 {{#each questions}}
 <section class="m-section">
   <div class="m-section-box -text -fullscreen">
@@ -8,16 +26,18 @@
         <h2 data-direction="next">{{this.question.title}}</h2>
       </header>
       <div class="info">
-        <ul id="js-question-radio-{{@index}}">
+        {{#if this.question.options}}
+        <ul id="js-question-radio-{{@index}}" class="{{#if this.question.optionsImage}}grid{{/if}}">
           {{#each this.question.options}}
           <li>
-            <div class="field -radio1">
+            <div class="field {{#if ../this.question.optionsImage}}-radio-image{{else}}-radio1{{/if}}">
               <input class="js-question-radio" type="radio" name="question-radio-{{@../index}}" data-question="{{@../index}}" id="question-{{@../index}}-{{@index}}">
-              <label class="label-{{@index}} -enquire" for="question-{{@../index}}-{{@index}}"><span>{{this.title}}</span></label>            
+              <label class="label-{{@../index}}-{{@index}} -enquire" for="question-{{@../index}}-{{@index}}"><span>{{this.title}}</span></label>            
             </div>
           </li>     
           {{/each}}       
         </ul>
+        {{/if}}
       </div>
     </div>
   </div>
@@ -42,7 +62,7 @@
 {{/each}}
 
 <section class="m-section">
-  <div class="m-section-box -text">
+  <div class="m-section-box -text -fullscreen">
     <div class="content">
       <header>
         <h3 class="js-click-index" data-direction="prev">Final</h3>
@@ -53,5 +73,4 @@
       </div>
     </div>
   </div>
-  <div class="m-section-box -confirm -answer-{{@index}} -image"></div>
 </section>

@@ -135,15 +135,16 @@
   "question": {
     "title" : "¿Cuál de estos looks se parece más al de Matías cuando Bea le conoció?",
     "subtitle" : "Pregunta 8",
+    "optionsImage" : true,
     "options" : [{
-      "title": "Look 1",
+      "title": "",
       "correct" : true      
     },{
-      "title": "Look 2"
+      "title": ""
     },{
-      "title": "Look 3"
+      "title": ""
     },{
-      "title": "Look 4"
+      "title": ""
     }]
   },
   "answer" : {

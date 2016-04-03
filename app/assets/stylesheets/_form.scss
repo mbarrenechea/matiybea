@@ -194,6 +194,35 @@
     }
   }
 
+  &.-radio-image {
+    input[type="radio"] {
+      display: none;
+    }
+    
+    label { 
+      cursor: pointer;
+      width: 130px;
+      height: 130px;
+      opacity: 0.85;
+      background-size: contain;
+      background-repeat: no-repeat;
+            
+      @for $i from 0 through 4 {
+        &.label-7-#{$i}{
+          background-image: image-url("questions/question-7-#{$i}.png");
+        }
+      }
+
+      &:hover {
+        opacity: 1;
+      }
+    }
+    
+    input[type="radio"]:checked + label {    
+      opacity: 1;     
+    }
+  }
+
 
   // Radio
   &.-radio {
@@ -259,6 +288,7 @@
         display: block;
       }
     }
+
   }
 
 }
