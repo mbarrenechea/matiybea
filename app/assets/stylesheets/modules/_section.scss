@@ -194,7 +194,7 @@
   &.-home {
     background: image-url("section/home.jpg");
     background-size: cover;
-    background-position: bottom right;
+    background-position: center;
   }
 
   &.-confirm {
@@ -233,6 +233,12 @@
 
   &.-regalo {
     background: image-url("section/regalo.jpg");
+    background-size: cover;
+    background-position: center;    
+  }
+
+  &.-juegos {
+    background: image-url("section/juegos.jpg");
     background-size: cover;
     background-position: center;    
   }
