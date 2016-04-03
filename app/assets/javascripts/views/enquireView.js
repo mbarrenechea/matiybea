@@ -44,6 +44,11 @@
       // Sections
       this.$sections = this.$el.find('.m-section');
       this.sectionsLength = this.$sections.length;
+
+      // Answers
+      this.$correctAnswers = this.$el.find('#correctAnswers');
+      this.$totalAnswers = this.$el.find('#totalAnswers');
+      
     },
 
     setListeners: function() {
@@ -85,6 +90,7 @@
       answers[question] = index;
       this.model.set('answers', answers);
 
+      this.correct();
       var correct = this.collection._getCorrect(question, index);
       console.log(correct);
 
@@ -124,6 +130,14 @@
         index--
       }
       this.model.set('index', index);      
+    },
+
+    correct: function() {
+      var correctTotal = this.collection._getCorrectTotal();
+      var total = this.collection.toJSON().length;
+
+      this.$correctAnswers.text(correctTotal);
+      this.$totalAnswers.text(total);
     }
 
   });

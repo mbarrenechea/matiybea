@@ -5,6 +5,7 @@
     color: $red;
     position: relative;
     padding: 0 20px 0 0;
+    display: inline-block;    
 
     svg {
       width: 16px;
@@ -52,6 +53,20 @@
         }
       }
 
+      .icon {
+        width: 80px;
+        height: 80px;
+        display: inline-block;
+        margin: 0 auto 20px;
+        background-size: contain;
+        
+        @for $i from 0 through 10 {
+          &.-question-#{$i}{
+            background-image: image-url("questions/question-#{$i}.svg");
+          }
+        }
+      }
+
       h3 {
         color: $font-color-3;
         text-transform: uppercase;
@@ -70,8 +85,11 @@
 
     .info {
       padding: 20px 0 0;
+      display: inline-block;
+      position: relative;
+      margin: 0 auto;      
       @media (min-width: $br-mobile){
-        padding: 40px 0 0;
+        padding: 40px 0 0;        
       }
       
       > * {

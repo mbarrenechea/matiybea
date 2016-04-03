@@ -3,8 +3,9 @@
   <div class="m-section-box -text -fullscreen">
     <div class="content">
       <header>
-        <h3 class="js-click-index" data-direction="prev">{{this.question.subtitle}}</h3>
-        <h2 class="js-click-index" data-direction="next">{{this.question.title}}</h2>
+        <div class="icon -question-{{@index}}"></div>
+        <h3>{{this.question.subtitle}}</h3>
+        <h2 data-direction="next">{{this.question.title}}</h2>
       </header>
       <div class="info">
         <ul id="js-question-radio-{{@index}}">
@@ -25,7 +26,7 @@
   <div class="m-section-box -text">
     <div class="content">
       <header>
-        <h3 class="js-click-index" data-direction="prev">Respuesta</h3>
+        <h3>Respuesta</h3>
         <h2>{{this.answer.title}}</h2>
       </header>
       <div class="info">
@@ -45,7 +46,7 @@
     <div class="content">
       <header>
         <h3 class="js-click-index" data-direction="prev">Final</h3>
-        <h2>Has acertado 7/10</h2>
+        <h2>Has acertado <span id="correctAnswers"></span>/<span id="totalAnswers"></span></h2>
       </header>
       <div class="info">
         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Porro a ullam incidunt ad perspiciatis quae, eveniet reprehenderit eos quisquam. Ducimus, explicabo voluptatum corporis quis libero dolor, error culpa nobis rem?</p>

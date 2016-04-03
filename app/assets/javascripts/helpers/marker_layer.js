@@ -18,11 +18,12 @@
 
     colors: {
       "alojamiento" : '#d0021b',
+      "belleza" : '#F13DC6',
       "cafe" : '#1F78B4',
       "compras" : '#bd10e0',
       "cultura" : '#f5a623',
       "entretenimiento" : '#FB9A99',
-      "restaurante" : '#4a90e2',
+      "restaurante" : '#71DEEC',
       "sitios-de-interes" : '#f8e71c',
       "tapas" : '#50e3c2',
       "tomar-algo" : '#7ed321',
