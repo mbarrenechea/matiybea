@@ -27,6 +27,12 @@
     }
   }
 
+  &.-fullscreen {
+    .info {
+      display: inline-block;  
+    }
+  }
+
   &.-text {  
     .content {
       color: $font-color-2;
@@ -59,7 +65,7 @@
         display: inline-block;
         margin: 0 auto 20px;
         background-size: contain;
-        
+
         @for $i from 0 through 10 {
           &.-question-#{$i}{
             background-image: image-url("questions/question-#{$i}.svg");
@@ -85,7 +91,6 @@
 
     .info {
       padding: 20px 0 0;
-      display: inline-block;
       position: relative;
       margin: 0 auto;      
       @media (min-width: $br-mobile){
