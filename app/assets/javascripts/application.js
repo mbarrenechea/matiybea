@@ -169,11 +169,18 @@
           return (this.answers[question] == String(val));
         },
 
-        _getCorrectTotal: function(arr) {
+        _getCorrectTotal: function() {
           var currentAnswers = this.customModel.get('answers');
           return _.compact(_.map(this.answers, function(v,k){
             return (v == currentAnswers[k]);
-          }.bind(this))).length;
+          }.bind(this)));
+        },
+
+        _getResults: function() {
+          var currentAnswers = this.customModel.get('answers');
+          return _.map(this.answers, function(v,k){
+            return (v == currentAnswers[k]);
+          }.bind(this));
         }
 
 

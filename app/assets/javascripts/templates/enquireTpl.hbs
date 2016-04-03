@@ -65,8 +65,19 @@
   <div class="m-section-box -text -fullscreen">
     <div class="content">
       <header>
-        <h3 class="js-click-index" data-direction="prev">Final</h3>
-        <h2>Has acertado <span id="correctAnswers"></span>/<span id="totalAnswers"></span></h2>
+        <div id="iconAnswers" class="icon-answers">
+          {{#each questions}}
+            <div class="icon -answer -question-{{@index}}">
+              <div class="status"></div>
+              <div class="tooltip">
+                <p class="-question"><strong>{{this.question.title}}</strong></p>
+                <p>{{this.answer.title}}</p>
+              </div>
+            </div>
+          {{/each}}
+        </div>
+        <h3>Tu puntuación</h3>
+        <h2><span id="correctAnswers">7</span>/<span id="totalAnswers">10</span></h2>
       </header>
       <div class="info">
         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Porro a ullam incidunt ad perspiciatis quae, eveniet reprehenderit eos quisquam. Ducimus, explicabo voluptatum corporis quis libero dolor, error culpa nobis rem?</p>

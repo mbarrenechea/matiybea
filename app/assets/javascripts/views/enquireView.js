@@ -15,6 +15,7 @@
     },
 
     template: HandlebarsTemplates['enquireTpl'],
+    templateIcon: HandlebarsTemplates['answerIconTpl'],
 
     initialize: function(settings) {
       var opts = settings && settings.options ? settings.options : {};
@@ -37,6 +38,10 @@
       this.setListeners();
       this.sectionIndex();
 
+      // Testing
+      // this.model.set('answers', [false, false, false, true, true, true, true, true, true]);
+      // this.model.set('index', 19);
+      // this.correct();
     },
 
     cache: function() {
@@ -48,6 +53,7 @@
       // Answers
       this.$correctAnswers = this.$el.find('#correctAnswers');
       this.$totalAnswers = this.$el.find('#totalAnswers');
+      this.$iconAnswers = this.$el.find('#iconAnswers .icon');
       
     },
 
@@ -91,11 +97,6 @@
       this.model.set('answers', answers);
 
       this.correct();
-      var correct = this.collection._getCorrect(question, index);
-      console.log(correct);
-
-      var correctTotal = this.collection._getCorrectTotal();
-      console.log(correctTotal);
       
       this.next();
     },
@@ -135,11 +136,17 @@
     correct: function() {
       var correctTotal = this.collection._getCorrectTotal();
       var total = this.collection.toJSON().length;
+      var results = this.collection._getResults();
 
-      this.$correctAnswers.text(correctTotal);
+      this.$correctAnswers.text(correctTotal.length);
       this.$totalAnswers.text(total);
-    }
 
+      _.each(this.$iconAnswers, function(el,i) {
+        $(el).toggleClass('-correct',results[i]);
+        $(el).toggleClass('-incorrect',!results[i]);
+        $(el).find('.status').html(this.templateIcon({ correct: results[i] }));
+      }.bind(this))
+    }
   });
 
 })(this);
