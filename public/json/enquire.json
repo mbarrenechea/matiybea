@@ -170,4 +170,23 @@
     "title" : "Vals participativo",
     "explanation" : "<p>El vals en Uruguay lo abren los novios, y se van produciendo cambios de pareja según el grado de cercanía (padres, hermanos, familiares, amigos…)</p><p>Solo hay dos parejas en la pista, el novio y la novia y su respectivo compañero.</p>"
   }
+},{
+  "question": {
+    "title" : "¿Que vamos a hacer en nuestra boda que es típico en todas las bodas uruguayas?",
+    "subtitle" : "Pregunta 10",
+    "options" : [{
+      "title": "Tomar Mate"
+    },{
+      "title": "Bailar un tango"
+    },{
+      "title": "Comer un asado"
+    },{
+      "title": "Vals participativo",
+      "correct" : true      
+    }]
+  },
+  "answer" : {
+    "title" : "Vals participativo",
+    "explanation" : "<p>El vals en Uruguay lo abren los novios, y se van produciendo cambios de pareja según el grado de cercanía (padres, hermanos, familiares, amigos…)</p><p>Solo hay dos parejas en la pista, el novio y la novia y su respectivo compañero.</p>"
+  }
 }]

@@ -1,5 +1,5 @@
-<section id="section-juegos" data-tooltip="Regalo" class="m-section">
-  <div class="m-section-box -text">
+<section id="section-juegos" class="m-section -cuantosabes">
+  <div class="m-section-box -text -cuantosabes">
     <div class="content">
       <header>
         <h3>Lorem ipsum</h3>
@@ -17,13 +17,13 @@
 </section>    
 
 {{#each questions}}
-<section class="m-section">
-  <div class="m-section-box -text -fullscreen">
+<section class="m-section -cuantosabes">
+  <div class="m-section-box -text -cuantosabes -fullscreen">
     <div class="content">
       <header>
-        <div class="icon -question-{{@index}}"></div>
-        <h3>{{this.question.subtitle}}</h3>
-        <h2 data-direction="next">{{this.question.title}}</h2>
+        <div class="icon -question -question-{{@index}}"></div>
+        <h3 class="-question">{{this.question.subtitle}}</h3>
+        <h2 class="-question" data-direction="next">{{this.question.title}}</h2>
       </header>
       <div class="info">
         {{#if this.question.options}}
@@ -42,8 +42,8 @@
     </div>
   </div>
 </section>
-<section class="m-section">
-  <div class="m-section-box -text">
+<section class="m-section -cuantosabes">
+  <div class="m-section-box -text -cuantosabes">
     <div class="content">
       <header>
         <h3>Respuesta</h3>
@@ -61,8 +61,8 @@
 </section>
 {{/each}}
 
-<section class="m-section">
-  <div class="m-section-box -text -fullscreen">
+<section class="m-section -cuantosabes">
+  <div class="m-section-box -text -cuantosabes -fullscreen">
     <div class="content">
       <header>
         <div id="iconAnswers" class="icon-answers">

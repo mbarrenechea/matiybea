@@ -40,7 +40,7 @@
 
       // Testing
       // this.model.set('answers', [false, false, false, true, true, true, true, true, true]);
-      // this.model.set('index', 19);
+      // this.model.set('index', 21);
       // this.correct();
     },
 
@@ -102,13 +102,11 @@
     },
 
     scrollTo: function() {
-      if (!utilsHelper.isSmallScreen()) {
-        this.$el.transition({
-          y: -100 * this.model.get('index') + '%'
-        }, 500, function(){
-          this.model.set('is_moving', false);
-        }.bind(this));
-      }
+      this.$el.transition({
+        y: -100 * this.model.get('index') + '%'
+      }, 500, function(){
+        this.model.set('is_moving', false);
+      }.bind(this));
     },
 
     next: function() {

@@ -201,11 +201,15 @@
     
     label { 
       cursor: pointer;
-      width: 130px;
-      height: 130px;
+      width: 100px;
+      height: 100px;
       opacity: 0.85;
       background-size: contain;
       background-repeat: no-repeat;
+      @media (min-width: $br-mobile){
+        width: 130px;
+        height: 130px;
+      }
             
       @for $i from 0 through 4 {
         &.label-7-#{$i}{
