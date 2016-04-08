@@ -38,6 +38,7 @@
   &.-cuantosabes {
     overflow: auto;
     padding: 0 25px;
+    
     .content {
       color: $font-color-2;
       width: 100%;
@@ -319,7 +320,11 @@
 
   &.-text-scroll {
     overflow: auto;
-    border-top: 70px solid transparent;
+    border-top: 30px solid transparent;
+    @media (min-width: $br-mobile){
+      border-top: 70px solid transparent;
+    }
+
     .content {
       position: relative;
       top: 0%;   

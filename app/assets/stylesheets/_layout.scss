@@ -4,11 +4,9 @@
     overflow: hidden;
   }
 
-  &.-fullscreen {
-    @media (min-width: $br-mobile){
-      height: 100vh;
-      overflow: hidden;
-    }
+  @media (min-width: $br-mobile){
+    height: 100vh;
+    overflow: hidden;
   }
 }
 
@@ -20,7 +18,6 @@
   }
 
   @media (min-width: $br-mobile){
-    overflow: hidden;
     width: 100%;
     height: 100vh;
     transform: translate(0,0);
