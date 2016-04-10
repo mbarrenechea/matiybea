@@ -13,7 +13,7 @@
 
     numbers: [0,1,2,3,4,5,6,7,8,9],
 
-    endDate: new Date(2016, 9, 29, 17, 0, 0, 0),
+    endDate: new Date(2016, 9, 29, 19, 30, 0, 0),
 
     initialize: function(settings) {
       var opts = settings && settings.options ? settings.options : {};
