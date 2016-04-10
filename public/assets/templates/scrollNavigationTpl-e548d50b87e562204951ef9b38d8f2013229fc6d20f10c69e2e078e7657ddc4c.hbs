@@ -1,0 +1,11 @@
+<div class="m-scroll-navigation-box">
+  <ul>
+    {{#each sections}}
+      <li class="m-scroll-navigation-item" data-index="{{@index}}">
+        <span class="m-scroll-navigation-tooltip">{{this}}</span>
+      </li>
+    {{/each}}
+  </ul>  
+</div>
+
+<button class="btn-arrow m-scroll-navigation-next"><svg><use xlink:href="#icon-arrowdown"></use></svg></button>

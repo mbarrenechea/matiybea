@@ -1,0 +1,89 @@
+<section id="section-juegos" class="m-section -cuantosabes">
+  <div class="m-section-box -text -cuantosabes">
+    <div class="content">
+      <header>
+        <h3>Lorem ipsum</h3>
+        <h2>¿Cuánto sabes de nosotros?</h2>
+      </header>
+      <div class="info">
+        <p>Toda nueva etapa supone cambios y muchas ilusiones. Luna de miel, equipar la casa, darnos algún capricho... Estamos encantados de que nos queráis ayudar a empezar nuestra nueva vida juntos.</p>
+        <div class="actions -j-left -no-padding">
+          <button class="btn -default -dark -big js-click-index" data-direction="next">Empezar</button>
+        </div>        
+      </div>
+    </div>
+  </div>
+  <div class="m-section-box -juegos -image"></div>    
+</section>    
+
+{{#each questions}}
+<section class="m-section -cuantosabes">
+  <div class="m-section-box -text -cuantosabes -fullscreen">
+    <div class="content">
+      <header>
+        <div class="icon -question -question-{{@index}}"></div>
+        <h3 class="-question">{{this.question.subtitle}}</h3>
+        <h2 class="-question" data-direction="next">{{this.question.title}}</h2>
+      </header>
+      <div class="info">
+        {{#if this.question.options}}
+        <ul id="js-question-radio-{{@index}}" class="{{#if this.question.optionsImage}}grid{{/if}}">
+          {{#each this.question.options}}
+          <li>
+            <div class="field {{#if ../this.question.optionsImage}}-radio-image{{else}}-radio1{{/if}}">
+              <input class="js-question-radio" type="radio" name="question-radio-{{@../index}}" data-question="{{@../index}}" id="question-{{@../index}}-{{@index}}">
+              <label class="label-{{@../index}}-{{@index}} -enquire" for="question-{{@../index}}-{{@index}}"><span>{{this.title}}</span></label>            
+            </div>
+          </li>     
+          {{/each}}       
+        </ul>
+        {{/if}}
+      </div>
+    </div>
+  </div>
+</section>
+<section class="m-section -cuantosabes">
+  <div class="m-section-box -text -cuantosabes">
+    <div class="content">
+      <header>
+        <h3>Respuesta</h3>
+        <h2>{{this.answer.title}}</h2>
+      </header>
+      <div class="info">
+        {{{this.answer.explanation}}}        
+        <div class="actions -j-left -no-padding">
+          <button class="btn -default -dark -big js-click-index" data-direction="next">Continuar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="m-section-box -confirm -answer-{{@index}} -image">
+    {{#if this.answer.video}}
+      <video autoplay loop muted src="/videos/video-{{@index}}.mp4"></video>
+    {{/if}}
+  </div>
+</section>
+{{/each}}
+
+<section class="m-section -cuantosabes">
+  <div class="m-section-box -text -cuantosabes -fullscreen">
+    <div class="content">
+      <header>
+        <div id="iconAnswers" class="icon-answers">
+          {{#each questions}}
+            <div class="icon -answer -question-{{@index}}">
+              <div class="status"></div>
+              <div class="tooltip">
+                <p class="-question"><strong>{{this.question.title}}</strong></p>
+                <p>{{this.answer.title}}</p>
+              </div>
+            </div>
+          {{/each}}
+        </div>
+        <h3>Tu puntuación</h3>
+        <h2><span id="correctAnswers">7</span>/<span id="totalAnswers">10</span></h2>
+      </header>
+      <div id="correctMessage" class="result-answers info"></div>
+    </div>
+  </div>
+</section>

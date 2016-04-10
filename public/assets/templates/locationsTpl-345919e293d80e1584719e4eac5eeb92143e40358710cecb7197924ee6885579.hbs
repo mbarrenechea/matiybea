@@ -1,0 +1,23 @@
+<div class="m-location-categories">
+  <h3>Selecciona tu plan</h3>
+  <ul id="categoriesListView">
+    <li class="all" data-category="all">
+      <div class="field -radio1">
+        <input class="category-radio" checked="checked" name="category-radio" type="radio" data-category="all" id="category-all">
+        <label for="category-all"><span>Todos</span></label>            
+      </div>
+    </li>
+    {{#each this.categories}}
+      <li class="{{this.category}}" data-category="{{this.category}}">
+        <div class="field -radio1">
+          <input class="category-radio" type="radio" name="category-radio" data-category="{{this.category}}" id="category-{{this.category}}">
+          <label class="label-{{this.category}}" for="category-{{this.category}}"><span>{{this.category_name}}</span></label>            
+        </div>
+      </li>
+    {{/each}}
+  </ul>
+</div>
+<div class="m-location-list">
+  <h3>Listado de planes</h3>
+  <ul id="locationListView"></ul>
+</div>

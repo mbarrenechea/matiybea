@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="36px" height="36px" viewBox="0 0 36 36" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+    <!-- Generator: Sketch 3.5.2 (25235) - http://www.bohemiancoding.com/sketch -->
+    <title>drinks illustration</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-2" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" sketch:type="MSPage">
+        <g id="drinks-illustration" sketch:type="MSArtboardGroup" fill="#2F2E2F">
+            <g id="drinks-illustration-copy" sketch:type="MSLayerGroup" transform="translate(6.000000, 4.000000)">
+                <path d="M18.469,16.878 C17.271,16.878 16.21,16.069 15.891,14.913 L13.95,7.885 L19.11,6.46 L21.052,13.487 C21.242,14.177 21.153,14.899 20.8,15.521 C20.447,16.143 19.873,16.59 19.184,16.78 C18.949,16.845 18.709,16.878 18.469,16.878 L18.469,16.878 Z M8.971,14.913 C8.588,16.302 7.084,17.168 5.678,16.78 C4.989,16.59 4.415,16.143 4.062,15.521 C3.709,14.899 3.62,14.177 3.81,13.487 L5.752,6.46 L10.912,7.885 L8.971,14.913 Z M24.33,23.361 L22.201,23.949 L20.65,18.332 C21.435,17.92 22.092,17.297 22.539,16.507 C23.156,15.421 23.312,14.159 22.979,12.955 L20.506,4 L12.431,6.23 L4.356,4 L1.883,12.955 C1.55,14.159 1.706,15.421 2.323,16.507 C2.77,17.297 3.427,17.92 4.212,18.332 L2.66,23.949 L0.532,23.361 L0,25.289 L6.184,26.998 L6.717,25.07 L4.588,24.482 L6.141,18.861 C6.225,18.865 6.309,18.878 6.393,18.878 C8.488,18.878 10.341,17.466 10.899,15.445 L12.431,9.897 L13.963,15.445 C14.521,17.466 16.374,18.878 18.469,18.878 L18.469,18.878 C18.553,18.878 18.637,18.865 18.721,18.861 L20.274,24.482 L18.145,25.07 L18.677,26.998 L24.862,25.289 L24.33,23.361 Z" id="Fill-1-Copy" sketch:type="MSShapeGroup"></path>
+                <g id="Group-3" transform="translate(9.000000, 0.000000)" sketch:type="MSShapeGroup">
+                    <ellipse id="Oval-111" cx="3.5" cy="3.4" rx="0.625" ry="0.6"></ellipse>
+                    <ellipse id="Oval-111-Copy-2" cx="6.375" cy="2.2" rx="0.625" ry="0.6"></ellipse>
+                    <ellipse id="Oval-111-Copy" cx="0.625" cy="0.6" rx="0.625" ry="0.6"></ellipse>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

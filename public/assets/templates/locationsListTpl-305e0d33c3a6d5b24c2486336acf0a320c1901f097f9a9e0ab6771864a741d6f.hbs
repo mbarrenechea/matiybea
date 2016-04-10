@@ -1,0 +1,11 @@
+{{#each this.locations}}
+  <li data-id="{{this.cartodb_id}}">
+    <div class="-img {{this.category}} -image-{{this.cartodb_id}}"></div>
+    <div class="-content">
+      <h4>{{this.category_name}}</h4>
+      <h3>{{this.name}}</h3>
+    </div>
+    <svg><use xlink:href="#icon-arrowright"></use></svg>
+  </li>
+{{/each}}    
+
