@@ -14,6 +14,14 @@
       'change .js-question-radio' : 'changeQuestion'
     },
 
+    ranges: [_.range(0,1),_.range(1,5),_.range(5,10),_.range(10,11)],
+    messages: [
+      HandlebarsTemplates['answer0'],
+      HandlebarsTemplates['answer1'],
+      HandlebarsTemplates['answer2'],
+      HandlebarsTemplates['answer3']
+    ],
+
     template: HandlebarsTemplates['enquireTpl'],
     templateIcon: HandlebarsTemplates['answerIconTpl'],
 
@@ -39,7 +47,7 @@
       this.sectionIndex();
 
       // Testing
-      // this.model.set('answers', [false, false, false, true, true, true, true, true, true]);
+      // this.model.set('answers', [false, false, false, true, false, false, true, false, false]);
       // this.model.set('index', 21);
       // this.correct();
     },
@@ -53,6 +61,7 @@
       // Answers
       this.$correctAnswers = this.$el.find('#correctAnswers');
       this.$totalAnswers = this.$el.find('#totalAnswers');
+      this.$messageAnswers = this.$el.find('#correctMessage');
       this.$iconAnswers = this.$el.find('#iconAnswers .icon');
       
     },
@@ -139,11 +148,23 @@
       this.$correctAnswers.text(correctTotal.length);
       this.$totalAnswers.text(total);
 
+      var message = this.getMessage(correctTotal.length);
+      this.$messageAnswers.html()
+
+
       _.each(this.$iconAnswers, function(el,i) {
         $(el).toggleClass('-correct',results[i]);
         $(el).toggleClass('-incorrect',!results[i]);
         $(el).find('.status').html(this.templateIcon({ correct: results[i] }));
       }.bind(this))
+    },
+
+    getMessage: function(total) {
+      var index = _.findIndex(this.ranges, function(range) {
+        return _.contains(range, total);
+      });
+
+      this.$messageAnswers.html(this.messages[index]);
     }
   });
 
