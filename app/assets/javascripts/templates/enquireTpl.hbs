@@ -57,7 +57,11 @@
       </div>
     </div>
   </div>
-  <div class="m-section-box -confirm -answer-{{@index}} -image"></div>
+  <div class="m-section-box -confirm -answer-{{@index}} -image">
+    {{#if this.answer.video}}
+      <video autoplay loop muted src="/assets/videos/video-{{@index}}.mp4"></video>
+    {{/if}}
+  </div>
 </section>
 {{/each}}
 

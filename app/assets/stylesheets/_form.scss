@@ -212,8 +212,12 @@
       }
             
       @for $i from 0 through 4 {
-        &.label-7-#{$i}{
-          background-image: image-url("questions/question-7-#{$i}.png");
+        &.label-4-#{$i}{
+          background-image: image-url("questions/question-4-#{$i}.png");
+        }
+
+        &.label-8-#{$i}{
+          background-image: image-url("questions/question-8-#{$i}.png");
         }
       }
 
