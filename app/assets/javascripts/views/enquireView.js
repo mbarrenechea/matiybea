@@ -47,9 +47,9 @@
       this.sectionIndex();
 
       // Testing
-      // this.model.set('answers', [false, false, false, true, false, false, true, false, false]);
-      // this.model.set('index', 20);
-      // this.correct();
+      this.model.set('answers', [false, false, false, true, false, false, true, false, false]);
+      this.model.set('index', 21);
+      this.correct();
     },
 
     cache: function() {

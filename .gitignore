@@ -17,4 +17,5 @@
 /tmp
 /vendor
 /resources
+/public/assets
 .DS_Store
