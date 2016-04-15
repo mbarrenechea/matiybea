@@ -46,7 +46,7 @@
       this.$el.toggleClass('-right', ! !!cartodb_id);
 
       if (!!data) {
-        this.$el.html(this.template(data.properties));
+        this.$el.html(this.template(this.parseData(data)));
         this.setCenter(data.geometry);
       }
     },
@@ -54,6 +54,13 @@
     hide: function() {
       this.model.set('cartodb_id', null);
       Backbone.Events.trigger('Location/close');
+    },
+
+    parseData: function(data) {
+      var lat = data.geometry.coordinates[1];
+      var lng = data.geometry.coordinates[0];
+      data.properties.googleMapsLink = 'http://maps.google.com/maps?q='+lat+','+lng;
+      return data.properties;
     },
 
     setCenter: function(geometry) {

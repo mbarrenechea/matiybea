@@ -45,6 +45,12 @@
             <td><a href="{{this.link}}" target="_blank">Sitio web</a></td>
           </tr>
         {{/if}}
+        {{#if this.googleMapsLink}}
+          <tr>
+            <td></td>
+            <td><a target="_blank" href="{{this.googleMapsLink}}">Abrir en Google Maps</a></td>
+          </tr>
+        {{/if}}
       </tbody>
     </table>    
   </div>
