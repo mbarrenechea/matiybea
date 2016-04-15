@@ -48,7 +48,7 @@
 
       // Testing
       // this.model.set('answers', [false, false, false, true, false, false, true, false, false]);
-      // this.model.set('index', 21);
+      // this.model.set('index', 19);
       // this.correct();
     },
 

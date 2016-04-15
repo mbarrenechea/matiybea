@@ -14,6 +14,7 @@
     }]
   },
   "answer" : {
+    "button" : "Siguiente pregunta",
     "title" : "¡Tarta Guinness!",
     "explanation" : "<p>Las inquietudes culinarias de Bea empezaron por los postres el día que descubrió una receta mágica que mezclaba cerveza y chocolate… ¡Cómo puede fallar!</p><p>Os la dejamos por si queréis intentarlo</p><p><a href='http://www.isasaweis.com/tarta-guinness'>http://www.isasaweis.com/tarta-guinness</a></p>"    
   }
@@ -33,6 +34,7 @@
     }]
   },
   "answer" : {
+    "button" : "Siguiente pregunta",
     "title" : "¡Todas son correctas!",
     "explanation" : "<p>Los mayores economistas y los pequeños ratas de laboratorio…</p><p>Las coincidencias continúan…</p>"    
   }
@@ -52,6 +54,7 @@
     }]
   },
   "answer" : {
+    "button" : "Siguiente pregunta",
     "title" : "¡Ninguno de los dos nació allí!",
     "explanation" : "<p>Aunque ambos tenemos raíces gallegas, Matías nació en Montevideo, Uruguay y Bea en Madrid, España</p>"    
   }
@@ -71,6 +74,7 @@
     }]
   },
   "answer" : {
+    "button" : "Siguiente pregunta",
     "title" : "¡8 años!",
     "explanation" : "<p>El 31 de diciembre cumpliremos 9 años de pareja. A pesar de que el día es fácil de recordar, ninguno de los dos suele acordarse con claridad del año (¡verídico!)</p>"    
   }
@@ -91,6 +95,7 @@
     }]
   },
   "answer" : {
+    "button" : "Siguiente pregunta",
     "title" : "El gran Lebowski",
     "explanation" : "<p>Aunque las hemos visto todas y cada una de ellas destacan en su género, sin duda, la que más hemos repetido es El Gran Lebowski… ¡Imposible cambiar cuando la echan!</p>"    
   }
@@ -110,6 +115,7 @@
     }]
   },
   "answer" : {
+    "button" : "Siguiente pregunta",
     "title" : "¡Portugal!",
     "explanation" : "<p>Tuvimos problemas con el hotel, nos robaron, nos rompieron el retrovisor, perdimos las llaves del coche, viajamos a 40º en un coche sin aire acondicionado…</p><p>Vamos un viaje como para recordar...</p>"    
   }
@@ -129,6 +135,7 @@
     }]
   },
   "answer" : {
+    "button" : "Siguiente pregunta",
     "title" : "¡Primos!",
     "explanation" : "<p>¡Aquí Bea gana por goleada!</p><p>Bea 11 - Matías 0</p><p>¡Os esperamos a todos!</p>"    
   }
@@ -148,6 +155,7 @@
     }]
   },
   "answer" : {
+    "button" : "Siguiente pregunta",
     "title" : "Mejillones en salsa de Lorbé",
     "explanation" : "<p>Para nosotros es un placer volver a disfrutar de cualquiera de estos platos, pero estos mejillones tienen algo especial.</p><p>Si los queréis probar, podéis encontrar el restaurante justo en el Puerto de Lorbé, a unos 25km del centro de la ciudad.</p><p>Restaurante Vila II Teléfono 981 61 77 51 GPS: 43.394041, -8.300148</p>"
   }
@@ -168,6 +176,7 @@
     }]
   },
   "answer" : {
+    "button" : "Siguiente pregunta",
     "title" : "El coletas",
     "explanation" : "<p>Bea le conoció con el pelo largo pero sospechosamente comenzaron a salir cuando se cortó la coleta.</p>"
   }
@@ -187,6 +196,7 @@
     }]
   },
   "answer" : {
+    "button" : "Ver resultados",
     "video": true,
     "title" : "Vals participativo",
     "explanation" : "<p>El vals en Uruguay lo abren los novios, y se van produciendo cambios de pareja según el grado de cercanía (padres, hermanos, familiares, amigos…)</p><p>Solo hay dos parejas en la pista, el novio y la novia y su respectivo compañero.</p>"
