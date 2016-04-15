@@ -31,11 +31,19 @@
     },
 
     validate: function() {
+
+      this.validateMethods()
+
       this.$el.validate({
+        rules: {            
+          "confirm[code]": {
+            required: true,
+            equals: "beaymati"
+          }
+        },        
         submitHandler: function(form) {
           var url = $(form).attr('action');
           var data = this.setParams(form);
-          console.log(data);
 
           $.ajax({
             type: "POST",
@@ -47,6 +55,12 @@
 
         }.bind(this)
       });
+    },
+
+    validateMethods: function() {
+      $.validator.addMethod("equals", function(value, element, string) {
+          return value === string;
+      }, $.validator.format("Recuerda que te enviamos un código al mail"));
     },
 
     success: function(data) {

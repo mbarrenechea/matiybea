@@ -67,6 +67,6 @@ class ConfirmsController < ApplicationController
     end
     # Only allow a trusted parameter "white list" through.
     def confirm_params
-      params.require(:confirm).permit(:name, :companion, {:childs => []}, :allergic, :comment)
+      params.require(:confirm).permit(:code, :name, :companion, {:childs => []}, :allergic, :comment)
     end
 end

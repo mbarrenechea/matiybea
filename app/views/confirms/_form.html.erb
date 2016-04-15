@@ -13,6 +13,12 @@
   <ul class="field-grid">
     <li class="field-grid-item">
       <div class="field">
+        <%= f.label :code , 'Código' %>
+        <%= f.text_field :code, required: true, placeholder: "Introduce el código" %>
+      </div>
+    </li>
+    <li class="field-grid-item">
+      <div class="field">
         <%= f.label :name , 'Nombre y apellidos' %>
         <%= f.text_field :name, required: true, placeholder: "¿Quién eres?" %>
       </div>
