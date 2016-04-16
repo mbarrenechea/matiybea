@@ -245,6 +245,10 @@
         margin: 0 0 0 -1px;
         line-height: 1.2;
         @media (min-width: $br-mobile){
+          font-size: 42px;
+          margin: 0 0 0 -4px;
+        }
+        @media (min-width: $br-desktop){
           font-size: 54px;
           margin: 0 0 0 -4px;
         }
