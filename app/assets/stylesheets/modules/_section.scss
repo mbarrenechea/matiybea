@@ -10,12 +10,12 @@
     svg {
       width: 16px;
       height: 16px;
+      fill: $red;
+      margin: auto;
       position: absolute;
-      top: 50%;
       right: 0;
-      transform: translate(0,-50%);
-      fill: red;
-      margin: 1px 0 0;
+      top: 0;
+      bottom: 0;
     }
 
     &:hover {
