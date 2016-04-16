@@ -33,3 +33,22 @@
     text-align: right;
   }
 }
+
+.m-table-enquire {
+  
+  tr {
+    margin: 0;
+  }
+
+  td {
+    padding: 5px;
+    &:nth-child(even) {
+      padding-right: 25px;
+    }
+  }
+
+  strong {
+    display: block;
+    padding: 0 5px 0 0;
+  }
+}

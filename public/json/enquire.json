@@ -36,7 +36,7 @@
   "answer" : {
     "button" : "Siguiente pregunta",
     "title" : "¡Todas son correctas!",
-    "explanation" : "<p>Los mayores economistas y los pequeños ratas de laboratorio…</p><p>Las coincidencias continúan…</p>"    
+    "explanation" : "<p>Los mayores economistas y los pequeños ratas de laboratorio…</p><table class=\"m-table-enquire\"><tbo<tr><td><strong>Blanca</strong></td><td>1978</td><td><strong>Nico</strong></td><td>1980</td></tr><tr><td><strong>Bea</strong></td><td>1980</td><td><strong>Mati</strong></td><td>1982</td></tr><tr><td><strong>Cris</strong></td><td>1991</td><td><strong>Nacho</strong></td><td>1993</td></tr></tbody></table><p>Las coincidencias continúan…</p>"    
   }
 },{
   "question": {
@@ -48,7 +48,7 @@
     },{
       "title": "Pero nos hubiera gustado casarnos en Las Vegas"
     },{
-      "title": "Porque dicen...”Novia mojada, novia afortunada”"
+      "title": "Porque nos encanta el pulpo"
     },{
       "title": "Porque no se come mejor en ningún otro lado"
     }]
@@ -63,7 +63,7 @@
     "title" : "¿Cuántos años llevamos juntos?",
     "subtitle" : "Pregunta 4",
     "options" : [{
-      "title": "6 años"
+      "title": "Nos conocimos este año"
     },{
       "title": "8 años",
       "correct" : true
