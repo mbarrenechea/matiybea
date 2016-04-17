@@ -371,7 +371,6 @@
     height: 100%;
     padding: 0 20px;
     background: #FFF;
-    transform: translate(0%,0%);
     transition: all $easeInOutSine 0.5s;
     opacity: 1;
     visibility: visible;
@@ -382,13 +381,11 @@
     }
 
     &.-right {
-      transform: translate(100%,0%);
       opacity: 0;
       visibility: hidden;
     }
 
     &.-bottom {
-      transform: translate(0%,100%);
       opacity: 0;
       visibility: hidden;
     }
