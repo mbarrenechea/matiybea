@@ -169,6 +169,10 @@
           return (this.answers[question] == String(val));
         },
 
+        _getCorrectAnswer: function(question) {
+          return this.answers[question];
+        },
+
         _getCorrectTotal: function() {
           var currentAnswers = this.customModel.get('answers');
           return _.compact(_.map(this.answers, function(v,k){

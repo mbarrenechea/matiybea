@@ -143,6 +143,39 @@
     input[type="radio"] {
       display: none;
     }
+    
+    &.-correct {
+      input[type="radio"] + label {    
+        color: green;
+        &:after { 
+          background: green; 
+          display: block;
+          opacity: 1;
+          visibility: visible;
+        }
+      }
+      input[type="radio"]:checked + label {    
+        color: green;
+        &:after { background: green; }
+      }
+    }
+
+    &.-incorrect {
+      input[type="radio"] + label {    
+        color: red;
+        &:after { 
+          background: red;
+          display: block;
+          opacity: 1;
+          visibility: visible;          
+        }
+      }
+      input[type="radio"]:checked + label {    
+        color: red;
+        &:after { background: red;}
+      }
+    }
+
     label { 
       padding-left: 30px;
       cursor: pointer;
@@ -198,6 +231,19 @@
     input[type="radio"] {
       display: none;
     }
+
+    &.-correct {
+      input[type="radio"] + label {    
+        border-bottom: 2px solid green;      
+      }
+    }
+
+    &.-incorrect {
+      input[type="radio"] + label {    
+        border-bottom: 2px solid red;
+      }
+    }
+
     
     label { 
       cursor: pointer;
@@ -206,6 +252,7 @@
       opacity: 0.85;
       background-size: contain;
       background-repeat: no-repeat;
+      background-position: center;
       @media (min-width: $br-mobile){
         width: 130px;
         height: 130px;

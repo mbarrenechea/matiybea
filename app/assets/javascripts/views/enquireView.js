@@ -56,7 +56,7 @@
       this.sectionIndex();
 
       // Testing
-      // this.model.set('index', 20);
+      // this.model.set('index', 17);
       // this.model.set('answers', [false, false, false, true, false, false, true, false, false]);
       // this.correct();
     },
@@ -81,7 +81,7 @@
     setListeners: function() {
       this.model.on('change:index', this.scrollTo.bind(this));
       this.model.on('change:index', this.sectionIndex.bind(this));
-      this.model.on('change:index', this.correct.bind(this));
+      this.model.on('change:index', this.last.bind(this));
 
       this.enquireModel.on('change:name', this.changeName.bind(this));
       this.enquireModel.on('change:score', this.changeScore.bind(this));
@@ -117,13 +117,21 @@
       var answers = this.model.get('answers');
       var $radios = $('#js-question-radio-'+question+ ' input[name=question-radio-'+question+']');
       var index = $radios.index($radios.filter(':checked'));
-      
+      var correct = this.collection._getCorrect(question, index);
+      var correctAnswer = this.collection._getCorrectAnswer(question);
+      var time = (correct) ? 0 : 1500;
       answers[question] = index;
       this.model.set('answers', answers);
 
-      this.correct();
-      
-      this.next();
+      $radios.addClass('-disabled').prop('disabled', true);
+      $radios.eq(index).parent().toggleClass('-correct', correct);
+      $radios.eq(index).parent().toggleClass('-incorrect', !correct);
+
+      $radios.eq(correctAnswer).parent().addClass('-correct', true);
+
+      setTimeout(function(){
+        this.next();
+      }.bind(this),time)
     },
 
     scrollTo: function() {
@@ -156,9 +164,7 @@
       this.model.set('index', index);      
     },
 
-    correct: function() {
-      console.log(this.model.get('index'));
-      console.log(this.sectionsLength - 1);
+    last: function() {
       if (this.model.get('index') == this.sectionsLength - 1) {
         var correctTotal = this.collection._getCorrectTotal();
         var total = this.collection.toJSON().length;
