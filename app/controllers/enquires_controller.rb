@@ -1,13 +1,16 @@
 class EnquiresController < ApplicationController
   before_action :set_enquire, only: [:show, :edit, :update, :destroy]
+  respond_to :html, :json
 
   # GET /enquires
   def index
     @enquires = Enquire.all
+    respond_with(@enquires)
   end
 
   # GET /enquires/1
   def show
+    respond_with(@enquire)
   end
 
   # GET /enquires/new
@@ -24,18 +27,14 @@ class EnquiresController < ApplicationController
     @enquire = Enquire.new(enquire_params)
 
     if @enquire.save
-      redirect_to @enquire, notice: 'Enquire was successfully created.'
-    else
-      render :new
+      respond_with(@enquire)
     end
   end
 
   # PATCH/PUT /enquires/1
   def update
     if @enquire.update(enquire_params)
-      redirect_to @enquire, notice: 'Enquire was successfully updated.'
-    else
-      render :edit
+      respond_with @enquire
     end
   end
 

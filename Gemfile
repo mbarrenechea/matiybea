@@ -5,6 +5,7 @@ source 'https://rubygems.org'
 gem 'rails', '4.2.3'
 gem 'rails_12factor'
 gem 'pg'
+gem 'responders', '~> 2.0'
 
 gem 'jquery-rails'
 gem 'jquery-ui-rails'

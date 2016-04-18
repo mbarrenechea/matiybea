@@ -18,6 +18,7 @@
     el: '#enquireView',
 
     events: {
+      'click #btn-enquire-name' : 'clickName',
       'click .js-click-index' : 'clickIndex',
       'change .js-question-radio' : 'changeQuestion'
     },
@@ -55,13 +56,16 @@
       this.sectionIndex();
 
       // Testing
-      this.model.set('index', 20);
-      this.model.set('answers', [false, false, false, true, false, false, true, false, false]);
-      this.correct();
+      // this.model.set('index', 20);
+      // this.model.set('answers', [false, false, false, true, false, false, true, false, false]);
+      // this.correct();
     },
 
     cache: function() {
       this.$htmlbody = $('html,body');
+      // Name
+      this.$enquireName = $('#enquire-name');
+
       // Sections
       this.$sections = this.$el.find('.m-section');
       this.sectionsLength = this.$sections.length;
@@ -77,7 +81,9 @@
     setListeners: function() {
       this.model.on('change:index', this.scrollTo.bind(this));
       this.model.on('change:index', this.sectionIndex.bind(this));
+      this.model.on('change:index', this.correct.bind(this));
 
+      this.enquireModel.on('change:name', this.changeName.bind(this));
       this.enquireModel.on('change:score', this.changeScore.bind(this));
     },
 
@@ -150,31 +156,28 @@
       this.model.set('index', index);      
     },
 
-    last: function() {
-      this.save();
-    },
-
     correct: function() {
-      var correctTotal = this.collection._getCorrectTotal();
-      var total = this.collection.toJSON().length;
-      var results = this.collection._getResults();
-
-      this.$correctAnswers.text(correctTotal.length);
-      this.$totalAnswers.text(total);
-
-      var message = this.getMessage(correctTotal.length);
-      this.$messageAnswers.html()
-
-
-      _.each(this.$iconAnswers, function(el,i) {
-        $(el).toggleClass('-correct',results[i]);
-        $(el).toggleClass('-incorrect',!results[i]);
-        $(el).find('.status').html(this.templateIcon({ correct: results[i] }));
-      }.bind(this))
-
-      // Last slide
+      console.log(this.model.get('index'));
+      console.log(this.sectionsLength - 1);
       if (this.model.get('index') == this.sectionsLength - 1) {
-        this.last();
+        var correctTotal = this.collection._getCorrectTotal();
+        var total = this.collection.toJSON().length;
+        var results = this.collection._getResults();
+
+        this.$correctAnswers.text(correctTotal.length);
+        this.$totalAnswers.text(total);
+
+        var message = this.getMessage(correctTotal.length);
+        this.$messageAnswers.html()
+
+
+        _.each(this.$iconAnswers, function(el,i) {
+          $(el).toggleClass('-correct',results[i]);
+          $(el).toggleClass('-incorrect',!results[i]);
+          $(el).find('.status').html(this.templateIcon({ correct: results[i] }));
+        }.bind(this))
+
+        this.enquireModel.set('score', correctTotal.length);
       }
 
     },
@@ -187,8 +190,13 @@
       this.$messageAnswers.html(this.messages[index]);
     },
 
-    changeName: function() {
+    clickName: function(e) {
+      var name = this.$enquireName.val();
+      (!!name) ? this.enquireModel.set('name', name) : null;
+    },
 
+    changeName: function() {
+      this.next();
     },
 
     changeScore: function() {

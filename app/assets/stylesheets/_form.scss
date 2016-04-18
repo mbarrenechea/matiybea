@@ -301,6 +301,20 @@
 
 }
 
+.mega-field {
+  input {
+    font-size: 32px;
+    text-align: center;
+    padding: 10px 5px;
+    display: block;
+    background: none;
+    border: none;
+    border-bottom: 2px solid $font-color-3;
+    color: $font-color-1;
+    outline: none;  
+  }
+}
+
 // ACTIONS
 .actions {
   padding-left: 120px;
