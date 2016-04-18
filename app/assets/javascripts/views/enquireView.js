@@ -7,6 +7,14 @@
 
   root.app.View.EnquireView = Backbone.View.extend({
 
+    enquireModel: new (Backbone.Model.extend({
+      url: '/enquires',
+      defaults: {
+        score: null,
+        name: null
+      }
+    })),
+
     el: '#enquireView',
 
     events: {
@@ -47,9 +55,9 @@
       this.sectionIndex();
 
       // Testing
-      // this.model.set('answers', [false, false, false, true, false, false, true, false, false]);
-      // this.model.set('index', 19);
-      // this.correct();
+      this.model.set('index', 20);
+      this.model.set('answers', [false, false, false, true, false, false, true, false, false]);
+      this.correct();
     },
 
     cache: function() {
@@ -69,6 +77,8 @@
     setListeners: function() {
       this.model.on('change:index', this.scrollTo.bind(this));
       this.model.on('change:index', this.sectionIndex.bind(this));
+
+      this.enquireModel.on('change:score', this.changeScore.bind(this));
     },
 
     sectionIndex: function() {
@@ -140,6 +150,10 @@
       this.model.set('index', index);      
     },
 
+    last: function() {
+      this.save();
+    },
+
     correct: function() {
       var correctTotal = this.collection._getCorrectTotal();
       var total = this.collection.toJSON().length;
@@ -157,6 +171,12 @@
         $(el).toggleClass('-incorrect',!results[i]);
         $(el).find('.status').html(this.templateIcon({ correct: results[i] }));
       }.bind(this))
+
+      // Last slide
+      if (this.model.get('index') == this.sectionsLength - 1) {
+        this.last();
+      }
+
     },
 
     getMessage: function(total) {
@@ -165,7 +185,17 @@
       });
 
       this.$messageAnswers.html(this.messages[index]);
+    },
+
+    changeName: function() {
+
+    },
+
+    changeScore: function() {
+      this.enquireModel.save();
     }
+
+
   });
 
 })(this);

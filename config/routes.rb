@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   root 'home#index'
 
   resources :confirms
+  resources :enquires
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 
