@@ -398,6 +398,7 @@
   &.-image {
     padding-bottom: 80%;
     margin: 0px -20px;
+    overflow: hidden;
     @media (min-width: $br-mobile){
       padding: 0;
       margin: 0;
@@ -406,9 +407,13 @@
     video {
       position: absolute;
       top: 0;
-      left: 0;
+      left: 50%;
       height: 100%;
       display: none;
+
+      pointer-events: none;
+      transform: translate(-50%,0);
+
       @media (min-width: $br-mobile){
         display: block;
       }
