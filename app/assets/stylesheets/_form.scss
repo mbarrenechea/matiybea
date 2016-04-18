@@ -349,9 +349,10 @@
 }
 
 .mega-field {
+
   input {
-    font-size: 32px;
-    text-align: center;
+    width: 100%;
+    font-size: 24px;
     padding: 10px 5px;
     display: block;
     background: none;
@@ -359,6 +360,11 @@
     border-bottom: 2px solid $font-color-3;
     color: $font-color-1;
     outline: none;  
+    @media (min-width: $br-mobile){
+      width: auto;
+      text-align: center;
+      font-size: 32px;
+    }
   }
 }
 
