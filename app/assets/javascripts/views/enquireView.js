@@ -119,7 +119,7 @@
       var index = $radios.index($radios.filter(':checked'));
       var correct = this.collection._getCorrect(question, index);
       var correctAnswer = this.collection._getCorrectAnswer(question);
-      var time = (correct) ? 0 : 1500;
+      var time = (correct) ? 500 : 1500;
       answers[question] = index;
       this.model.set('answers', answers);
 
