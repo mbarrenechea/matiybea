@@ -20,7 +20,7 @@
         svg {
           opacity: 1;
           visibility: visible;
-          transform: translate(0,-50%);
+          transform: translate(0,0);
         }
       }
 
@@ -80,12 +80,13 @@
         width: 26px;
         height: 26px;
         position: absolute;
+        margin: -13px 0 0;
         top: 50%;
         right: 0;
         opacity: 0;
         visibility: hidden;
-        transform: translate(-10px,-50%);
         transition: all 0.25s $easeInOutSine;
+        transform: translate(-10px,0);
       }      
     }
   }
