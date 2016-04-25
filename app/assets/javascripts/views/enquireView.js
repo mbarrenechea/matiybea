@@ -220,6 +220,8 @@
 
     changeSong: function() {
       this.enquireModel.save();
+      $('#btn-enquire-song').addClass('-disabled').text('Gracias');
+
     },
 
   });
