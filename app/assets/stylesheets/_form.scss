@@ -352,7 +352,7 @@
 
   input {
     width: 100%;
-    font-size: 24px;
+    font-size: 16px;
     padding: 10px 5px;
     display: block;
     background: none;
@@ -361,12 +361,15 @@
     color: $font-color-1;
     outline: none;  
     @media (min-width: $br-mobile){
-      width: auto;
       text-align: center;
-      font-size: 32px;
+      font-size: 24px;
+    }
+    &.-song {
+      
     }
   }
 }
+
 
 // ACTIONS
 .actions {

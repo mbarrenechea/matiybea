@@ -34,7 +34,7 @@ class EnquiresController < ApplicationController
   # PATCH/PUT /enquires/1
   def update
     if @enquire.update(enquire_params)
-      respond_with @enquire
+      respond_with(@enquire)
     end
   end
 
@@ -52,6 +52,6 @@ class EnquiresController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def enquire_params
-      params.require(:enquire).permit(:name, :score)
+      params.require(:enquire).permit(:name, :score, :song)
     end
 end

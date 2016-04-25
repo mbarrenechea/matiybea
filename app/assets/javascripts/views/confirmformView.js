@@ -38,7 +38,7 @@
         rules: {            
           "confirm[code]": {
             required: true,
-            equals: "beaymati"
+            equals: "291016"
           }
         },        
         submitHandler: function(form) {

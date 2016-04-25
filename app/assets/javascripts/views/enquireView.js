@@ -8,17 +8,20 @@
   root.app.View.EnquireView = Backbone.View.extend({
 
     enquireModel: new (Backbone.Model.extend({
-      url: '/enquires',
+      urlRoot: '/enquires',
       defaults: {
         score: null,
-        name: null
-      }
+        name: null,
+        song: null
+      },
+
     })),
 
     el: '#enquireView',
 
     events: {
       'click #btn-enquire-name' : 'clickName',
+      'click #btn-enquire-song' : 'clickSong',
       'click .js-click-index' : 'clickIndex',
       'change .js-question-radio' : 'changeQuestion'
     },
@@ -56,9 +59,9 @@
       this.sectionIndex();
 
       // Testing
-      // this.model.set('index', 17);
-      // this.model.set('answers', [false, false, false, true, false, false, true, false, false]);
-      // this.correct();
+      // this.model.set('answers', [true, true, false, true, true, false, false, true, false]);
+      // this.model.set('index', 21);
+
     },
 
     cache: function() {
@@ -84,6 +87,7 @@
       this.model.on('change:index', this.last.bind(this));
 
       this.enquireModel.on('change:name', this.changeName.bind(this));
+      this.enquireModel.on('change:song', this.changeSong.bind(this));
       this.enquireModel.on('change:score', this.changeScore.bind(this));
     },
 
@@ -201,14 +205,22 @@
       (!!name) ? this.enquireModel.set('name', name) : null;
     },
 
+    clickSong: function() {
+      var song = $('#enquire-song').val();
+      (!!song) ? this.enquireModel.set('song', song) : null;      
+    },
+
     changeName: function() {
       this.next();
     },
 
     changeScore: function() {
       this.enquireModel.save();
-    }
+    },
 
+    changeSong: function() {
+      this.enquireModel.save();
+    },
 
   });
 

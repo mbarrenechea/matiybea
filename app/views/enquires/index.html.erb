@@ -3,6 +3,7 @@
     <tr>
       <th>Name</th>
       <th>Score</th>
+      <th>Song</th>
       <th colspan="3">Actions</th>
     </tr>
   </thead>
@@ -12,6 +13,7 @@
       <tr>
         <td><%= enquire.name %></td>
         <td><%= enquire.score %></td>
+        <td><%= enquire.song %></td>
         <td><%= link_to 'Show', enquire %></td>
         <td><%= link_to 'Edit', edit_enquire_path(enquire) %></td>
         <td><%= link_to 'Destroy', enquire, method: :delete, data: { enquire: 'Are you sure?' } %></td>
